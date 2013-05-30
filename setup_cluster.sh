@@ -27,5 +27,3 @@ ant jar
 
 # replace old jar
 cp jblas-1.2.3-SNAPSHOT.jar /root/.ivy2/cache/org.scalanlp/jblas/jars/jblas-1.2.1.jar
-
-exit
