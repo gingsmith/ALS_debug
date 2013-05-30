@@ -6,7 +6,7 @@
 sbt/sbt "run-main als_debug.Join_ALS 
 --master=""
 --jars=""
---sparkhome=""
+--sparkhome="/root/spark"
 --train="/data/netflix_randSplit1_data.txt" 
 --niter=10
 --nsplits=32
@@ -16,7 +16,7 @@ sbt/sbt "run-main als_debug.Join_ALS
 sbt/sbt "run-main als_debug.Join_ALS
 --master=""
 --jars=""
---sparkhome=""
+--sparkhome="root/spark"
 --train="/data/netflix_randSplit1_data.txt" 
 --niter=10
 --nsplits=32
