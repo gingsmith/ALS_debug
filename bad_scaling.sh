@@ -24,9 +24,29 @@ sbt/sbt "run-main als_debug.Join_ALS
 --train=$TRAINFILE
 --niter=10
 --nsplits=32
---rank=10" 2>&1 | tee small_rank_log
+--rank=10" 2>&1 | tee rank_10_log
 
-# run with larger rank (100)
+# slightly bigger rank (20)
+sbt/sbt "run-main als_debug.Join_ALS 
+--master=$MASTER
+--jars=$JAR
+--sparkhome=$SPARKHOME
+--train=$TRAINFILE
+--niter=10
+--nsplits=32
+--rank=20" 2>&1 | tee rank_20_log
+
+# a little bigger... rank (30)
+sbt/sbt "run-main als_debug.Join_ALS 
+--master=$MASTER
+--jars=$JAR
+--sparkhome=$SPARKHOME
+--train=$TRAINFILE
+--niter=10
+--nsplits=32
+--rank=30" 2>&1 | tee rank_30_log
+
+# bigger rank (100)
 sbt/sbt "run-main als_debug.Join_ALS
 --master=$MASTER
 --jars=$JAR
@@ -34,4 +54,4 @@ sbt/sbt "run-main als_debug.Join_ALS
 --train=$TRAINFILE
 --niter=10
 --nsplits=32
---rank=100" 2>&1 | tee large_rank_log
+--rank=100" 2>&1 | tee rank_100_log
