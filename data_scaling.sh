@@ -2,8 +2,6 @@
 
 # script to reproduce memory issues with join_als
 
-# example: ./bad_memory.sh /mnt/ALS_debug/target/als_debug-assembly-1.0.jar /root/spark
-
 set -e
 
 if [ $# -eq 0 ]

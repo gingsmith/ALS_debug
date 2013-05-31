@@ -140,7 +140,6 @@ object Join_ALS {
 
   def main(args: Array[String]){
 
-    // sbt/sbt "run-main dmf.Join_ALS --train="../DMF/data/eachmovie_randSplit1_data.txt" --rank=10 --niter=10"
 
     // Add kryo serialization
     //System.setProperty("spark.broadcast.factory", "spark.broadcast.TreeBroadcastFactory")
