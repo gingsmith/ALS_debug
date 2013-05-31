@@ -6,7 +6,7 @@ set -e
 
 if [ $# -eq 0 ]
 	then
-		echo ERROR usage: ./bad_memory.sh master jar sparkhome trainfile
+		echo ERROR usage: ./rank_scaling.sh master jar sparkhome trainfile
 		exit 1
 fi
 
