@@ -1,0 +1,57 @@
+The following analyzes the expected effect of increasing rank/dataset size on the computation and communication of Join-ALS.
+
+----------------------------------------------
+
+k = rank parameter
+m = # of users
+n = # of movies
+R = # of ratings
+T = number of machines
+
+(for netflix, m=20K n=500K R=100M)
+
+----------------------------------------------
+
+Join ALS computation and communication:
+
+updating movies (see line 101 of Join_ALS.scala):
+
+1) (narrow) join: 
+     -> computation: R
+     -> communication:  0 (due to narrow join)
+2) map:
+     -> computation: R
+     -> communication: 0
+3) combine by key: 
+     -> computation: R * k^2 + m * k + R * k
+        - R * k^2 to compute XtX over all ratings and also to combine/reduce them
+        - m * k to add regularization (once for each user)
+        - R * k to compute XtY over all ratings and also to combine/reduce them
+     -> communication: n * T * k * (k + 1)
+        - for each movie, we need to sum over XtX and Xty
+        - we do a local reduce, and therefore we communicate one message per machine
+4) solve: (XtX)-1*(Xty):
+    -> computation: n*k^3 + n*k^2
+       - k^3 to solve linear system for each movie
+       - k^2 to perform matrix-vector multiplication for each movie
+    -> communication: 0
+
+Similar computations hold when updating users, but with n and m switch.
+
+Thus, a single iteration of ALS takes:
+    -> computation: O((m+n)k^3 + Rk^2)
+    -> communication: O((m+n)Tk^2)
+
+----------------------------------------------
+
+Therefore we find:
+
+scaling by matrix dimension:
+→ computation: scales linearly
+→ communication: scales linearly
+
+scaling by rank (k):
+→ computation:
+	- if R >> (m+n)k: scales quadratically
+    - if R < (m+n)k: scales cubicly 
+→ communication: scales quadratically
