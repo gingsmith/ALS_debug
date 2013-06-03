@@ -52,6 +52,6 @@ scaling by matrix dimension:
 
 scaling by rank (k):
 → computation:
-	- if R >> (m+n)k: scales quadratically
+    - if R >> (m+n)k: scales quadratically
     - if R < (m+n)k: scales cubicly 
 → communication: scales quadratically

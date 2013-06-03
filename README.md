@@ -16,7 +16,7 @@ this runs the lastest spark AMI: ami-a60193cf
 5) run bad_scaling.sh, passing in [master jars sparkhome trainfile] as appropriate  
 6) run bad_memory.sh, passing in [master jars sparkhome trainfile] as appropriate  
 
-** depending on the size of the cluster you're using, you may want to change "nsplits", as well  
+** depending on the size of the cluster, it may be important to change "nsplits", as well  
 
 example:  
 
