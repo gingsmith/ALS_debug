@@ -3,7 +3,6 @@ package als_debug
 import scala.io.Source
 import breeze.linalg._
 import spark._
-import spark.storage.StorageLevel
 import java.io._
 import scala.util._
 // need _ to include everything in package
@@ -21,12 +20,8 @@ object Join_ALS {
 
     val partitioner = new HashPartitioner(ratings.partitions.size)
 
-    val ratingsByUser = ratings.map{ case (u,m,r) => (u,(m,r)) }
-                               .partitionBy(partitioner)
-                               .persist(StorageLevel.MEMORY_ONLY_SER)
-    val ratingsByMovie = ratings.map{ case (u,m,r) => (m,(u,r)) }
-                                .partitionBy(partitioner)
-                                .persist(StorageLevel.MEMORY_ONLY_SER)
+    val ratingsByUser = ratings.map{ case (u,m,r) => (u,(m,r)) }.partitionBy(partitioner).cache;
+    val ratingsByMovie = ratings.map{ case (u,m,r) => (m,(u,r)) }.partitionBy(partitioner).cache;
 
     def makeInitialFactor(seed: Int): Array[Double] = {
       val rand = new Random(seed)
@@ -36,10 +31,10 @@ object Join_ALS {
     // Initialize user and movie factors deterministically.  Map partitions is used to
     // preserve the partitioning achieved when using reduceByKey.
     var users = ratingsByUser.mapValues(x => 1).reduceByKey(_ + _)
-      .mapPartitions( _.map{ case (uid, deg) => (uid, makeInitialFactor(uid)) }, true ).cache
+      .mapPartitions( _.map{ case (uid, deg) => (uid, makeInitialFactor(uid)) } ).cache
     // Note I use the negative of the movie id to initialize movie factors
     var movies = ratingsByMovie.mapValues(x => 1).reduceByKey(_ + _)
-      .mapPartitions( _.map{ case (mid, deg) => (mid, makeInitialFactor(-mid)) }, true ).cache
+      .mapPartitions( _.map{ case (mid, deg) => (mid, makeInitialFactor(-mid)) } ).cache
 
     val nnzs = ratingsByUser.count
     val nusers = users.count
@@ -100,42 +95,24 @@ object Join_ALS {
       w.data
     }
 
-    // Given the ratings and features of the users for a movie (or vice-versa),
-    // update that movie's (user's) vector through a least-squares calculation
-    def updateFeatures(data: Seq[(Double, Array[Double])]): Array[Double] = {
-      // For now, just call the methods above
-      val (xtx, xy) = computeXtXandXy(data.head)
-      data.tail.foreach(elem => foldXtXandXy((xtx, xy), elem))
-      solveLeastSquares(xtx, xy)
-    }
-
     for(iter <- 0 until niter) {
       // perform ALS update
 
-      //movies = ratingsByUser
-      //.join(users).map{ case (u, ((m, y), x)) => (m, (y,x)) }
-      //.combineByKey[(Array[Double], Array[Double])](
-      //  computeXtXandXy(_), foldXtXandXy(_, _),  sumXtXandXy(_, _), partitioner)
-      //.mapValues{ case (xtx, xty) => solveLeastSquares(xtx, xty) }
-
       movies = ratingsByUser
       .join(users).map{ case (u, ((m, y), x)) => (m, (y,x)) }
-      .groupByKey(partitioner)
-      .mapValues{ updateFeatures(_) } 
+      .combineByKey[(Array[Double], Array[Double])](
+        computeXtXandXy(_), foldXtXandXy(_, _),  sumXtXandXy(_, _), partitioner)
+      .mapValues{ case (xtx, xty) => solveLeastSquares(xtx, xty) }
 
       // Cache the last movies
       if(iter + 1 == niter) movies = movies.cache()
 
-      //users = ratingsByMovie
-      //.join(movies).map{ case (m, ((u, y), x)) => (u, (y,x)) }
-      //.combineByKey[(Array[Double], Array[Double])](
-      //  computeXtXandXy(_), foldXtXandXy(_, _),  sumXtXandXy(_, _), partitioner)
-      //.mapValues{ case (xtx, xty) => solveLeastSquares(xtx, xty) }
 
       users = ratingsByMovie
       .join(movies).map{ case (m, ((u, y), x)) => (u, (y,x)) }
-      .groupByKey(partitioner)
-      .mapValues{ updateFeatures(_) } 
+      .combineByKey[(Array[Double], Array[Double])](
+        computeXtXandXy(_), foldXtXandXy(_, _),  sumXtXandXy(_, _), partitioner)
+      .mapValues{ case (xtx, xty) => solveLeastSquares(xtx, xty) }
 
       // Cache the last users
       if(iter + 1 == niter) users = users.cache()
@@ -170,6 +147,7 @@ object Join_ALS {
     System.setProperty("spark.serializer", "spark.KryoSerializer")
     System.setProperty("spark.kryo.registrator", "als_debug.CCDKryoRegistrator")
     System.setProperty("spark.storage.blockManagerHeartBeatMs", "120000")
+
 
 
     val options =  args.map { arg =>
@@ -218,13 +196,13 @@ object Join_ALS {
         .map(_.split(' '))
         .map{ elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}
         .flatMap( x => Array(x,(x._1+m,x._2,x._3),(x._1,x._2+n,x._3),(x._1+m,x._2+n,x._3)))
-        .persist(StorageLevel.MEMORY_ONLY_SER)
+        .cache
     }
     else {
       trainData = sc.textFile(trainfile, nsplits)
         .map(_.split(' '))
         .map{elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}
-        .persist(StorageLevel.MEMORY_ONLY_SER)
+        .cache()
     }
 
     // Do the actual training
