@@ -20,9 +20,11 @@ this runs the lastest spark AMI: ami-a60193cf
 
 example:  
 
-./rank_scaling.sh spark://ec2-23-23-50-169.compute-1.amazonaws.com:7077 /mnt/ALS_debug/target/als_debug-assembly-1.0.jar /root/spark hdfs://ec2-23-23-50-169.compute-1.amazonaws.com:9000/data/netflix_randSplit1_data.txt  
+export PUBLIC_HOSTNAME=`ec2-metadata -p | cut -d: -f2 | tr -d ' '`
 
-./data_scaling.sh spark://ec2-54-234-55-79.compute-1.amazonaws.com:7077 /mnt/ALS_debug/target/als_debug-assembly-1.0.jar /root/spark hdfs://ec2-54-234-55-79.compute-1.amazonaws.com:9000/data/netflix_randSplit1_data.txt  
+./rank_scaling.sh spark://$PUBLIC_HOSTNAME:7077 /mnt/ALS_debug/target/als_debug-assembly-1.0.jar /root/spark hdfs://$PUBLIC_HOSTNAME:9000/data/netflix_randSplit1_data.txt
+
+./data_scaling.sh spark://$PUBLIC_HOSTNAME:7077 /mnt/ALS_debug/target/als_debug-assembly-1.0.jar /root/spark hdfs://$PUBLIC_HOSTNAME:9000/data/netflix_randSplit1_data.txt
 
 Instructions for local use:  
 

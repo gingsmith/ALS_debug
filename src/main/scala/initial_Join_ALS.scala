@@ -10,7 +10,7 @@ import scala.util._
 import spark.SparkContext._
 
 
-object Join_ALS {
+object initial_Join_ALS {
 
 
   def trainALSFast(ratings: RDD[(Int,Int,Double)], rank: Int, lambda: Double, niter: Int):
