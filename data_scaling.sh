@@ -25,7 +25,7 @@ sbt/sbt "run-main als_debug.Join_ALS
 --rank=10
 --niter=10
 --nsplits=96
---big=false" 2>&1 | tee small_data_log_0604
+--big=false" 2>&1 | tee small_data_log_0606
 
 # run on bigger problem (4x netflix)
 sbt/sbt "run-main als_debug.Join_ALS
@@ -38,4 +38,4 @@ sbt/sbt "run-main als_debug.Join_ALS
 --big=true
 --m=17770
 --npslits=96
---n=480189" 2>&1 | tee large_data_log_0604
+--n=480189" 2>&1 | tee large_data_log_0606
