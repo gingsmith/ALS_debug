@@ -416,6 +416,16 @@ object Join_ALS {
     .map{ case (m, ((ux, r), mx)) => error(ux, mx, r) }.sum
   }
 
+  def replicate(x: (Int,Int,Double), repfact: Int, m:Int, n:Int){
+    val ret_arr = new Array[(Int,Int,Double)](repfact*repfact)
+    for(i<-0 until repfact){
+      for(j<-0 until repfact){
+        val ind = i*repfact+j
+        ret_arr(ind) = (x._1+i*m,x._2+j*n,x._3)
+      }    
+    }
+  }
+
 
 
 
@@ -448,7 +458,7 @@ object Join_ALS {
     val jar = options.getOrElse("jars", "")
     val nsplits = options.getOrElse("nsplits", "4").toInt
     val sparkhome = options.getOrElse("sparkhome", System.getenv("SPARK_HOME"))
-    val big = options.getOrElse("big", "false").toBoolean
+    val repfact = options.getOrElse("repfact", "1").toInt
     val m = options.getOrElse("m", "100").toInt
     val n = options.getOrElse("n", "100").toInt
     val blocked = options.getOrElse("blocked", "false").toBoolean
@@ -463,7 +473,7 @@ object Join_ALS {
     println("jar:          " + jar)
     println("sparkhome:    " + sparkhome)
     println("nsplits:      " + nsplits)  
-    println("big:          " + big)  
+    println("repfact:          " + repfact)  
     println("m:            " + m)
     println("n:            " + n)
     println("blocked:      " + blocked)  
@@ -473,19 +483,20 @@ object Join_ALS {
 
     var trainData: spark.RDD[(Int,Int,Double)] = null
 
-    if(big){
-      trainData = sc.textFile(trainfile,nsplits)
-        .map(_.split(' '))
-        .map{ elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}
-        .flatMap( x => Array(x,(x._1+m,x._2,x._3),(x._1,x._2+n,x._3),(x._1+m,x._2+n,x._3)))
-        .persist(StorageLevel.MEMORY_ONLY_SER)
-    }
-    else {
-      trainData = sc.textFile(trainfile, nsplits)
-        .map(_.split(' '))
-        .map{elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}
-        .persist(StorageLevel.MEMORY_ONLY_SER)
-    }
+    //if(big){
+    trainData = sc.textFile(trainfile,nsplits)
+      .map(_.split(' '))
+      .map{ elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}
+      .flatMap( x => replicate(x,repfact,m,n))
+      //Array(x,(x._1+m,x._2,x._3),(x._1,x._2+n,x._3),(x._1+m,x._2+n,x._3)))
+      .persist(StorageLevel.MEMORY_ONLY_SER)
+    //}
+    //else {
+    //   trainData = sc.textFile(trainfile, nsplits)
+    //     .map(_.split(' '))
+    //     .map{elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}
+    //     .persist(StorageLevel.MEMORY_ONLY_SER)
+    //}
 
     println("Number of splits in trainData: " + trainData.partitions.size)
 
