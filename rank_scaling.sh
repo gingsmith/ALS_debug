@@ -18,6 +18,7 @@ TRAINFILE=$4
 
 # run with smaller rank (10)
 sbt/sbt "run-main als_debug.Join_ALS 
+--blocked=true
 --master=$MASTER
 --jars=$JAR
 --sparkhome=$SPARKHOME
@@ -28,6 +29,7 @@ sbt/sbt "run-main als_debug.Join_ALS
 
 # slightly bigger rank (20)
 sbt/sbt "run-main als_debug.Join_ALS 
+--blocked=true
 --master=$MASTER
 --jars=$JAR
 --sparkhome=$SPARKHOME
@@ -38,6 +40,7 @@ sbt/sbt "run-main als_debug.Join_ALS
 
 # a little bigger... rank (30)
 sbt/sbt "run-main als_debug.Join_ALS 
+--blocked=true
 --master=$MASTER
 --jars=$JAR
 --sparkhome=$SPARKHOME
@@ -48,6 +51,7 @@ sbt/sbt "run-main als_debug.Join_ALS
 
 # bigger rank (100)
 sbt/sbt "run-main als_debug.Join_ALS
+--blocked=true
 --master=$MASTER
 --jars=$JAR
 --sparkhome=$SPARKHOME

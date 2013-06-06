@@ -18,6 +18,7 @@ TRAINFILE=$4
 
 # run on smaller problem (netflix)
 sbt/sbt "run-main als_debug.Join_ALS 
+--blocked=true
 --master=$MASTER
 --jars=$JAR
 --sparkhome=$SPARKHOME
@@ -29,6 +30,7 @@ sbt/sbt "run-main als_debug.Join_ALS
 
 # run on bigger problem (4x netflix)
 sbt/sbt "run-main als_debug.Join_ALS
+--blocked=true
 --master=$MASTER
 --jars=$JAR
 --sparkhome=$SPARKHOME
