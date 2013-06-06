@@ -416,7 +416,7 @@ object Join_ALS {
     .map{ case (m, ((ux, r), mx)) => error(ux, mx, r) }.sum
   }
 
-  def replicate(x: (Int,Int,Double), repfact: Int, m:Int, n:Int){
+  def replicate(x: (Int,Int,Double), repfact: Int, m:Int, n:Int): Array[(Int,Int,Double)]{
     val ret_arr = new Array[(Int,Int,Double)](repfact*repfact)
     for(i<-0 until repfact){
       for(j<-0 until repfact){
@@ -424,6 +424,7 @@ object Join_ALS {
         ret_arr(ind) = (x._1+i*m,x._2+j*n,x._3)
       }    
     }
+    return ret_arr
   }
 
 
