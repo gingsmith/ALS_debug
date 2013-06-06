@@ -24,7 +24,7 @@ sbt/sbt "run-main als_debug.Join_ALS
 --sparkhome=$SPARKHOME
 --train=$TRAINFILE
 --niter=10
---nsplits=96
+--nsplits=32
 --rank=10" 2>&1 | tee rank_10_log_0606
 
 # slightly bigger rank (20)
@@ -35,7 +35,7 @@ sbt/sbt "run-main als_debug.Join_ALS
 --sparkhome=$SPARKHOME
 --train=$TRAINFILE
 --niter=10
---nsplits=96
+--nsplits=32
 --rank=20" 2>&1 | tee rank_20_log_0606
 
 # a little bigger... rank (30)
@@ -46,7 +46,7 @@ sbt/sbt "run-main als_debug.Join_ALS
 --sparkhome=$SPARKHOME
 --train=$TRAINFILE
 --niter=10
---nsplits=96
+--nsplits=32
 --rank=30" 2>&1 | tee rank_30_log_0606
 
 # bigger rank (100)
@@ -57,5 +57,5 @@ sbt/sbt "run-main als_debug.Join_ALS
 --sparkhome=$SPARKHOME
 --train=$TRAINFILE
 --niter=10
---nsplits=96
+--nsplits=32
 --rank=100" 2>&1 | tee rank_100_log_0606
