@@ -25,7 +25,7 @@ sbt/sbt "run-main als_debug.Join_ALS
 --train=$TRAINFILE
 --niter=10
 --nsplits=32
---rank=40" 2>&1 | tee rank_40_log_0606
+--rank=40" 2>&1 | tee rank_40_log_0607
 
 # slightly bigger rank (20)
 sbt/sbt "run-main als_debug.Join_ALS 
@@ -36,7 +36,7 @@ sbt/sbt "run-main als_debug.Join_ALS
 --train=$TRAINFILE
 --niter=10
 --nsplits=32
---rank=50" 2>&1 | tee rank_50_log_0606
+--rank=50" 2>&1 | tee rank_50_log_0607
 
 # a little bigger... rank (30)
 sbt/sbt "run-main als_debug.Join_ALS 
@@ -47,7 +47,7 @@ sbt/sbt "run-main als_debug.Join_ALS
 --train=$TRAINFILE
 --niter=10
 --nsplits=32
---rank=60" 2>&1 | tee rank_60_log_0606
+--rank=60" 2>&1 | tee rank_60_log_0607
 
 # bigger rank (100)
 sbt/sbt "run-main als_debug.Join_ALS
@@ -58,7 +58,7 @@ sbt/sbt "run-main als_debug.Join_ALS
 --train=$TRAINFILE
 --niter=10
 --nsplits=32
---rank=70" 2>&1 | tee rank_70_log_0606
+--rank=70" 2>&1 | tee rank_70_log_0607
 
 sbt/sbt "run-main als_debug.Join_ALS
 --blocked=true
@@ -68,7 +68,7 @@ sbt/sbt "run-main als_debug.Join_ALS
 --train=$TRAINFILE
 --niter=10
 --nsplits=32
---rank=70" 2>&1 | tee rank_80_log_0606
+--rank=80" 2>&1 | tee rank_80_log_0607
 
 sbt/sbt "run-main als_debug.Join_ALS
 --blocked=true
@@ -78,4 +78,4 @@ sbt/sbt "run-main als_debug.Join_ALS
 --train=$TRAINFILE
 --niter=10
 --nsplits=32
---rank=70" 2>&1 | tee rank_90_log_0606
+--rank=90" 2>&1 | tee rank_90_log_0607
