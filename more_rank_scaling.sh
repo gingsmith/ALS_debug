@@ -59,3 +59,23 @@ sbt/sbt "run-main als_debug.Join_ALS
 --niter=10
 --nsplits=32
 --rank=70" 2>&1 | tee rank_70_log_0606
+
+sbt/sbt "run-main als_debug.Join_ALS
+--blocked=true
+--master=$MASTER
+--jars=$JAR
+--sparkhome=$SPARKHOME
+--train=$TRAINFILE
+--niter=10
+--nsplits=32
+--rank=70" 2>&1 | tee rank_80_log_0606
+
+sbt/sbt "run-main als_debug.Join_ALS
+--blocked=true
+--master=$MASTER
+--jars=$JAR
+--sparkhome=$SPARKHOME
+--train=$TRAINFILE
+--niter=10
+--nsplits=32
+--rank=70" 2>&1 | tee rank_90_log_0606
