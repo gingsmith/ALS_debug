@@ -14,7 +14,7 @@ import org.jblas.{DoubleMatrix, Solve}
 import spark.SparkContext._
 
 
-object BlockedALS {
+object Blocked_Join_ALS {
 
   case class OutLinkBlock(elementIds: Array[Int], shouldSend: Array[Array[Boolean]]) {
     override def toString = "OLB" + (elementIds.toSeq, shouldSend.toSeq.map(_.toSeq)).toString
@@ -259,147 +259,13 @@ object BlockedALS {
         }
     }
   }
-}
 
-
-object Join_ALS {
-
-
-  def trainALSFast(ratings: RDD[(Int,Int,Double)], rank: Int, lambda: Double, niter: Int):
-    (RDD[(Int,Array[Double])], RDD[(Int,Array[Double])]) = {
-
-    println("Running fast als")
-
-    val partitioner = new HashPartitioner(ratings.partitions.size)
-
-    val ratingsByUser = ratings.map{ case (u,m,r) => (u,(m,r)) }
-                               .partitionBy(partitioner)
-                               .persist(StorageLevel.MEMORY_ONLY_SER)
-    val ratingsByMovie = ratings.map{ case (u,m,r) => (m,(u,r)) }
-                                .partitionBy(partitioner)
-                                .persist(StorageLevel.MEMORY_ONLY_SER)
-
-    def makeInitialFactor(seed: Int): Array[Double] = {
-      val rand = new Random(seed)
-      Array.fill(rank)(rand.nextDouble)
-    }
-
-    // Initialize user and movie factors deterministically.  Map partitions is used to
-    // preserve the partitioning achieved when using reduceByKey.
-    var users = ratingsByUser.mapValues(x => 1).reduceByKey(_ + _)
-      .mapPartitions( _.map{ case (uid, deg) => (uid, makeInitialFactor(uid)) }, true ).cache
-    // Note I use the negative of the movie id to initialize movie factors
-    var movies = ratingsByMovie.mapValues(x => 1).reduceByKey(_ + _)
-      .mapPartitions( _.map{ case (mid, deg) => (mid, makeInitialFactor(-mid)) }, true ).cache
-
-    val nnzs = ratingsByUser.count
-    val nusers = users.count
-    val nmovies = movies.count
-    println("Ratings: " + nnzs)
-    println("Users:   " + nusers)
-    println("Movies:  " + nmovies)
-
-    def computeXtXandXy(ratingX: (Double, Array[Double])) :
-      (Array[Double], Array[Double]) = {
-      val (rating, x) = ratingX
-      val xty = x.map(_ * rating)
-      // Computing xtx in upper triangular form
-      val xtx = ( for(i <- 0 until rank; j <- i until rank) yield(x(i) * x(j)) ).toArray
-      (xtx, xty)
-    }
-
-    def foldXtXandXy(sum: (Array[Double], Array[Double]), ratingX: (Double, Array[Double]) ) :
-      (Array[Double], Array[Double]) = {
-      val (xtxSum, xtySum) = sum
-      val (rating, x) = ratingX
-      var i = 0
-      while(i < rank) {
-        xtySum(i) += x(i) * rating
-        i += 1
-      }
-      i = 0
-      var index = 0
-      while(i < rank) {
-        var j = i
-        while(j < rank) {
-          xtxSum(index) += x(i) * x(j)
-          index += 1
-          j += 1
-        }
-        i += 1
-      }
-      (xtxSum, xtySum)
-    }
-
-    def sumXtXandXy(a: (Array[Double], Array[Double]), b: (Array[Double], Array[Double]) ) :
-      (Array[Double], Array[Double]) = {
-      var i = 0
-      while(i < a._1.length) { a._1(i) += b._1(i); i += 1 }
-      i = 0
-      while(i < a._2.length) { a._2(i) += b._2(i); i += 1 }
-      a
-    }
-
-    def solveLeastSquares( xtxAr: Array[Double], xtyAr: Array[Double] ) :
-      Array[Double] = {
-      val xtx = DenseMatrix.tabulate(rank,rank){ (i,j) =>
-        xtxAr(if(i <= j) j + i*(rank-1)-(i*(i-1))/2 else i + j*(rank-1)-(j*(j-1))/2) +
-        (if(i == j) lambda else 0.0) //regularization
-      }
-      val xty = DenseMatrix.create(rank, 1, xtyAr)
-      val w = xtx \ xty
-      w.data
-    }
-
-    // Given the ratings and features of the users for a movie (or vice-versa),
-    // update that movie's (user's) vector through a least-squares calculation
-    def updateFeatures(data: Seq[(Double, Array[Double])]): Array[Double] = {
-      // For now, just call the methods above
-      val (xtx, xy) = computeXtXandXy(data.head)
-      data.tail.foreach(elem => foldXtXandXy((xtx, xy), elem))
-      solveLeastSquares(xtx, xy)
-    }
-
-    for(iter <- 0 until niter) {
-      // perform ALS update
-
-      //movies = ratingsByUser
-      //.join(users).map{ case (u, ((m, y), x)) => (m, (y,x)) }
-      //.combineByKey[(Array[Double], Array[Double])](
-      //  computeXtXandXy(_), foldXtXandXy(_, _),  sumXtXandXy(_, _), partitioner)
-      //.mapValues{ case (xtx, xty) => solveLeastSquares(xtx, xty) }
-
-      movies = ratingsByUser
-      .join(users).map{ case (u, ((m, y), x)) => (m, (y,x)) }
-      .groupByKey(partitioner)
-      .mapValues{ updateFeatures(_) } 
-
-      // Cache the last movies
-      if(iter + 1 == niter) movies = movies.cache()
-
-      //users = ratingsByMovie
-      //.join(movies).map{ case (m, ((u, y), x)) => (u, (y,x)) }
-      //.combineByKey[(Array[Double], Array[Double])](
-      //  computeXtXandXy(_), foldXtXandXy(_, _),  sumXtXandXy(_, _), partitioner)
-      //.mapValues{ case (xtx, xty) => solveLeastSquares(xtx, xty) }
-
-      users = ratingsByMovie
-      .join(movies).map{ case (m, ((u, y), x)) => (u, (y,x)) }
-      .groupByKey(partitioner)
-      .mapValues{ updateFeatures(_) } 
-
-      // Cache the last users
-      if(iter + 1 == niter) users = users.cache()
-    }
-
-    (users, movies)
-  }
 
   def trainALSBlocked(nsplits: Int, ratings: RDD[(Int,Int,Double)], rank: Int, lambda: Double, niter: Int):
     (RDD[(Int,Array[Double])], RDD[(Int,Array[Double])]) = {
 
     println("Running blocked als")
-    BlockedALS.train(nsplits, ratings, rank, lambda, niter)
+    train(nsplits, ratings, rank, lambda, niter)
   }
 
 
