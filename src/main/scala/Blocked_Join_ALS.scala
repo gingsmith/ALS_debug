@@ -329,7 +329,6 @@ object Blocked_Join_ALS {
     val m = options.getOrElse("m", "100").toInt
     val n = options.getOrElse("n", "100").toInt
     val big = options.getOrElse("big","false").toBoolean
-    val blocked = options.getOrElse("blocked", "false").toBoolean
 
     // print out input
     println("master:       " + master)
@@ -371,11 +370,8 @@ object Blocked_Join_ALS {
     println("Number of splits in trainData: " + trainData.partitions.size)
 
     // Do the actual training
-    val (users, movies) = if (blocked) {
-      trainALSBlocked(nsplits, trainData, rank, lambda, niter)
-    } else {
-      trainALSFast(trainData, rank, lambda, niter)
-    }
+    trainALSBlocked(nsplits, trainData, rank, lambda, niter)
+
 
     // Force computation for timing purposes:
     val starttime = System.currentTimeMillis
