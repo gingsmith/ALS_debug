@@ -168,19 +168,19 @@ object Blocked_Join_ALS {
   //   w.data
   // }
 
-  // def fillXtX(xtxDest: DoubleMatrix, x: Array[Double]) {
-  //   var i = 0
-  //   var pos = 0
-  //   while (i < x.length) {
-  //     var j = 0
-  //     while (j <= i) {
-  //       xtxDest.data(pos) = x(i) * x(j)
-  //       pos += 1
-  //       j += 1
-  //     }
-  //     i += 1
-  //   }
-  // }
+  def fillXtX(xtxDest: DoubleMatrix, x: Array[Double]) {
+    var i = 0
+    var pos = 0
+    while (i < x.length) {
+      var j = 0
+      while (j <= i) {
+        xtxDest.data(pos) = x(i) * x(j)
+        pos += 1
+        j += 1
+      }
+      i += 1
+    }
+  }
 
   // Compute the user feature vectors given the current movies (or vice-versa).
   def updateFeatures(movies: RDD[(Int, Array[Array[Double]])],
