@@ -352,7 +352,7 @@ object BlockedALS {
     println("Number of splits in trainData: " + trainData.partitions.size)
 
     // Do the actual training
-    val (users,movies) = train(nsplits, ratings, rank, lambda, niter)
+    val (users,movies) = train(nsplits, trainData, rank, lambda, niter)
 
     // Force computation for timing purposes:
     val starttime = System.currentTimeMillis
