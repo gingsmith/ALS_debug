@@ -84,6 +84,9 @@ object Blocked_Join_ALS {
     var usersOut = users.join(outLinksByUser).flatMap { case (bid, (factors, outLinkBlock)) =>
       for (i <- 0 until factors.length) yield (outLinkBlock.elementIds(i), factors(i))
     }.cache()
+    var moviesOut = movies.join(outLinksByMovie).flatMap { case (bid, (factors, outLinkBlock)) =>
+      for (i <- 0 until factors.length) yield (outLinkBlock.elementIds(i), factors(i))
+    }.cache()
 
     for(iter <- 0 until niter) {
       // perform ALS update
