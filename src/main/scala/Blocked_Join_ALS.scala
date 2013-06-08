@@ -72,18 +72,6 @@ object Blocked_Join_ALS {
     val outLinksByMovie = makeOutLinks(numBlocks, groupedMovies)
     val inLinksByMovie = makeInLinks(numBlocks, groupedMovies)
 
-    //println("# of partitions in outLinks: " + outLinksByUser.partitions.size)
-    //println("# of partitions in inLinks: " + inLinksByUser.partitions.size)
-    //println("USER_MOVIE_RATINGS: " + ratings.collect().toSeq)
-    //println("GROUPED_USERS: " + groupedUsers.collect().toSeq)
-    //println("GROUPED_USERS_G: " + groupedUsers.glom.map(_.toSeq).collect().toSeq)
-    //println("USER_OUT: " + outLinksByUser.collect().toSeq)
-    //println("USER_IN: " + inLinksByUser.collect().toSeq)
-    //println("GROUPED_MOVIES: " + groupedUsers.collect().toSeq)
-    //println("GROUPED_MOVIES_G: " + groupedMovies.glom.map(_.toSeq).collect().toSeq)
-    //println("MOVIE_OUT: " + outLinksByMovie.collect().toSeq)
-    //println("MOVIE_IN: " + inLinksByMovie.collect().toSeq)
-
     def makeInitialFactor(seed: Int): Array[Double] = {
       val rand = new Random(seed)
       Array.fill(rank)(rand.nextDouble)
@@ -93,13 +81,14 @@ object Blocked_Join_ALS {
     var users = outLinksByUser.mapValues(outLinkBlock => outLinkBlock.elementIds.map(u => makeInitialFactor(u)))
     var movies = outLinksByMovie.mapValues(outLinkBlock => outLinkBlock.elementIds.map(m => makeInitialFactor(-m)))
 
-    //println("USERS: " + users.collect().toSeq)
-    //println("MOVIES: " + movies.collect().toSeq)
-
     for(iter <- 0 until niter) {
       // perform ALS update
       movies = updateFeatures(users, outLinksByUser, inLinksByMovie, partitioner, rank, lambda)
+      val movie_err = computeError(users,movies,ratings)
+      println("iteration " + iter + "-1 training error:" + movie_err)
       users = updateFeatures(movies, outLinksByMovie, inLinksByUser, partitioner, rank, lambda)
+      val user_err = computeError(users,movies,ratings)
+      println("iteration " + iter + "-2 training error: " + user_err)
     }
 
     // Flatten and cache the two final RDDs to un-block them
@@ -112,61 +101,6 @@ object Blocked_Join_ALS {
 
     (usersOut, moviesOut)
   }
-
-  // def computeXtXandXy(ratingX: (Double, Array[Double])) :
-  //   (Array[Double], Array[Double]) = {
-  //   val (rating, x) = ratingX
-  //   val xty = x.map(_ * rating)
-  //   val rank = x.length
-  //   // Computing xtx in upper triangular form
-  //   val xtx = ( for(i <- 0 until rank; j <- i until rank) yield(x(i) * x(j)) ).toArray
-  //   (xtx, xty)
-  // }
-
-  // def foldXtXandXy(sum: (Array[Double], Array[Double]), ratingX: (Double, Array[Double]) ) :
-  //   (Array[Double], Array[Double]) = {
-  //   val (xtxSum, xtySum) = sum
-  //   val (rating, x) = ratingX
-  //   val rank = x.length
-  //   var i = 0
-  //   while(i < rank) {
-  //     xtySum(i) += x(i) * rating
-  //     i += 1
-  //   }
-  //   i = 0
-  //   var index = 0
-  //   while(i < rank) {
-  //     var j = i
-  //     while(j < rank) {
-  //       xtxSum(index) += x(i) * x(j)
-  //       index += 1
-  //       j += 1
-  //     }
-  //     i += 1
-  //   }
-  //   (xtxSum, xtySum)
-  // }
-
-  // def sumXtXandXy(a: (Array[Double], Array[Double]), b: (Array[Double], Array[Double]) ) :
-  //   (Array[Double], Array[Double]) = {
-  //   var i = 0
-  //   while(i < a._1.length) { a._1(i) += b._1(i); i += 1 }
-  //   i = 0
-  //   while(i < a._2.length) { a._2(i) += b._2(i); i += 1 }
-  //   a
-  // }
-
-  // def solveLeastSquares(xtxAr: Array[Double], xtyAr: Array[Double], lambda: Double) :
-  //   Array[Double] = {
-  //   val rank = xtyAr.length
-  //   val xtx = DenseMatrix.tabulate(rank,rank){ (i,j) =>
-  //     xtxAr(if(i <= j) j + i*(rank-1)-(i*(i-1))/2 else i + j*(rank-1)-(j*(j-1))/2) +
-  //     (if(i == j) lambda else 0.0) //regularization
-  //   }
-  //   val xty = DenseMatrix.create(rank, 1, xtyAr)
-  //   val w = xtx \ xty
-  //   w.data
-  // }
 
   def fillXtX(xtxDest: DoubleMatrix, x: Array[Double]) {
     var i = 0
@@ -256,7 +190,7 @@ object Blocked_Join_ALS {
             fullXtX.data(i*rank + i) += lambda
           }
           Solve.solvePositive(fullXtX, uXy).data
-          
+
         }
     }
   }
