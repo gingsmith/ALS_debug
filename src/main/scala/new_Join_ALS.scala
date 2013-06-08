@@ -499,6 +499,9 @@ object Join_ALS {
     //     .persist(StorageLevel.MEMORY_ONLY_SER)
     //}
 
+    // force data to load so we don't count this cost?
+    trainData.foreach{x=>()}
+
     println("Number of splits in trainData: " + trainData.partitions.size)
 
     // Do the actual training
