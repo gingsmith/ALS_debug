@@ -463,6 +463,7 @@ object Join_ALS {
     val m = options.getOrElse("m", "100").toInt
     val n = options.getOrElse("n", "100").toInt
     val blocked = options.getOrElse("blocked", "false").toBoolean
+    val big = options.getOrElse("big","false").toBoolean
 
     // print out input
     println("master:       " + master)
@@ -477,30 +478,31 @@ object Join_ALS {
     println("repfact:          " + repfact)  
     println("m:            " + m)
     println("n:            " + n)
-    println("blocked:      " + blocked)  
+    println("blocked:      " + blocked)
+    println("big:          " + big)
+
 
     // Set up spark context
     val sc = new SparkContext(master, "Join_ALS", sparkhome, List(jar))
 
     var trainData: spark.RDD[(Int,Int,Double)] = null
 
-    //if(big){
+    if(big){
     trainData = sc.textFile(trainfile,nsplits)
       .map(_.split(' '))
       .map{ elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}
       .flatMap( x => replicate(x,repfact,m,n))
       //Array(x,(x._1+m,x._2,x._3),(x._1,x._2+n,x._3),(x._1+m,x._2+n,x._3)))
       .persist(StorageLevel.MEMORY_ONLY_SER)
-    //}
-    //else {
-    //   trainData = sc.textFile(trainfile, nsplits)
-    //     .map(_.split(' '))
-    //     .map{elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}
-    //     .persist(StorageLevel.MEMORY_ONLY_SER)
-    //}
+    }
+    else {
+      trainData = sc.textFile(trainfile, nsplits)
+        .map(_.split(' '))
+        .map{elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}
+        .persist(StorageLevel.MEMORY_ONLY_SER)
+    }
 
     // force data to load so we don't count this cost?
-    trainData.foreach{x=>()}
 
     println("Number of splits in trainData: " + trainData.partitions.size)
 
