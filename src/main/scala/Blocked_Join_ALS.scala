@@ -370,7 +370,7 @@ object Blocked_Join_ALS {
     println("Number of splits in trainData: " + trainData.partitions.size)
 
     // Do the actual training
-    trainALSBlocked(nsplits, trainData, rank, lambda, niter)
+    val (users, movies) = trainALSBlocked(nsplits, trainData, rank, lambda, niter)
 
 
     // Force computation for timing purposes:
