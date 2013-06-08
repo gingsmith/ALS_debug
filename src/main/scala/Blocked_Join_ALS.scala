@@ -81,21 +81,32 @@ object Blocked_Join_ALS {
     var users = outLinksByUser.mapValues(outLinkBlock => outLinkBlock.elementIds.map(u => makeInitialFactor(u)))
     var movies = outLinksByMovie.mapValues(outLinkBlock => outLinkBlock.elementIds.map(m => makeInitialFactor(-m)))
 
+    var usersOut = users.join(outLinksByUser).flatMap { case (bid, (factors, outLinkBlock)) =>
+      for (i <- 0 until factors.length) yield (outLinkBlock.elementIds(i), factors(i))
+    }.cache()
+
     for(iter <- 0 until niter) {
       // perform ALS update
       movies = updateFeatures(users, outLinksByUser, inLinksByMovie, partitioner, rank, lambda)
-      val movie_err = computeError(users,movies,ratings)
+      moviesOut = movies.join(outLinksByMovie).flatMap { case (bid, (factors, outLinkBlock)) =>
+      for (i <- 0 until factors.length) yield (outLinkBlock.elementIds(i), factors(i))
+    }.cache()
+      val movie_err = computeError(usersOut,moviesOut,ratings)
       println("iteration " + iter + "-1 training error:" + movie_err)
+
       users = updateFeatures(movies, outLinksByMovie, inLinksByUser, partitioner, rank, lambda)
-      val user_err = computeError(users,movies,ratings)
+      usersOut = users.join(outLinksByUser).flatMap { case (bid, (factors, outLinkBlock)) =>
+      for (i <- 0 until factors.length) yield (outLinkBlock.elementIds(i), factors(i))
+    }.cache()
+      val user_err = computeError(usersOut,moviesOut,ratings)
       println("iteration " + iter + "-2 training error: " + user_err)
     }
 
     // Flatten and cache the two final RDDs to un-block them
-    val usersOut = users.join(outLinksByUser).flatMap { case (bid, (factors, outLinkBlock)) =>
+    usersOut = users.join(outLinksByUser).flatMap { case (bid, (factors, outLinkBlock)) =>
       for (i <- 0 until factors.length) yield (outLinkBlock.elementIds(i), factors(i))
     }.cache()
-    val moviesOut = movies.join(outLinksByMovie).flatMap { case (bid, (factors, outLinkBlock)) =>
+    moviesOut = movies.join(outLinksByMovie).flatMap { case (bid, (factors, outLinkBlock)) =>
       for (i <- 0 until factors.length) yield (outLinkBlock.elementIds(i), factors(i))
     }.cache()
 
