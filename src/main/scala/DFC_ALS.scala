@@ -1,4 +1,4 @@
-package mf_scratch
+package ALS_debug
 
 import scala.io.Source
 import breeze.linalg._
