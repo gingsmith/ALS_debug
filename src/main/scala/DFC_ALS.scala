@@ -1,4 +1,4 @@
-package ALS_debug
+package als_debug
 
 import scala.io.Source
 import breeze.linalg._
