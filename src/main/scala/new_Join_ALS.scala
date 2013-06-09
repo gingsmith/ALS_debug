@@ -14,7 +14,7 @@ import org.jblas.{DoubleMatrix, Solve}
 import spark.SparkContext._
 
 
-object BlockedALS {
+object old_BlockedALS {
 
   case class OutLinkBlock(elementIds: Array[Int], shouldSend: Array[Array[Boolean]]) {
     override def toString = "OLB" + (elementIds.toSeq, shouldSend.toSeq.map(_.toSeq)).toString
@@ -262,7 +262,7 @@ object BlockedALS {
 }
 
 
-object Join_ALS {
+object old_Join_ALS {
 
 
   def trainALSFast(ratings: RDD[(Int,Int,Double)], rank: Int, lambda: Double, niter: Int):
