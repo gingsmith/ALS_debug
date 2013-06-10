@@ -25,8 +25,8 @@ object Broadcast_ALS {
     System.setProperty("spark.kryo.registrator", "als_debug.CCDKryoRegistrator")
     System.setProperty("spark.storage.blockManagerHeartBeatMs", "120000")
 
-    if (args.length < 13) {
-      System.err.println("Usage: Run_ALS_Spark <master> <datadir> <trainfile> <m> <n> <rank> <lambda> <maxiter> <sparkhome> <jar> <outdir> <outfile>")
+    if (args.length < 12) {
+      System.err.println("Usage: Broadcast_ALS <master> <datadir> <trainfile> <m> <n> <rank> <lambda> <maxiter> <sparkhome> <jar> <outdir> <outfile>")
       System.exit(1)
     }
 
