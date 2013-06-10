@@ -14,6 +14,8 @@ import org.jblas.{DoubleMatrix, SimpleBlas, Solve}
 // reduceByKey in implicit RDD cast
 import spark.SparkContext._
 
+// MOST RECENT VERSION: 06/10
+
 
 /**
  * A blocked version of alternating least squares matrix factorization that groups the two sets

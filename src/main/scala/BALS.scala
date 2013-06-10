@@ -2,13 +2,14 @@ package als_debug
 
 import java.util.Arrays
 import scala.io.Source
-import breeze.linalg._
+//import breeze.linalg._
 import spark._
 import spark.storage.StorageLevel
 import java.io._
 import scala.util._
 import scala.collection.mutable.ArrayBuffer
 import scala.collection.mutable.BitSet
+import org.jblas.{DoubleMatrix, SimpleBlas, Solve}
 // need _ to include everything in package
 // reduceByKey in implicit RDD cast
 import spark.SparkContext._
@@ -46,7 +47,6 @@ object Broadcast_ALS {
     val big = options.getOrElse("big", "false").toBoolean
     val m = options.getOrElse("m", "100").toInt
     val n = options.getOrElse("n", "100").toInt
-    val blocked = options.getOrElse("blocked", "false").toBoolean
 
     // print out input
     println("master:       " + master)
@@ -72,24 +72,28 @@ object Broadcast_ALS {
     //  .map(_.split(' ')).map{ elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}.persist(StorageLevel.MEMORY_ONLY_SER)
 
     // initialize W,H
-    val W = DenseMatrix.zeros[Double](m,rank);
-    val r = new Random(0)
-    val H = DenseMatrix.rand(n,rank,r);
+    //val rand = new Random(seed)
+    val W = Array.fill(m)(DoubleMatrix.rand(rank));
+    val H = Array.fill(n)(DoubleMatrix.rand(rank));
+    //val W = DenseMatrix.zeros[Double](m,rank);
+    //val r = new Random(0)
+    //val H = DenseMatrix.rand(n,rank,r);
 
-    val WH = ALS(W,H,sc,train_ratings,m,n,rank,lambda,niter)
+    val WH = ALS(W_array,H_array,sc,train_ratings,m,n,rank,lambda,niter)
     
     sc.stop()
    }
 
-   def ALS(W:DenseMatrix[Double],H:DenseMatrix[Double],sc:SparkContext,
+   def ALS(W_array:DoubleMatrix,H_array:DoubleMatrix,sc:SparkContext,
       train_ratings:spark.RDD[(Int,Int,Double)], m:Int,n:Int, k:Int,lambda:Double, maxiter:Int)
-       : (DenseMatrix[Double],DenseMatrix[Double]) = {
+       : (DoubleMatrix,DoubleMatrix) = {
 
-    val lambI = DenseMatrix.eye[Double](k) :*= lambda;
+    val lambI = DoubleMatrix.diag(Array.fill(lambda));
+    //val lambI = DenseMatrix.eye[Double](k) :*= lambda;
 
     // arrays of dense vectors
-    var W_array = (0 to m-1).map{i => new DenseVector(W(i,::).iterator.map{case(k,v)=>v}.toArray)}.toArray
-    var H_array = (0 to n-1).map{i => new DenseVector(H(i,::).iterator.map{case(k,v)=>v}.toArray)}.toArray
+    //var W_array = (0 to m-1).map{i => new DenseVector(W(i,::).iterator.map{case(k,v)=>v}.toArray)}.toArray
+    //var H_array = (0 to n-1).map{i => new DenseVector(H(i,::).iterator.map{case(k,v)=>v}.toArray)}.toArray
     var W_b = sc.broadcast(W_array)
     var H_b = sc.broadcast(H_array)
 
@@ -110,7 +114,7 @@ object Broadcast_ALS {
       val temp_w = train_ratings
         .map({ case(w,h,r) => (w, (H_b.value(h)*(H_b.value(h).t), H_b.value(h)*r)) })
         .reduceByKey{ case ((x1,y1), (x2,y2)) => (x1 + x2,y1 + y2)}
-        .map { case (w, (xtx , xty)) => (w,(xtx + lambI)\(xty))}.collect 
+        .map { case (w, (xtx , xty)) => (w,Solve.solvePositive(xtx_lambI, xty)).data)}.collect 
       
       temp_w.foreach{ case (w,v) => W_array(w)=v }
 
@@ -121,7 +125,7 @@ object Broadcast_ALS {
       val temp_h = train_ratings.map{
         case (w,h,r) => (h, (W_b.value(w)*(W_b.value(w).t), W_b.value(w)*r)) }
         .reduceByKey{ case ((x1,y1), (x2,y2)) => (x1 + x2,y1 + y2)}
-        .map { case (h, (xtx, xty)) => (h,(xtx + lambI)\(xty))}.collect 
+        .map { case (h, (xtx, xty)) => (h,Solve.solvePositive(xtx_lambI, xty)).data)}.collect 
       temp_h.foreach{ case (h,v) => H_array(h)=v }
 
       // send out results
