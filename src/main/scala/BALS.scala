@@ -73,8 +73,8 @@ object Broadcast_ALS {
 
     // initialize W,H
     //val rand = new Random(seed)
-    val W = Array.fill(m)(DoubleMatrix.rand(rank));
-    val H = Array.fill(n)(DoubleMatrix.rand(rank));
+    val W_array = Array.fill(m)(DoubleMatrix.rand(rank));
+    val H_array = Array.fill(n)(DoubleMatrix.rand(rank));
     //val W = DenseMatrix.zeros[Double](m,rank);
     //val r = new Random(0)
     //val H = DenseMatrix.rand(n,rank,r);
@@ -84,11 +84,11 @@ object Broadcast_ALS {
     sc.stop()
    }
 
-   def ALS(W_array:DoubleMatrix,H_array:DoubleMatrix,sc:SparkContext,
+   def ALS(W_array:Array[DoubleMatrix],H_array:Array[DoubleMatrix],sc:SparkContext,
       train_ratings:spark.RDD[(Int,Int,Double)], m:Int,n:Int, k:Int,lambda:Double, maxiter:Int)
-       : (DoubleMatrix,DoubleMatrix) = {
+       : (Array[DoubleMatrix],Array[DoubleMatrix]) = {
 
-    val lambI = DoubleMatrix.diag(Array.fill(lambda));
+    val lambI = DoubleMatrix.eye(k).mul(lambda);
     //val lambI = DenseMatrix.eye[Double](k) :*= lambda;
 
     // arrays of dense vectors
@@ -112,9 +112,9 @@ object Broadcast_ALS {
 
       // update W matrix
       val temp_w = train_ratings
-        .map({ case(w,h,r) => (w, (H_b.value(h)*(H_b.value(h).t), H_b.value(h)*r)) })
-        .reduceByKey{ case ((x1,y1), (x2,y2)) => (x1 + x2,y1 + y2)}
-        .map { case (w, (xtx , xty)) => (w,Solve.solvePositive(xtx_lambI, xty).data)}.collect 
+        .map({ case(w,h,r) => (w, (H_b.value(h).mmul(H_b.value(h).transpose()), H_b.value(h).mul(r))) })
+        .reduceByKey{ case ((x1,y1), (x2,y2)) => (x1.add(x2),y1.add(y2))}
+        .map { case (w, (xtx , xty)) => (w,Solve.solvePositive(xtx.add(lambI), xty))}.collect 
       
       temp_w.foreach{ case (w,v) => W_array(w)=v }
 
@@ -123,9 +123,9 @@ object Broadcast_ALS {
 
       // update H matrix
       val temp_h = train_ratings.map{
-        case (w,h,r) => (h, (W_b.value(w)*(W_b.value(w).t), W_b.value(w)*r)) }
-        .reduceByKey{ case ((x1,y1), (x2,y2)) => (x1 + x2,y1 + y2)}
-        .map { case (h, (xtx, xty)) => (h,Solve.solvePositive(xtx_lambI, xty).data)}.collect 
+        case (w,h,r) => (h, (W_b.value(w).mmul(W_b.value(w).transpose()), W_b.value(w).mul(r))) }
+        .reduceByKey{ case ((x1,y1), (x2,y2)) => (x1.add(x2),y1.add(y2))}
+        .map { case (h, (xtx, xty)) => (h,Solve.solvePositive(xtx.add(lambI), xty))}.collect 
       temp_h.foreach{ case (h,v) => H_array(h)=v }
 
       // send out results
@@ -142,6 +142,6 @@ object Broadcast_ALS {
     val tr_rel_err = Math.sqrt(tr_error)/Math.sqrt(train_nnz)
     println("tr_rel_err: " + tr_rel_err)
 
-    return (W,H)
+    return (W_array,H_array)
    }
 }
