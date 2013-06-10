@@ -25,31 +25,48 @@ object Broadcast_ALS {
     System.setProperty("spark.kryo.registrator", "als_debug.CCDKryoRegistrator")
     System.setProperty("spark.storage.blockManagerHeartBeatMs", "120000")
 
-    if (args.length < 12) {
-      System.err.println("Usage: Broadcast_ALS <master> <datadir> <trainfile> <m> <n> <rank> <lambda> <maxiter> <sparkhome> <jar> <outdir> <outfile>")
-      System.exit(1)
-    }
-
-    // print out input
-    println("Master:      " + args(0))
-    println("Data Dir:    " + args(1)); println("Train file:       " + args(2));
-    println("m:           " + args(3)); println("n:                " + args(4)); 
-    println("rank:        " + args(5)); println("lambda:           " + args(6)); println("max iter:         " + args(7));
-    println("spark home:   " + args(8)); println("jar:   " + args(9));
-    println("outdir: " + args(10)); println("outfile: " + args(11));
+    val options =  args.map { arg =>
+      arg.dropWhile(_ == '-').split('=') match {
+        case Array(opt, v) => (opt -> v)
+        case Array(opt) => (opt -> "true")
+        case _ => throw new IllegalArgumentException("Invalid argument: " + arg)
+      }
+    }.toMap
 
     // read in input
-    val master=args(0); val datadir=args(1); val trainfile = args(2);
-    val m=args(3).toInt; val n=args(4).toInt;
-    val rank=args(5).toInt; val lambda=args(6).toDouble; val maxiter=args(7).toInt;
-    val sparkhome = args(8); val jar = args(9);
-    val outdir = args(10); val outfile = args(11);
+    val master = options.getOrElse("master", "local[4]")
+    val trainfile = options.getOrElse("train", "")
+    val testfile = options.getOrElse("test", "")
+    val rank = options.getOrElse("rank", "10").toInt
+    val lambda = options.getOrElse("lambda", "0.01").toDouble
+    val niter = options.getOrElse("niter", "10").toInt
+    val jar = options.getOrElse("jars", "")
+    val nsplits = options.getOrElse("nsplits", "4").toInt
+    val sparkhome = options.getOrElse("sparkhome", System.getenv("SPARK_HOME"))
+    val big = options.getOrElse("big", "false").toBoolean
+    val m = options.getOrElse("m", "100").toInt
+    val n = options.getOrElse("n", "100").toInt
+    val blocked = options.getOrElse("blocked", "false").toBoolean
+
+    // print out input
+    println("master:       " + master)
+    println("train:        " + trainfile)
+    println("test:         " + testfile)
+    println("rank:         " + rank)
+    println("lambda:       " + lambda)
+    println("niter:        " + niter)
+    println("jar:          " + jar)
+    println("sparkhome:    " + sparkhome)
+    println("nsplits:      " + nsplits)  
+    println("big:          " + big)  
+    println("m:            " + m)
+    println("n:            " + n)
 
     // set up spark context ..
     // local[x] runs x threads
-    val sc = new SparkContext(master,"BALS",sparkhome, List(jar))
+    val sc = new SparkContext(master,"BALS",sparkhome,List(jar))
 
-    val train_ratings: spark.RDD[(Int,Int,Double)] = sc.textFile(datadir+trainfile)
+    val train_ratings: spark.RDD[(Int,Int,Double)] = sc.textFile(trainfile,nsplits)
       .map(_.split(' ')).map{ elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}.persist(StorageLevel.MEMORY_ONLY_SER)
     //val test_ratings: spark.RDD[(Int,Int,Double)] = sc.textFile(datadir+testfile)
     //  .map(_.split(' ')).map{ elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}.persist(StorageLevel.MEMORY_ONLY_SER)
@@ -59,8 +76,7 @@ object Broadcast_ALS {
     val r = new Random(0)
     val H = DenseMatrix.rand(n,rank,r);
 
-    val WH = ALS(W,H,sc,train_ratings,m,n,
-      rank,lambda,maxiter,outdir,outfile)
+    val WH = ALS(W,H,sc,train_ratings,m,n,rank,lambda,niter)
     
     sc.stop()
    }
@@ -77,8 +93,6 @@ object Broadcast_ALS {
     var H_array = (0 to n-1).map{i => new DenseVector(H(i,::).iterator.map{case(k,v)=>v}.toArray)}.toArray
     var W_b = sc.broadcast(W_array)
     var H_b = sc.broadcast(H_array)
-
-    var times = new Array[Double](maxiter)
 
     println("=================================")
     println("W_b SIZE is: " + W_b.value.size)
@@ -115,15 +129,7 @@ object Broadcast_ALS {
       H_b = sc.broadcast(H_array)
       val runtime = System.currentTimeMillis - starttime
       println("Runtime: " + runtime)
-      times(iter) = runtime
     }
-
-    val writer = new PrintWriter(new File(outdir+outfile))
-    for(i<-0 until maxiter){
-      writer.println(times(i))
-    }
-    writer.flush()
-    writer.close()
 
     val final_runtime = System.currentTimeMillis - starttime
     println("Final Runtime: " + final_runtime)
