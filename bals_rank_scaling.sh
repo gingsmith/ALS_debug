@@ -17,7 +17,7 @@ TRAINFILE=$4
 
 
 # run with smaller rank (10)
-sbt/sbt "run-main als_debug.Join_ALS 
+sbt/sbt "run-main als_debug.Broadcast_ALS
 --master=$MASTER
 --jars=$JAR
 --sparkhome=$SPARKHOME
@@ -29,7 +29,7 @@ sbt/sbt "run-main als_debug.Join_ALS
 --rank=10" 2>&1 | tee bals_rank_10_log_0610
 
 # slightly bigger rank (20)
-sbt/sbt "run-main als_debug.Join_ALS 
+sbt/sbt "run-main als_debug.Broadcast_ALS 
 --master=$MASTER
 --jars=$JAR
 --sparkhome=$SPARKHOME
@@ -41,7 +41,7 @@ sbt/sbt "run-main als_debug.Join_ALS
 --rank=20" 2>&1 | tee bals_rank_20_log_0610
 
 # a little bigger... rank (30)
-sbt/sbt "run-main als_debug.Join_ALS 
+sbt/sbt "run-main als_debug.Broadcast_ALS 
 --master=$MASTER
 --jars=$JAR
 --sparkhome=$SPARKHOME
@@ -53,7 +53,7 @@ sbt/sbt "run-main als_debug.Join_ALS
 --rank=30" 2>&1 | tee bals_rank_30_log_0610
 
 # bigger rank (100)
-sbt/sbt "run-main als_debug.Join_ALS
+sbt/sbt "run-main als_debug.Broadcast_ALS
 --master=$MASTER
 --jars=$JAR
 --sparkhome=$SPARKHOME
