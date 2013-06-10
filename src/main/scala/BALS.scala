@@ -10,7 +10,7 @@ import scala.util._
 import spark.SparkContext._
 
 
-object BALS {
+object Broadcast_ALS {
 
    def main(args: Array[String]){
 
@@ -22,24 +22,24 @@ object BALS {
     System.setProperty("spark.storage.blockManagerHeartBeatMs", "120000")
 
     if (args.length < 13) {
-      System.err.println("Usage: Run_ALS_Spark <master> <datadir> <trainfile> <testfile> <m> <n> <rank> <lambda> <maxiter> <sparkhome> <jar> <outdir> <outfile>")
+      System.err.println("Usage: Run_ALS_Spark <master> <datadir> <trainfile> <m> <n> <rank> <lambda> <maxiter> <sparkhome> <jar> <outdir> <outfile>")
       System.exit(1)
     }
 
     // print out input
     println("Master:      " + args(0))
-    println("Data Dir:    " + args(1)); println("Train file:       " + args(2)); println("Test file:        " + args(3));
-    println("m:           " + args(4)); println("n:                " + args(5)); 
-    println("rank:        " + args(6)); println("lambda:           " + args(7)); println("max iter:         " + args(8));
-    println("spark home:   " + args(9)); println("jar:   " + args(10));
-    println("outdir: " + args(11)); println("outfile: " + args(12));
+    println("Data Dir:    " + args(1)); println("Train file:       " + args(2));
+    println("m:           " + args(3)); println("n:                " + args(4)); 
+    println("rank:        " + args(5)); println("lambda:           " + args(6)); println("max iter:         " + args(7));
+    println("spark home:   " + args(8)); println("jar:   " + args(9));
+    println("outdir: " + args(10)); println("outfile: " + args(11));
 
     // read in input
-    val master=args(0); val datadir=args(1); val trainfile = args(2); val testfile = args(3);
-    val m=args(4).toInt; val n=args(5).toInt;
-    val rank=args(6).toInt; val lambda=args(7).toDouble; val maxiter=args(8).toInt;
-    val sparkhome = args(9); val jar = args(10);
-    val outdir = args(11); val outfile = args(12);
+    val master=args(0); val datadir=args(1); val trainfile = args(2);
+    val m=args(3).toInt; val n=args(4).toInt;
+    val rank=args(5).toInt; val lambda=args(6).toDouble; val maxiter=args(7).toInt;
+    val sparkhome = args(8); val jar = args(9);
+    val outdir = args(10); val outfile = args(11);
 
     // set up spark context ..
     // local[x] runs x threads
