@@ -111,22 +111,22 @@ object Broadcast_ALS {
       println("Iteration: " + iter)
 
       // update W matrix
-      val temp_w = train_ratings
+      W_array = train_ratings
         .map({ case(w,h,r) => (w, (H_b.value(h).mmul(H_b.value(h).transpose()), H_b.value(h).mul(r))) })
         .reduceByKey{ case ((x1,y1), (x2,y2)) => (x1.add(x2),y1.add(y2))}
         .map { case (w, (xtx , xty)) => (w,Solve.solvePositive(xtx.add(lambI), xty))}.collect 
       
-      temp_w.foreach{ case (w,v) => W_array(w)=v }
+      //temp_w.foreach{ case (w,v) => W_array(w)=v }
 
       // send out results
       W_b = sc.broadcast(W_array)
 
       // update H matrix
-      val temp_h = train_ratings.map{
+      H_array = train_ratings.map{
         case (w,h,r) => (h, (W_b.value(w).mmul(W_b.value(w).transpose()), W_b.value(w).mul(r))) }
         .reduceByKey{ case ((x1,y1), (x2,y2)) => (x1.add(x2),y1.add(y2))}
         .map { case (h, (xtx, xty)) => (h,Solve.solvePositive(xtx.add(lambI), xty))}.collect 
-      temp_h.foreach{ case (h,v) => H_array(h)=v }
+      //temp_h.foreach{ case (h,v) => H_array(h)=v }
 
       // send out results
       H_b = sc.broadcast(H_array)
