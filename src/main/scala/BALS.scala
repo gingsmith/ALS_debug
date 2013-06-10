@@ -82,8 +82,7 @@ object Broadcast_ALS {
    }
 
    def ALS(W:DenseMatrix[Double],H:DenseMatrix[Double],sc:SparkContext,
-      train_ratings:spark.RDD[(Int,Int,Double)],
-      m:Int,n:Int, k:Int,lambda:Double, maxiter:Int,outdir:String,outfile:String)
+      train_ratings:spark.RDD[(Int,Int,Double)], m:Int,n:Int, k:Int,lambda:Double, maxiter:Int)
        : (DenseMatrix[Double],DenseMatrix[Double]) = {
 
     val lambI = DenseMatrix.eye[Double](k) :*= lambda;
