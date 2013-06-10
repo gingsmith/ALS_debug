@@ -111,7 +111,7 @@ object Broadcast_ALS {
       println("Iteration: " + iter)
 
       // update W matrix
-      W_array = train_ratings
+      val W_array = train_ratings
         .map({ case(w,h,r) => (w, (H_b.value(h).mmul(H_b.value(h).transpose()), H_b.value(h).mul(r))) })
         .reduceByKey{ case ((x1,y1), (x2,y2)) => (x1.add(x2),y1.add(y2))}
         .map { case (w, (xtx , xty)) => (w,Solve.solvePositive(xtx.add(lambI), xty))}.collect 
@@ -122,7 +122,7 @@ object Broadcast_ALS {
       W_b = sc.broadcast(W_array)
 
       // update H matrix
-      H_array = train_ratings.map{
+      val H_array = train_ratings.map{
         case (w,h,r) => (h, (W_b.value(w).mmul(W_b.value(w).transpose()), W_b.value(w).mul(r))) }
         .reduceByKey{ case ((x1,y1), (x2,y2)) => (x1.add(x2),y1.add(y2))}
         .map { case (h, (xtx, xty)) => (h,Solve.solvePositive(xtx.add(lambI), xty))}.collect 
