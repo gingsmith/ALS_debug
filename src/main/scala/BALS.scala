@@ -1,11 +1,14 @@
 package als_debug
 
+import java.util.Arrays
 import scala.io.Source
 import breeze.linalg._
 import spark._
+import spark.storage.StorageLevel
 import java.io._
 import scala.util._
-import spark.storage.StorageLevel
+import scala.collection.mutable.ArrayBuffer
+import scala.collection.mutable.BitSet
 // need _ to include everything in package
 // reduceByKey in implicit RDD cast
 import spark.SparkContext._
