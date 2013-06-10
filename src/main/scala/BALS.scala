@@ -114,7 +114,7 @@ object Broadcast_ALS {
       val temp_w = train_ratings
         .map({ case(w,h,r) => (w, (H_b.value(h)*(H_b.value(h).t), H_b.value(h)*r)) })
         .reduceByKey{ case ((x1,y1), (x2,y2)) => (x1 + x2,y1 + y2)}
-        .map { case (w, (xtx , xty)) => (w,Solve.solvePositive(xtx_lambI, xty)).data)}.collect 
+        .map { case (w, (xtx , xty)) => (w,Solve.solvePositive(xtx_lambI, xty).data)}.collect 
       
       temp_w.foreach{ case (w,v) => W_array(w)=v }
 
@@ -125,7 +125,7 @@ object Broadcast_ALS {
       val temp_h = train_ratings.map{
         case (w,h,r) => (h, (W_b.value(w)*(W_b.value(w).t), W_b.value(w)*r)) }
         .reduceByKey{ case ((x1,y1), (x2,y2)) => (x1 + x2,y1 + y2)}
-        .map { case (h, (xtx, xty)) => (h,Solve.solvePositive(xtx_lambI, xty)).data)}.collect 
+        .map { case (h, (xtx, xty)) => (h,Solve.solvePositive(xtx_lambI, xty).data)}.collect 
       temp_h.foreach{ case (h,v) => H_array(h)=v }
 
       // send out results
