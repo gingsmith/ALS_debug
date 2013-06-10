@@ -5,6 +5,7 @@ import breeze.linalg._
 import spark._
 import java.io._
 import scala.util._
+import spark.storage.StorageLevel
 // need _ to include everything in package
 // reduceByKey in implicit RDD cast
 import spark.SparkContext._
