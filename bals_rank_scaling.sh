@@ -26,7 +26,7 @@ sbt/sbt "run-main als_debug.Broadcast_ALS
 --m=17770
 --npslits=32
 --n=480189
---rank=10" 2>&1 | tee bals_rank_10_log_0610
+--rank=40" 2>&1 | tee bals_rank_40_log_0610
 
 # slightly bigger rank (20)
 sbt/sbt "run-main als_debug.Broadcast_ALS 
@@ -38,7 +38,7 @@ sbt/sbt "run-main als_debug.Broadcast_ALS
 --m=17770
 --npslits=32
 --n=480189
---rank=20" 2>&1 | tee bals_rank_20_log_0610
+--rank=50" 2>&1 | tee bals_rank_50_log_0610
 
 # a little bigger... rank (30)
 sbt/sbt "run-main als_debug.Broadcast_ALS 
@@ -50,7 +50,7 @@ sbt/sbt "run-main als_debug.Broadcast_ALS
 --m=17770
 --npslits=32
 --n=480189
---rank=30" 2>&1 | tee bals_rank_30_log_0610
+--rank=60" 2>&1 | tee bals_rank_60_log_0610
 
 # bigger rank (100)
 sbt/sbt "run-main als_debug.Broadcast_ALS
