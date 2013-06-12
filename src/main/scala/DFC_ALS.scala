@@ -113,7 +113,7 @@ object DFC_ALS{
     println("mapped to array")
     val columnRdd = sc.parallelize(M_array, nsplits)
     println("parallelized array")
-    println(columnRDD.count)
+    println(columnRdd.count)
     val acc2 = columnRdd.mapPartitionsWithSplit{ case(i, columns) =>
       println("column to array")
       val colArray = columns.toArray
