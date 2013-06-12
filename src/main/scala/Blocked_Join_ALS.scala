@@ -314,6 +314,8 @@ object Blocked_Join_ALS {
         .persist(StorageLevel.MEMORY_ONLY_SER)
     }
 
+    println(trainData.count)
+
     // force data to load so we don't count this cost?
 
     println("Number of splits in trainData: " + trainData.partitions.size)
