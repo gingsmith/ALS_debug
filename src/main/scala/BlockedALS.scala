@@ -340,8 +340,8 @@ object BlockedALS {
       trainData = sc.textFile(trainfile,nsplits)
         .map(_.split(' '))
         .map{ elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}
-        .flatMap( x => Array(x,(x._1+m,x._2,x._3),(x._1,x._2+n,x._3),(x._1+m,x._2+n,x._3)))
-        .persist(StorageLevel.MEMORY_ONLY_SER)
+        .flatMap(x => replicate(x,repfact,m,n) ).cache
+        //.persist(StorageLevel.MEMORY_ONLY_SER)
     }
     else {
       trainData = sc.textFile(trainfile,nsplits)
@@ -384,4 +384,15 @@ object BlockedALS {
     sc.stop()
   }
 
+
+   def replicate(x: (Int,Int,Double), repfact: Int, m:Int, n:Int): Array[(Int,Int,Double)] = {
+    val ret_arr = new Array[(Int,Int,Double)](repfact*repfact)
+    for(i<-0 until repfact){
+      for(j<-0 until repfact){
+        val ind = i*repfact+j
+        ret_arr(ind) = (x._1+i*m,x._2+j*n,x._3)
+      }    
+    }
+    return ret_arr
+  }
 }
