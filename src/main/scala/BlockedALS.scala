@@ -316,6 +316,7 @@ object BlockedALS {
     val big = options.getOrElse("big", "false").toBoolean
     val m = options.getOrElse("m", "100").toInt
     val n = options.getOrElse("n", "100").toInt
+    val repfact = options.getOrElse("repfact", "1").toInt
 
     // print out input
     println("master:       " + master)
@@ -330,6 +331,7 @@ object BlockedALS {
     println("big:          " + big)  
     println("m:            " + m)
     println("n:            " + n)
+    println("repfact:          " + repfact) 
 
     // Set up spark context
     val sc = new SparkContext(master, "Join_ALS", sparkhome, List(jar))
