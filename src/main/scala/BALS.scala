@@ -102,7 +102,7 @@ object Broadcast_ALS {
     //val r = new Random(0)
     //val H = DenseMatrix.rand(n,rank,r);
 
-    val WH = ALS(W_array,H_array,sc,train_ratings,m,n,rank,lambda,niter)
+    val WH = ALS(W_array,H_array,sc,trainData,m,n,rank,lambda,niter)
     
     sc.stop()
    }
