@@ -316,7 +316,6 @@ object BlockedALS {
     val big = options.getOrElse("big", "false").toBoolean
     val m = options.getOrElse("m", "100").toInt
     val n = options.getOrElse("n", "100").toInt
-    val blocked = options.getOrElse("blocked", "false").toBoolean
 
     // print out input
     println("master:       " + master)
@@ -345,7 +344,7 @@ object BlockedALS {
         .persist(StorageLevel.MEMORY_ONLY_SER)
     }
     else {
-      trainData = sc.textFile(trainfile, nsplits)
+      trainData = sc.textFile(trainfile)
         .map(_.split(' '))
         .map{elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}
         .cache
