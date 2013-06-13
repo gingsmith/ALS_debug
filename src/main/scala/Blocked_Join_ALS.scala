@@ -305,7 +305,7 @@ object Blocked_Join_ALS {
     trainData = sc.textFile(trainfile,nsplits)
       .map(_.split(' '))
       .map{ elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}
-      .flatMap( x => replicate(x,repfact,m,n) ).saveAsTextFile(trainfile+"_replicated")
+      .flatMap(x => replicate(x,repfact,m,n) ).cache.saveAsTextFile(trainfile+"_replicated")
       System.exit(0)
       //.cache
       //Array(x,(x._1+m,x._2,x._3),(x._1,x._2+n,x._3),(x._1+m,x._2+n,x._3)))
