@@ -313,7 +313,8 @@ object Blocked_Join_ALS {
       //Array(x,(x._1+m,x._2,x._3),(x._1,x._2+n,x._3),(x._1+m,x._2+n,x._3)))
       //.persist(StorageLevel.MEMORY_ONLY_SER)
     }
-    else if(big){
+    else { 
+      if(big){
         trainData = sc.textFile(trainfile)
         .map(_.split(' '))
         .map{elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble).cache
@@ -323,6 +324,7 @@ object Blocked_Join_ALS {
         .map(_.split(' '))
         .map{elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble).cache
       }
+    }
         //.persist(StorageLevel.MEMORY_ONLY_SER)
 
     println(trainData.count)
