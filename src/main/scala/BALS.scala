@@ -80,6 +80,7 @@ object Broadcast_ALS {
         .flatMap(x => replicate(x,repfact,m,n) )
 
       trainData.map(x => (x._1 + " " + x._2 + " " + x._3)).saveAsTextFile(newfile)
+      sc.stop()
       System.exit(0)
     }
     else { 
