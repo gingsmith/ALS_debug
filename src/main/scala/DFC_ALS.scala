@@ -122,7 +122,7 @@ object DFC_ALS{
       println("made builder")
       colArray.zipWithIndex.foreach { case(column, j) =>
         if(j % 10000 == 0) {
-          println(j/10000)
+         // println(j/10000)
         }
         val myitr = column.array.iterator
         while(myitr.hasNext){
