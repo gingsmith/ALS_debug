@@ -320,7 +320,7 @@ object Blocked_Join_ALS {
         trainData = sc.textFile(trainfile)
         .map(x => x.subSequence(1,x.length-1).toString)
         .map(_.split(','))
-        .map{elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}.cache
+        .map{elements => (elements(0).toInt,elements(1).toInt,elements(2).toDouble)}.cache
       }
       else {
       trainData = sc.textFile(trainfile, nsplits)
