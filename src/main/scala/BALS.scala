@@ -166,4 +166,16 @@ object Broadcast_ALS {
 
     return (W_array,H_array)
    }
+
+   def replicate(x: (Int,Int,Double), repfact: Int, m:Int, n:Int): Array[(Int,Int,Double)] = {
+    val ret_arr = new Array[(Int,Int,Double)](repfact*repfact)
+    for(i<-0 until repfact){
+      for(j<-0 until repfact){
+        val ind = i*repfact+j
+        ret_arr(ind) = (x._1+i*m,x._2+j*n,x._3)
+      }    
+    }
+    return ret_arr
+  }
+
 }
