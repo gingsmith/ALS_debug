@@ -321,9 +321,9 @@ object Blocked_Join_ALS {
       else {
       trainData = sc.textFile(trainfile, nsplits)
         .map(_.split(' '))
-        .map{elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble).cache}
-        //.persist(StorageLevel.MEMORY_ONLY_SER)
+        .map{elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble).cache
       }
+        //.persist(StorageLevel.MEMORY_ONLY_SER)
 
     println(trainData.count)
 
