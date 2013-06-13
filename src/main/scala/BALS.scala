@@ -48,6 +48,7 @@ object Broadcast_ALS {
     val first = options.getOrElse("first","false").toBoolean
     val m = options.getOrElse("m", "100").toInt
     val n = options.getOrElse("n", "100").toInt
+    val repfact = options.getOrElse("repfact", "1").toInt
 
     // print out input
     println("master:       " + master)
@@ -63,6 +64,7 @@ object Broadcast_ALS {
     println("first time    " + first) 
     println("m:            " + m)
     println("n:            " + n)
+    println("repfact:          " + repfact)  
 
     // set up spark context ..
     // local[x] runs x threads
