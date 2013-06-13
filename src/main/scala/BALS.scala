@@ -44,7 +44,8 @@ object Broadcast_ALS {
     val jar = options.getOrElse("jars", "")
     val nsplits = options.getOrElse("nsplits", "4").toInt
     val sparkhome = options.getOrElse("sparkhome", System.getenv("SPARK_HOME"))
-    val big = options.getOrElse("big", "false").toBoolean
+    val big = options.getOrElse("big","false").toBoolean
+    val first = options.getOrElse("first","false").toBoolean
     val m = options.getOrElse("m", "100").toInt
     val n = options.getOrElse("n", "100").toInt
 
@@ -58,7 +59,8 @@ object Broadcast_ALS {
     println("jar:          " + jar)
     println("sparkhome:    " + sparkhome)
     println("nsplits:      " + nsplits)  
-    println("big:          " + big)  
+    println("big:          " + big) 
+    println("first time    " + first) 
     println("m:            " + m)
     println("n:            " + n)
 
@@ -66,11 +68,30 @@ object Broadcast_ALS {
     // local[x] runs x threads
     val sc = new SparkContext(master,"BALS",sparkhome,List(jar))
 
-    val train_ratings: spark.RDD[(Int,Int,Double)] = sc.textFile(trainfile,nsplits)
-      .map(_.split(' ')).map{ elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}.persist(StorageLevel.MEMORY_ONLY_SER)
-    //val test_ratings: spark.RDD[(Int,Int,Double)] = sc.textFile(datadir+testfile)
-    //  .map(_.split(' ')).map{ elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}.persist(StorageLevel.MEMORY_ONLY_SER)
+    var trainData: spark.RDD[(Int,Int,Double)] = null
 
+    if(big && first){
+      val newfile = trainfile + "_replicated"
+      trainData = sc.textFile(trainfile,nsplits)
+        .map(_.split(' '))
+        .map{ elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}
+        .flatMap(x => replicate(x,repfact,m,n) )
+      trainData.saveAsTextFile(newfile)
+      System.exit(0)
+    }
+    else { 
+      if(big){
+        trainData = sc.textFile(trainfile)
+        .map(x => x.subSequence(1,x.length-1).toString)
+        .map(_.split(','))
+        .map{elements => (elements(0).toInt,elements(1).toInt,elements(2).toDouble)}.cache
+      }
+      else {
+      trainData = sc.textFile(trainfile, nsplits)
+        .map(_.split(' '))
+        .map{elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}.cache
+      }
+    }
     // initialize W,H
     //val rand = new Random(seed)
     val W_array = Array.fill(m)(DoubleMatrix.rand(rank));
