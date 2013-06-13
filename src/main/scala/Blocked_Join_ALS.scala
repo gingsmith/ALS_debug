@@ -303,12 +303,11 @@ object Blocked_Join_ALS {
 
     if(big && first){
       val newfile = trainfile + "_replicated"
-    trainData = sc.textFile(trainfile,nsplits)
-      .map(_.split(' '))
-      .map{ elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}
-      .flatMap(x => replicate(x,repfact,m,n) )
-
-    trainData.saveAsTextFile(newfile)
+      trainData = sc.textFile(trainfile,nsplits)
+        .map(_.split(' '))
+        .map{ elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}
+        .flatMap(x => replicate(x,repfact,m,n) )
+      trainData.saveAsTextFile(newfile)
       System.exit(0)
       //.cache
       //Array(x,(x._1+m,x._2,x._3),(x._1,x._2+n,x._3),(x._1+m,x._2+n,x._3)))
@@ -319,8 +318,8 @@ object Blocked_Join_ALS {
     else { 
       if(big){
         trainData = sc.textFile(trainfile)
-        .map(_.split(' '))
-        .map{elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}.cache
+        //.map(_.split(' '))
+        //.map{elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}.cache
       }
       else {
       trainData = sc.textFile(trainfile, nsplits)
