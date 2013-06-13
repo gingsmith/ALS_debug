@@ -77,15 +77,14 @@ object Broadcast_ALS {
       trainData = sc.textFile(trainfile,nsplits)
         .map(_.split(' '))
         .map{ elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}
-        .flatMap(x => replicate(x,repfact,m,n) )
+        .flatMap(x => replicate(x,repfact,m,n) ).map(x => x._1 + " " + x._2 + " " + x._3)
       trainData.saveAsTextFile(newfile)
       System.exit(0)
     }
     else { 
       if(big){
         trainData = sc.textFile(trainfile)
-        .map(x => x.subSequence(1,x.length-1).toString)
-        .map(_.split(','))
+        .map(_.split(' '))
         .map{elements => (elements(0).toInt,elements(1).toInt,elements(2).toDouble)}.cache
       }
       else {
@@ -94,6 +93,8 @@ object Broadcast_ALS {
         .map{elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}.cache
       }
     }
+
+
     // initialize W,H
     //val rand = new Random(seed)
     val W_array = Array.fill(m)(DoubleMatrix.rand(rank));
