@@ -317,7 +317,8 @@ object Blocked_Join_ALS {
     }
     else { 
       if(big){
-        trainData = sc.textFile(trainfile).cache
+        trainData = sc.textFile(trainfile)
+        .map(_.subSequence(1,_.length-1))
         .map(_.split(','))
         .map{elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}.cache
       }
