@@ -317,9 +317,9 @@ object Blocked_Join_ALS {
     }
     else { 
       if(big){
-        trainData = sc.textFile(trainfile)
-        //.map(_.split(' '))
-        //.map{elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}.cache
+        trainData = sc.textFile(trainfile).cache
+        .map(_.split(','))
+        .map{elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}.cache
       }
       else {
       trainData = sc.textFile(trainfile, nsplits)
