@@ -278,6 +278,7 @@ object Blocked_Join_ALS {
     val m = options.getOrElse("m", "100").toInt
     val n = options.getOrElse("n", "100").toInt
     val big = options.getOrElse("big","false").toBoolean
+    val first = options.getOrElse("first","false").toBoolean
 
     // print out input
     println("master:       " + master)
@@ -293,26 +294,34 @@ object Blocked_Join_ALS {
     println("m:            " + m)
     println("n:            " + n)
     println("big:          " + big)
+    println("first time    " + first)
 
     // Set up spark context
     val sc = new SparkContext(master, "Join_ALS", sparkhome, List(jar))
 
     var trainData: spark.RDD[(Int,Int,Double)] = null
 
-    if(big){
+    if(big && first){
     trainData = sc.textFile(trainfile,nsplits)
       .map(_.split(' '))
       .map{ elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}
-      .flatMap( x => replicate(x,repfact,m,n) ).cache
+
+      .map(elements => (c, (r,v))).groupByKey()
+      .flatMap( x => replicate(x,repfact,m,n) ).saveAsTextFile(trainfile+"_replicated")
+      System.exit(0)
+      //.cache
       //Array(x,(x._1+m,x._2,x._3),(x._1,x._2+n,x._3),(x._1+m,x._2+n,x._3)))
       //.persist(StorageLevel.MEMORY_ONLY_SER)
     }
-    else {
+    else if(big){
+        trainData = sc.textFile(trainfile)
+      }
+      else {
       trainData = sc.textFile(trainfile, nsplits)
         .map(_.split(' '))
         .map{elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}
         .persist(StorageLevel.MEMORY_ONLY_SER)
-    }
+      }
 
     println(trainData.count)
 
