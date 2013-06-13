@@ -348,7 +348,7 @@ object BlockedALS {
       trainData = sc.textFile(trainfile, nsplits)
         .map(_.split(' '))
         .map{elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}
-        .persist(StorageLevel.MEMORY_ONLY_SER)
+        .cache
     }
 
     println("Number of splits in trainData: " + trainData.partitions.size)
