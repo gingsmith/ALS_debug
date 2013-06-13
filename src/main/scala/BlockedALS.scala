@@ -344,7 +344,7 @@ object BlockedALS {
         .persist(StorageLevel.MEMORY_ONLY_SER)
     }
     else {
-      trainData = sc.textFile(trainfile)
+      trainData = sc.textFile(trainfile,nsplits)
         .map(_.split(' '))
         .map{elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}
         .persist(StorageLevel.MEMORY_ONLY_SER)
