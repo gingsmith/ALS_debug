@@ -1,0 +1,661 @@
+[0m[[0minfo[0m] [0mLoading project definition from /mnt/ALS_debug/project[0m
+[0m[[0minfo[0m] [0mSet current project to als_debug (in build file:/mnt/ALS_debug/)[0m
+[0m[[0minfo[0m] [0mRunning als_debug.Broadcast_ALS --master=spark://ec2-23-22-131-218.compute-1.amazonaws.com:7077 --jars=/mnt/ALS_debug/target/als_debug-assembly-1.0.jar --sparkhome=/root/spark --train=hdfs://ec2-23-22-131-218.compute-1.amazonaws.com:9000/data/netflix_randSplit1_data.txt --niter=10 --m=17770 --npslits=32 --n=480189 --rank=60[0m
+master:       spark://ec2-23-22-131-218.compute-1.amazonaws.com:7077
+train:        hdfs://ec2-23-22-131-218.compute-1.amazonaws.com:9000/data/netflix_randSplit1_data.txt
+test:         
+rank:         60
+lambda:       0.01
+niter:        10
+jar:          /mnt/ALS_debug/target/als_debug-assembly-1.0.jar
+sparkhome:    /root/spark
+nsplits:      4
+big:          false
+m:            17770
+n:            480189
+13/06/11 03:48:29 INFO Slf4jEventHandler: Slf4jEventHandler started
+13/06/11 03:48:29 INFO BlockManagerMaster: Registered BlockManagerMaster Actor
+13/06/11 03:48:29 INFO MemoryStore: MemoryStore started with capacity 18.8 GB.
+13/06/11 03:48:29 INFO DiskStore: Created local directory at /tmp/spark-local-20130611034829-eb9f
+13/06/11 03:48:29 INFO ConnectionManager: Bound socket to port 45765 with id = ConnectionManagerId(ip-10-31-129-101.ec2.internal,45765)
+13/06/11 03:48:29 INFO BlockManagerMaster: Trying to register BlockManager
+13/06/11 03:48:29 INFO BlockManagerMaster: Registered BlockManager
+13/06/11 03:48:29 INFO HttpBroadcast: Broadcast server started at http://10.31.129.101:53183
+13/06/11 03:48:29 INFO MapOutputTracker: Registered MapOutputTrackerActor actor
+13/06/11 03:48:29 INFO HttpFileServer: HTTP File server directory is /tmp/spark-676aad20-a89a-4c2b-92fe-9b65eb57e523
+13/06/11 03:48:30 INFO IoWorker: IoWorker thread 'spray-io-worker-0' started
+13/06/11 03:48:30 INFO HttpServer: akka://spark/user/BlockManagerHTTPServer started on /0.0.0.0:50179
+13/06/11 03:48:30 INFO BlockManagerUI: Started BlockManager web UI at http://ip-10-31-129-101.ec2.internal:50179
+13/06/11 03:48:30 INFO SparkContext: Added JAR /mnt/ALS_debug/target/als_debug-assembly-1.0.jar at http://10.31.129.101:43938/jars/als_debug-assembly-1.0.jar with timestamp 1370922510414
+13/06/11 03:48:30 INFO Client$ClientActor: Connecting to master spark://ec2-23-22-131-218.compute-1.amazonaws.com:7077
+13/06/11 03:48:30 INFO SparkDeploySchedulerBackend: Connected to Spark cluster with app ID app-20130611034830-0002
+13/06/11 03:48:30 INFO Client$ClientActor: Executor added: app-20130611034830-0002/0 on worker-20130611024827-ip-10-232-39-5.ec2.internal-48669 (ip-10-232-39-5.ec2.internal) with 8 cores
+13/06/11 03:48:30 INFO SparkDeploySchedulerBackend: Granted executor ID app-20130611034830-0002/0 on host ip-10-232-39-5.ec2.internal with 8 cores, 40.0 GB RAM
+13/06/11 03:48:30 INFO Client$ClientActor: Executor added: app-20130611034830-0002/1 on worker-20130611024827-ip-10-171-8-42.ec2.internal-35983 (ip-10-171-8-42.ec2.internal) with 8 cores
+13/06/11 03:48:30 INFO SparkDeploySchedulerBackend: Granted executor ID app-20130611034830-0002/1 on host ip-10-171-8-42.ec2.internal with 8 cores, 40.0 GB RAM
+13/06/11 03:48:30 INFO Client$ClientActor: Executor added: app-20130611034830-0002/2 on worker-20130611024827-ip-10-31-132-203.ec2.internal-47309 (ip-10-31-132-203.ec2.internal) with 8 cores
+13/06/11 03:48:30 INFO SparkDeploySchedulerBackend: Granted executor ID app-20130611034830-0002/2 on host ip-10-31-132-203.ec2.internal with 8 cores, 40.0 GB RAM
+13/06/11 03:48:30 INFO Client$ClientActor: Executor added: app-20130611034830-0002/3 on worker-20130611024827-ip-10-232-8-42.ec2.internal-42081 (ip-10-232-8-42.ec2.internal) with 8 cores
+13/06/11 03:48:30 INFO SparkDeploySchedulerBackend: Granted executor ID app-20130611034830-0002/3 on host ip-10-232-8-42.ec2.internal with 8 cores, 40.0 GB RAM
+13/06/11 03:48:30 INFO Client$ClientActor: Executor updated: app-20130611034830-0002/0 is now RUNNING
+13/06/11 03:48:30 INFO Client$ClientActor: Executor updated: app-20130611034830-0002/1 is now RUNNING
+13/06/11 03:48:30 INFO Client$ClientActor: Executor updated: app-20130611034830-0002/2 is now RUNNING
+13/06/11 03:48:30 INFO Client$ClientActor: Executor updated: app-20130611034830-0002/3 is now RUNNING
+13/06/11 03:48:30 INFO MemoryStore: ensureFreeSpace(45937) called with curMem=0, maxMem=20157722787
+13/06/11 03:48:30 INFO MemoryStore: Block broadcast_0 stored as values to memory (estimated size 44.9 KB, free 18.8 GB)
+13/06/11 03:48:30 INFO KryoSerializer: Running user registrator: als_debug.CCDKryoRegistrator
+13/06/11 03:48:32 INFO MemoryStore: ensureFreeSpace(9809248) called with curMem=45937, maxMem=20157722787
+13/06/11 03:48:32 INFO MemoryStore: Block broadcast_1 stored as values to memory (estimated size 9.4 MB, free 18.8 GB)
+13/06/11 03:48:32 INFO SparkDeploySchedulerBackend: Registered executor: Actor[akka://sparkExecutor@ip-10-31-132-203.ec2.internal:50525/user/Executor] with ID 2
+13/06/11 03:48:32 INFO SparkDeploySchedulerBackend: Registered executor: Actor[akka://sparkExecutor@ip-10-232-39-5.ec2.internal:39567/user/Executor] with ID 0
+13/06/11 03:48:32 INFO SparkDeploySchedulerBackend: Registered executor: Actor[akka://sparkExecutor@ip-10-232-8-42.ec2.internal:50927/user/Executor] with ID 3
+13/06/11 03:48:32 INFO SparkDeploySchedulerBackend: Registered executor: Actor[akka://sparkExecutor@ip-10-171-8-42.ec2.internal:45084/user/Executor] with ID 1
+13/06/11 03:48:32 INFO MemoryStore: ensureFreeSpace(265064536) called with curMem=9855185, maxMem=20157722787
+13/06/11 03:48:32 INFO MemoryStore: Block broadcast_2 stored as values to memory (estimated size 252.8 MB, free 18.5 GB)
+13/06/11 03:48:32 INFO BlockManagerMasterActor$BlockManagerInfo: Registering block manager ip-10-31-132-203.ec2.internal:57129 with 40.4 GB RAM
+13/06/11 03:48:32 INFO BlockManagerMasterActor$BlockManagerInfo: Registering block manager ip-10-232-39-5.ec2.internal:50291 with 40.4 GB RAM
+13/06/11 03:48:32 INFO BlockManagerMasterActor$BlockManagerInfo: Registering block manager ip-10-232-8-42.ec2.internal:43565 with 40.4 GB RAM
+13/06/11 03:48:32 INFO BlockManagerMasterActor$BlockManagerInfo: Registering block manager ip-10-171-8-42.ec2.internal:54316 with 40.4 GB RAM
+=================================
+W_b SIZE is: 17770
+13/06/11 03:48:36 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+13/06/11 03:48:36 WARN LoadSnappy: Snappy native library not loaded
+13/06/11 03:48:36 INFO FileInputFormat: Total input paths to process : 1
+13/06/11 03:48:36 INFO NetworkTopology: Adding a new node: /default-rack/10.171.8.42:50010
+13/06/11 03:48:36 INFO NetworkTopology: Adding a new node: /default-rack/10.31.132.203:50010
+13/06/11 03:48:36 INFO NetworkTopology: Adding a new node: /default-rack/10.232.39.5:50010
+13/06/11 03:48:36 INFO SparkContext: Starting job: reduce at BALS.scala:102
+13/06/11 03:48:36 INFO DAGScheduler: Got job 0 (reduce at BALS.scala:102) with 4 output partitions (allowLocal=false)
+13/06/11 03:48:36 INFO DAGScheduler: Final stage: Stage 0 (map at BALS.scala:102)
+13/06/11 03:48:36 INFO DAGScheduler: Parents of final stage: List()
+13/06/11 03:48:36 INFO DAGScheduler: Missing parents: List()
+13/06/11 03:48:36 INFO DAGScheduler: Submitting Stage 0 (MappedRDD[4] at map at BALS.scala:102), which has no missing parents
+13/06/11 03:48:36 INFO DAGScheduler: Submitting 4 missing tasks from Stage 0 (MappedRDD[4] at map at BALS.scala:102)
+13/06/11 03:48:36 INFO ClusterScheduler: Adding task set 0.0 with 4 tasks
+13/06/11 03:48:36 INFO TaskSetManager: Starting task 0.0:0 as TID 0 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:48:36 INFO TaskSetManager: Serialized task 0.0:0 as 1744 bytes in 37 ms
+13/06/11 03:48:36 INFO TaskSetManager: Starting task 0.0:2 as TID 1 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 03:48:36 INFO TaskSetManager: Serialized task 0.0:2 as 1744 bytes in 1 ms
+13/06/11 03:48:36 INFO TaskSetManager: Starting task 0.0:3 as TID 2 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:48:36 INFO TaskSetManager: Serialized task 0.0:3 as 1744 bytes in 1 ms
+13/06/11 03:48:36 INFO TaskSetManager: Starting task 0.0:1 as TID 3 on executor 2: ip-10-31-132-203.ec2.internal (non-preferred, not one of 10.232.39.5, 10.171.8.42, 10.31.132.203)
+13/06/11 03:48:36 INFO TaskSetManager: Serialized task 0.0:1 as 1744 bytes in 0 ms
+13/06/11 03:48:57 INFO BlockManagerMasterActor$BlockManagerInfo: Added rdd_3_2 in memory on ip-10-171-8-42.ec2.internal:54316 (size: 73.1 MB, free: 40.4 GB)
+13/06/11 03:48:57 INFO BlockManagerMasterActor$BlockManagerInfo: Added rdd_3_1 in memory on ip-10-31-132-203.ec2.internal:57129 (size: 73.1 MB, free: 40.4 GB)
+13/06/11 03:48:57 INFO BlockManagerMasterActor$BlockManagerInfo: Added rdd_3_3 in memory on ip-10-232-8-42.ec2.internal:43565 (size: 73.1 MB, free: 40.4 GB)
+13/06/11 03:48:57 INFO TaskSetManager: Finished TID 1 in 21171 ms (progress: 1/4)
+13/06/11 03:48:57 INFO DAGScheduler: Completed ResultTask(0, 2)
+13/06/11 03:48:57 INFO TaskSetManager: Finished TID 3 in 21185 ms (progress: 2/4)
+13/06/11 03:48:57 INFO DAGScheduler: Completed ResultTask(0, 1)
+13/06/11 03:48:57 INFO TaskSetManager: Finished TID 2 in 21411 ms (progress: 3/4)
+13/06/11 03:48:57 INFO DAGScheduler: Completed ResultTask(0, 3)
+13/06/11 03:48:58 INFO BlockManagerMasterActor$BlockManagerInfo: Added rdd_3_0 in memory on ip-10-232-39-5.ec2.internal:50291 (size: 73.4 MB, free: 40.4 GB)
+13/06/11 03:48:59 INFO TaskSetManager: Finished TID 0 in 22468 ms (progress: 4/4)
+13/06/11 03:48:59 INFO DAGScheduler: Completed ResultTask(0, 0)
+13/06/11 03:48:59 INFO DAGScheduler: Stage 0 (map at BALS.scala:102) finished in 22.470 s
+13/06/11 03:48:59 INFO SparkContext: Job finished: reduce at BALS.scala:102, took 22.506597754 s
+MAX ROW: 17769
+13/06/11 03:48:59 INFO SparkContext: Starting job: reduce at BALS.scala:103
+13/06/11 03:48:59 INFO DAGScheduler: Got job 1 (reduce at BALS.scala:103) with 4 output partitions (allowLocal=false)
+13/06/11 03:48:59 INFO DAGScheduler: Final stage: Stage 1 (map at BALS.scala:103)
+13/06/11 03:48:59 INFO DAGScheduler: Parents of final stage: List()
+13/06/11 03:48:59 INFO DAGScheduler: Missing parents: List()
+13/06/11 03:48:59 INFO DAGScheduler: Submitting Stage 1 (MappedRDD[5] at map at BALS.scala:103), which has no missing parents
+13/06/11 03:48:59 INFO DAGScheduler: Submitting 4 missing tasks from Stage 1 (MappedRDD[5] at map at BALS.scala:103)
+13/06/11 03:48:59 INFO ClusterScheduler: Adding task set 1.0 with 4 tasks
+13/06/11 03:48:59 INFO TaskSetManager: Starting task 1.0:0 as TID 4 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:48:59 INFO TaskSetManager: Serialized task 1.0:0 as 1747 bytes in 4 ms
+13/06/11 03:48:59 INFO TaskSetManager: Starting task 1.0:2 as TID 5 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 03:48:59 INFO TaskSetManager: Serialized task 1.0:2 as 1747 bytes in 0 ms
+13/06/11 03:48:59 INFO TaskSetManager: Starting task 1.0:3 as TID 6 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:48:59 INFO TaskSetManager: Serialized task 1.0:3 as 1747 bytes in 1 ms
+13/06/11 03:48:59 INFO TaskSetManager: Starting task 1.0:1 as TID 7 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:48:59 INFO TaskSetManager: Serialized task 1.0:1 as 1747 bytes in 0 ms
+13/06/11 03:49:00 INFO TaskSetManager: Finished TID 5 in 1829 ms (progress: 1/4)
+13/06/11 03:49:00 INFO DAGScheduler: Completed ResultTask(1, 2)
+13/06/11 03:49:00 INFO TaskSetManager: Finished TID 6 in 1846 ms (progress: 2/4)
+13/06/11 03:49:00 INFO DAGScheduler: Completed ResultTask(1, 3)
+13/06/11 03:49:00 INFO TaskSetManager: Finished TID 4 in 1860 ms (progress: 3/4)
+13/06/11 03:49:00 INFO DAGScheduler: Completed ResultTask(1, 0)
+13/06/11 03:49:00 INFO TaskSetManager: Finished TID 7 in 1875 ms (progress: 4/4)
+13/06/11 03:49:00 INFO DAGScheduler: Completed ResultTask(1, 1)
+13/06/11 03:49:00 INFO DAGScheduler: Stage 1 (map at BALS.scala:103) finished in 1.882 s
+13/06/11 03:49:00 INFO SparkContext: Job finished: reduce at BALS.scala:103, took 1.885887437 s
+MAX COL: 84382
+13/06/11 03:49:00 INFO SparkContext: Starting job: count at BALS.scala:104
+13/06/11 03:49:00 INFO DAGScheduler: Got job 2 (count at BALS.scala:104) with 4 output partitions (allowLocal=false)
+13/06/11 03:49:00 INFO DAGScheduler: Final stage: Stage 2 (map at BALS.scala:70)
+13/06/11 03:49:00 INFO DAGScheduler: Parents of final stage: List()
+13/06/11 03:49:00 INFO DAGScheduler: Missing parents: List()
+13/06/11 03:49:00 INFO DAGScheduler: Submitting Stage 2 (MappedRDD[3] at map at BALS.scala:70), which has no missing parents
+13/06/11 03:49:00 INFO DAGScheduler: Submitting 4 missing tasks from Stage 2 (MappedRDD[3] at map at BALS.scala:70)
+13/06/11 03:49:00 INFO ClusterScheduler: Adding task set 2.0 with 4 tasks
+13/06/11 03:49:00 INFO TaskSetManager: Starting task 2.0:0 as TID 8 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:49:00 INFO TaskSetManager: Serialized task 2.0:0 as 1702 bytes in 3 ms
+13/06/11 03:49:00 INFO TaskSetManager: Starting task 2.0:2 as TID 9 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 03:49:00 INFO TaskSetManager: Serialized task 2.0:2 as 1702 bytes in 0 ms
+13/06/11 03:49:00 INFO TaskSetManager: Starting task 2.0:3 as TID 10 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:49:00 INFO TaskSetManager: Serialized task 2.0:3 as 1702 bytes in 1 ms
+13/06/11 03:49:00 INFO TaskSetManager: Starting task 2.0:1 as TID 11 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:49:00 INFO TaskSetManager: Serialized task 2.0:1 as 1702 bytes in 0 ms
+13/06/11 03:49:02 INFO TaskSetManager: Finished TID 9 in 1422 ms (progress: 1/4)
+13/06/11 03:49:02 INFO DAGScheduler: Completed ResultTask(2, 2)
+13/06/11 03:49:02 INFO TaskSetManager: Finished TID 11 in 1442 ms (progress: 2/4)
+13/06/11 03:49:02 INFO DAGScheduler: Completed ResultTask(2, 1)
+13/06/11 03:49:02 INFO TaskSetManager: Finished TID 10 in 1496 ms (progress: 3/4)
+13/06/11 03:49:02 INFO DAGScheduler: Completed ResultTask(2, 3)
+13/06/11 03:49:02 INFO TaskSetManager: Finished TID 8 in 1536 ms (progress: 4/4)
+13/06/11 03:49:02 INFO DAGScheduler: Completed ResultTask(2, 0)
+13/06/11 03:49:02 INFO DAGScheduler: Stage 2 (map at BALS.scala:70) finished in 1.537 s
+13/06/11 03:49:02 INFO SparkContext: Job finished: count at BALS.scala:104, took 1.538750036 s
+NNZ : 17600139
+13/06/11 03:49:02 INFO SparkContext: Starting job: count at BALS.scala:105
+13/06/11 03:49:02 INFO DAGScheduler: Got job 3 (count at BALS.scala:105) with 4 output partitions (allowLocal=false)
+13/06/11 03:49:02 INFO DAGScheduler: Final stage: Stage 3 (map at BALS.scala:70)
+13/06/11 03:49:02 INFO DAGScheduler: Parents of final stage: List()
+13/06/11 03:49:02 INFO DAGScheduler: Missing parents: List()
+13/06/11 03:49:02 INFO DAGScheduler: Submitting Stage 3 (MappedRDD[3] at map at BALS.scala:70), which has no missing parents
+13/06/11 03:49:02 INFO DAGScheduler: Submitting 4 missing tasks from Stage 3 (MappedRDD[3] at map at BALS.scala:70)
+13/06/11 03:49:02 INFO ClusterScheduler: Adding task set 3.0 with 4 tasks
+13/06/11 03:49:02 INFO TaskSetManager: Starting task 3.0:0 as TID 12 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:49:02 INFO TaskSetManager: Serialized task 3.0:0 as 1702 bytes in 1 ms
+13/06/11 03:49:02 INFO TaskSetManager: Starting task 3.0:2 as TID 13 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 03:49:02 INFO TaskSetManager: Serialized task 3.0:2 as 1702 bytes in 0 ms
+13/06/11 03:49:02 INFO TaskSetManager: Starting task 3.0:3 as TID 14 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:49:02 INFO TaskSetManager: Serialized task 3.0:3 as 1702 bytes in 0 ms
+13/06/11 03:49:02 INFO TaskSetManager: Starting task 3.0:1 as TID 15 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:49:02 INFO TaskSetManager: Serialized task 3.0:1 as 1702 bytes in 0 ms
+13/06/11 03:49:03 INFO TaskSetManager: Finished TID 15 in 1449 ms (progress: 1/4)
+13/06/11 03:49:03 INFO DAGScheduler: Completed ResultTask(3, 1)
+13/06/11 03:49:03 INFO TaskSetManager: Finished TID 13 in 1468 ms (progress: 2/4)
+13/06/11 03:49:03 INFO DAGScheduler: Completed ResultTask(3, 2)
+13/06/11 03:49:03 INFO TaskSetManager: Finished TID 14 in 1506 ms (progress: 3/4)
+13/06/11 03:49:03 INFO DAGScheduler: Completed ResultTask(3, 3)
+13/06/11 03:49:04 INFO TaskSetManager: Finished TID 12 in 1567 ms (progress: 4/4)
+13/06/11 03:49:04 INFO DAGScheduler: Completed ResultTask(3, 0)
+13/06/11 03:49:04 INFO DAGScheduler: Stage 3 (map at BALS.scala:70) finished in 1.569 s
+13/06/11 03:49:04 INFO SparkContext: Job finished: count at BALS.scala:105, took 1.570759924 s
+Iteration: 0
+13/06/11 03:49:04 INFO SparkContext: Starting job: collect at BALS.scala:117
+13/06/11 03:49:04 INFO DAGScheduler: Registering RDD 7 (reduceByKey at BALS.scala:116)
+13/06/11 03:49:04 INFO DAGScheduler: Got job 4 (collect at BALS.scala:117) with 4 output partitions (allowLocal=false)
+13/06/11 03:49:04 INFO DAGScheduler: Final stage: Stage 4 (map at BALS.scala:117)
+13/06/11 03:49:04 INFO DAGScheduler: Parents of final stage: List(Stage 5)
+13/06/11 03:49:04 INFO DAGScheduler: Missing parents: List(Stage 5)
+13/06/11 03:49:04 INFO DAGScheduler: Submitting Stage 5 (MapPartitionsRDD[7] at reduceByKey at BALS.scala:116), which has no missing parents
+13/06/11 03:49:04 INFO DAGScheduler: Submitting 4 missing tasks from Stage 5 (MapPartitionsRDD[7] at reduceByKey at BALS.scala:116)
+13/06/11 03:49:04 INFO ClusterScheduler: Adding task set 5.0 with 4 tasks
+13/06/11 03:49:04 INFO TaskSetManager: Starting task 5.0:0 as TID 16 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:49:04 INFO TaskSetManager: Serialized task 5.0:0 as 2214 bytes in 18 ms
+13/06/11 03:49:04 INFO TaskSetManager: Starting task 5.0:2 as TID 17 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 03:49:04 INFO TaskSetManager: Serialized task 5.0:2 as 2214 bytes in 0 ms
+13/06/11 03:49:04 INFO TaskSetManager: Starting task 5.0:3 as TID 18 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:49:04 INFO TaskSetManager: Serialized task 5.0:3 as 2214 bytes in 1 ms
+13/06/11 03:49:04 INFO TaskSetManager: Starting task 5.0:1 as TID 19 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:49:04 INFO TaskSetManager: Serialized task 5.0:1 as 2214 bytes in 0 ms
+13/06/11 03:51:29 INFO TaskSetManager: Finished TID 18 in 145193 ms (progress: 1/4)
+13/06/11 03:51:29 INFO DAGScheduler: Completed ShuffleMapTask(5, 3)
+13/06/11 03:51:31 INFO TaskSetManager: Finished TID 19 in 146946 ms (progress: 2/4)
+13/06/11 03:51:31 INFO DAGScheduler: Completed ShuffleMapTask(5, 1)
+13/06/11 03:51:33 INFO TaskSetManager: Finished TID 17 in 148976 ms (progress: 3/4)
+13/06/11 03:51:33 INFO DAGScheduler: Completed ShuffleMapTask(5, 2)
+13/06/11 03:51:34 INFO TaskSetManager: Finished TID 16 in 150504 ms (progress: 4/4)
+13/06/11 03:51:34 INFO DAGScheduler: Completed ShuffleMapTask(5, 0)
+13/06/11 03:51:34 INFO DAGScheduler: Stage 5 (reduceByKey at BALS.scala:116) finished in 150.505 s
+13/06/11 03:51:34 INFO DAGScheduler: looking for newly runnable stages
+13/06/11 03:51:34 INFO DAGScheduler: running: Set()
+13/06/11 03:51:34 INFO DAGScheduler: waiting: Set(Stage 4)
+13/06/11 03:51:34 INFO DAGScheduler: failed: Set()
+13/06/11 03:51:34 INFO DAGScheduler: Missing parents for Stage 4: List()
+13/06/11 03:51:34 INFO DAGScheduler: Submitting Stage 4 (MappedRDD[10] at map at BALS.scala:117), which is now runnable
+13/06/11 03:51:34 INFO DAGScheduler: Submitting 4 missing tasks from Stage 4 (MappedRDD[10] at map at BALS.scala:117)
+13/06/11 03:51:34 INFO ClusterScheduler: Adding task set 4.0 with 4 tasks
+13/06/11 03:51:34 INFO TaskSetManager: Starting task 4.0:0 as TID 20 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:51:34 INFO TaskSetManager: Serialized task 4.0:0 as 2415 bytes in 8 ms
+13/06/11 03:51:34 INFO TaskSetManager: Starting task 4.0:1 as TID 21 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 03:51:34 INFO TaskSetManager: Serialized task 4.0:1 as 2415 bytes in 0 ms
+13/06/11 03:51:34 INFO TaskSetManager: Starting task 4.0:2 as TID 22 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:51:34 INFO TaskSetManager: Serialized task 4.0:2 as 2415 bytes in 0 ms
+13/06/11 03:51:34 INFO TaskSetManager: Starting task 4.0:3 as TID 23 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:51:34 INFO TaskSetManager: Serialized task 4.0:3 as 2415 bytes in 0 ms
+13/06/11 03:51:34 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 0 to ip-10-232-39-5.ec2.internal
+13/06/11 03:51:34 INFO MapOutputTracker: Size of output statuses for shuffle 0 is 195 bytes
+13/06/11 03:51:34 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 0 to ip-10-171-8-42.ec2.internal
+13/06/11 03:51:34 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 0 to ip-10-31-132-203.ec2.internal
+13/06/11 03:51:34 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 0 to ip-10-232-8-42.ec2.internal
+13/06/11 03:51:38 INFO TaskSetManager: Finished TID 23 in 3858 ms (progress: 1/4)
+13/06/11 03:51:38 INFO DAGScheduler: Completed ResultTask(4, 3)
+13/06/11 03:51:38 INFO TaskSetManager: Finished TID 22 in 4043 ms (progress: 2/4)
+13/06/11 03:51:38 INFO DAGScheduler: Completed ResultTask(4, 2)
+13/06/11 03:51:38 INFO TaskSetManager: Finished TID 21 in 4127 ms (progress: 3/4)
+13/06/11 03:51:38 INFO DAGScheduler: Completed ResultTask(4, 1)
+13/06/11 03:51:38 INFO TaskSetManager: Finished TID 20 in 4294 ms (progress: 4/4)
+13/06/11 03:51:38 INFO DAGScheduler: Completed ResultTask(4, 0)
+13/06/11 03:51:38 INFO DAGScheduler: Stage 4 (map at BALS.scala:117) finished in 4.318 s
+13/06/11 03:51:38 INFO SparkContext: Job finished: collect at BALS.scala:117, took 154.844278545 s
+13/06/11 03:51:38 INFO MemoryStore: ensureFreeSpace(9809248) called with curMem=274919721, maxMem=20157722787
+13/06/11 03:51:38 INFO MemoryStore: Block broadcast_3 stored as values to memory (estimated size 9.4 MB, free 18.5 GB)
+13/06/11 03:51:39 INFO SparkContext: Starting job: collect at BALS.scala:128
+13/06/11 03:51:39 INFO DAGScheduler: Registering RDD 12 (reduceByKey at BALS.scala:127)
+13/06/11 03:51:39 INFO DAGScheduler: Got job 5 (collect at BALS.scala:128) with 4 output partitions (allowLocal=false)
+13/06/11 03:51:39 INFO DAGScheduler: Final stage: Stage 6 (map at BALS.scala:128)
+13/06/11 03:51:39 INFO DAGScheduler: Parents of final stage: List(Stage 7)
+13/06/11 03:51:39 INFO DAGScheduler: Missing parents: List(Stage 7)
+13/06/11 03:51:39 INFO DAGScheduler: Submitting Stage 7 (MapPartitionsRDD[12] at reduceByKey at BALS.scala:127), which has no missing parents
+13/06/11 03:51:39 INFO DAGScheduler: Submitting 4 missing tasks from Stage 7 (MapPartitionsRDD[12] at reduceByKey at BALS.scala:127)
+13/06/11 03:51:39 INFO ClusterScheduler: Adding task set 7.0 with 4 tasks
+13/06/11 03:51:39 INFO TaskSetManager: Starting task 7.0:0 as TID 24 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:51:39 INFO TaskSetManager: Serialized task 7.0:0 as 2216 bytes in 5 ms
+13/06/11 03:51:39 INFO TaskSetManager: Starting task 7.0:2 as TID 25 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 03:51:39 INFO TaskSetManager: Serialized task 7.0:2 as 2216 bytes in 0 ms
+13/06/11 03:51:39 INFO TaskSetManager: Starting task 7.0:3 as TID 26 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:51:39 INFO TaskSetManager: Serialized task 7.0:3 as 2216 bytes in 0 ms
+13/06/11 03:51:39 INFO TaskSetManager: Starting task 7.0:1 as TID 27 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:51:39 INFO TaskSetManager: Serialized task 7.0:1 as 2216 bytes in 1 ms
+13/06/11 03:53:40 INFO TaskSetManager: Finished TID 26 in 121839 ms (progress: 1/4)
+13/06/11 03:53:40 INFO DAGScheduler: Completed ShuffleMapTask(7, 3)
+13/06/11 03:53:41 INFO TaskSetManager: Finished TID 27 in 122207 ms (progress: 2/4)
+13/06/11 03:53:41 INFO DAGScheduler: Completed ShuffleMapTask(7, 1)
+13/06/11 03:53:42 INFO TaskSetManager: Finished TID 25 in 122988 ms (progress: 3/4)
+13/06/11 03:53:42 INFO DAGScheduler: Completed ShuffleMapTask(7, 2)
+13/06/11 03:53:43 INFO TaskSetManager: Finished TID 24 in 124913 ms (progress: 4/4)
+13/06/11 03:53:43 INFO DAGScheduler: Completed ShuffleMapTask(7, 0)
+13/06/11 03:53:43 INFO DAGScheduler: Stage 7 (reduceByKey at BALS.scala:127) finished in 124.914 s
+13/06/11 03:53:43 INFO DAGScheduler: looking for newly runnable stages
+13/06/11 03:53:43 INFO DAGScheduler: running: Set()
+13/06/11 03:53:43 INFO DAGScheduler: waiting: Set(Stage 6)
+13/06/11 03:53:43 INFO DAGScheduler: failed: Set()
+13/06/11 03:53:43 INFO DAGScheduler: Missing parents for Stage 6: List()
+13/06/11 03:53:43 INFO DAGScheduler: Submitting Stage 6 (MappedRDD[15] at map at BALS.scala:128), which is now runnable
+13/06/11 03:53:43 INFO DAGScheduler: Submitting 4 missing tasks from Stage 6 (MappedRDD[15] at map at BALS.scala:128)
+13/06/11 03:53:43 INFO ClusterScheduler: Adding task set 6.0 with 4 tasks
+13/06/11 03:53:43 INFO TaskSetManager: Starting task 6.0:0 as TID 28 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:53:43 INFO TaskSetManager: Serialized task 6.0:0 as 2414 bytes in 5 ms
+13/06/11 03:53:43 INFO TaskSetManager: Starting task 6.0:1 as TID 29 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 03:53:43 INFO TaskSetManager: Serialized task 6.0:1 as 2414 bytes in 0 ms
+13/06/11 03:53:43 INFO TaskSetManager: Starting task 6.0:2 as TID 30 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:53:43 INFO TaskSetManager: Serialized task 6.0:2 as 2414 bytes in 0 ms
+13/06/11 03:53:43 INFO TaskSetManager: Starting task 6.0:3 as TID 31 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:53:43 INFO TaskSetManager: Serialized task 6.0:3 as 2414 bytes in 0 ms
+13/06/11 03:53:43 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 1 to ip-10-232-39-5.ec2.internal
+13/06/11 03:53:43 INFO MapOutputTracker: Size of output statuses for shuffle 1 is 195 bytes
+13/06/11 03:53:43 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 1 to ip-10-171-8-42.ec2.internal
+13/06/11 03:53:43 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 1 to ip-10-232-8-42.ec2.internal
+13/06/11 03:53:43 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 1 to ip-10-31-132-203.ec2.internal
+13/06/11 03:53:49 INFO SparkDeploySchedulerBackend: Executor 3 disconnected, so removing it
+13/06/11 03:53:49 ERROR ClusterScheduler: Lost executor 3 on ip-10-232-8-42.ec2.internal: remote Akka client shutdown
+13/06/11 03:53:49 INFO TaskSetManager: Re-queueing tasks for 3 from TaskSet 6.0
+13/06/11 03:53:49 INFO TaskSetManager: Lost TID 30 (task 6.0:2)
+13/06/11 03:53:49 INFO TaskSetManager: Starting task 6.0:2 as TID 32 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:53:49 INFO DAGScheduler: Executor lost: 3 (generation 2)
+13/06/11 03:53:49 INFO TaskSetManager: Serialized task 6.0:2 as 2414 bytes in 0 ms
+13/06/11 03:53:49 INFO BlockManagerMasterActor: Trying to remove executor 3 from BlockManagerMaster.
+13/06/11 03:53:49 INFO BlockManagerMaster: Removed 3 successfully in removeExecutor
+13/06/11 03:53:49 INFO Stage: Stage 7 is now unavailable on executor 3 (3/4, false)
+13/06/11 03:53:49 INFO Stage: Stage 5 is now unavailable on executor 3 (3/4, false)
+13/06/11 03:53:49 INFO SparkDeploySchedulerBackend: Executor 0 disconnected, so removing it
+13/06/11 03:53:49 ERROR ClusterScheduler: Lost executor 0 on ip-10-232-39-5.ec2.internal: remote Akka client shutdown
+13/06/11 03:53:49 INFO TaskSetManager: Re-queueing tasks for 0 from TaskSet 6.0
+13/06/11 03:53:49 INFO TaskSetManager: Lost TID 28 (task 6.0:0)
+13/06/11 03:53:49 INFO TaskSetManager: Lost TID 32 (task 6.0:2)
+13/06/11 03:53:49 INFO DAGScheduler: Executor lost: 0 (generation 4)
+13/06/11 03:53:49 INFO BlockManagerMasterActor: Trying to remove executor 0 from BlockManagerMaster.
+13/06/11 03:53:49 INFO TaskSetManager: Starting task 6.0:2 as TID 33 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 03:53:49 INFO BlockManagerMaster: Removed 0 successfully in removeExecutor
+13/06/11 03:53:49 INFO TaskSetManager: Serialized task 6.0:2 as 2414 bytes in 0 ms
+13/06/11 03:53:49 INFO Stage: Stage 7 is now unavailable on executor 0 (2/4, false)
+13/06/11 03:53:49 INFO TaskSetManager: Starting task 6.0:0 as TID 34 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:53:49 INFO Stage: Stage 5 is now unavailable on executor 0 (2/4, false)
+13/06/11 03:53:49 INFO TaskSetManager: Serialized task 6.0:0 as 2414 bytes in 0 ms
+13/06/11 03:53:50 INFO SparkDeploySchedulerBackend: Executor 1 disconnected, so removing it
+13/06/11 03:53:50 ERROR ClusterScheduler: Lost executor 1 on ip-10-171-8-42.ec2.internal: remote Akka client shutdown
+13/06/11 03:53:50 INFO TaskSetManager: Re-queueing tasks for 1 from TaskSet 6.0
+13/06/11 03:53:50 INFO TaskSetManager: Lost TID 29 (task 6.0:1)
+13/06/11 03:53:50 INFO TaskSetManager: Lost TID 33 (task 6.0:2)
+13/06/11 03:53:50 INFO DAGScheduler: Executor lost: 1 (generation 6)
+13/06/11 03:53:50 INFO TaskSetManager: Starting task 6.0:2 as TID 35 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:53:50 INFO BlockManagerMasterActor: Trying to remove executor 1 from BlockManagerMaster.
+13/06/11 03:53:50 INFO BlockManagerMaster: Removed 1 successfully in removeExecutor
+13/06/11 03:53:50 INFO TaskSetManager: Serialized task 6.0:2 as 2414 bytes in 1 ms
+13/06/11 03:53:50 INFO Stage: Stage 7 is now unavailable on executor 1 (1/4, false)
+13/06/11 03:53:50 INFO TaskSetManager: Starting task 6.0:1 as TID 36 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:53:50 INFO Stage: Stage 5 is now unavailable on executor 1 (1/4, false)
+13/06/11 03:53:50 INFO TaskSetManager: Serialized task 6.0:1 as 2414 bytes in 0 ms
+13/06/11 03:53:50 INFO SparkDeploySchedulerBackend: Executor 2 disconnected, so removing it
+13/06/11 03:53:50 ERROR ClusterScheduler: Lost executor 2 on ip-10-31-132-203.ec2.internal: remote Akka client shutdown
+13/06/11 03:53:50 INFO TaskSetManager: Re-queueing tasks for 2 from TaskSet 6.0
+13/06/11 03:53:50 INFO TaskSetManager: Lost TID 35 (task 6.0:2)
+13/06/11 03:53:50 INFO TaskSetManager: Lost TID 34 (task 6.0:0)
+13/06/11 03:53:50 INFO TaskSetManager: Lost TID 31 (task 6.0:3)
+13/06/11 03:53:50 INFO TaskSetManager: Lost TID 36 (task 6.0:1)
+13/06/11 03:53:50 INFO DAGScheduler: Executor lost: 2 (generation 8)
+13/06/11 03:53:50 INFO BlockManagerMasterActor: Trying to remove executor 2 from BlockManagerMaster.
+13/06/11 03:53:50 INFO BlockManagerMaster: Removed 2 successfully in removeExecutor
+13/06/11 03:53:50 INFO Stage: Stage 7 is now unavailable on executor 2 (0/4, false)
+13/06/11 03:53:50 INFO Stage: Stage 5 is now unavailable on executor 2 (0/4, false)
+13/06/11 03:53:50 INFO Client$ClientActor: Executor updated: app-20130611034830-0002/3 is now FAILED (Command exited with code 1)
+13/06/11 03:53:50 INFO SparkDeploySchedulerBackend: Executor app-20130611034830-0002/3 removed: Command exited with code 1
+13/06/11 03:53:50 INFO Client$ClientActor: Executor added: app-20130611034830-0002/4 on worker-20130611024827-ip-10-232-8-42.ec2.internal-42081 (ip-10-232-8-42.ec2.internal) with 8 cores
+13/06/11 03:53:50 INFO SparkDeploySchedulerBackend: Granted executor ID app-20130611034830-0002/4 on host ip-10-232-8-42.ec2.internal with 8 cores, 40.0 GB RAM
+13/06/11 03:53:50 INFO Client$ClientActor: Executor updated: app-20130611034830-0002/4 is now RUNNING
+13/06/11 03:53:51 INFO Client$ClientActor: Executor updated: app-20130611034830-0002/0 is now FAILED (Command exited with code 1)
+13/06/11 03:53:51 INFO SparkDeploySchedulerBackend: Executor app-20130611034830-0002/0 removed: Command exited with code 1
+13/06/11 03:53:51 INFO Client$ClientActor: Executor added: app-20130611034830-0002/5 on worker-20130611024827-ip-10-232-39-5.ec2.internal-48669 (ip-10-232-39-5.ec2.internal) with 8 cores
+13/06/11 03:53:51 INFO SparkDeploySchedulerBackend: Granted executor ID app-20130611034830-0002/5 on host ip-10-232-39-5.ec2.internal with 8 cores, 40.0 GB RAM
+13/06/11 03:53:51 INFO Client$ClientActor: Executor updated: app-20130611034830-0002/5 is now RUNNING
+13/06/11 03:53:51 INFO Client$ClientActor: Executor updated: app-20130611034830-0002/2 is now FAILED (Command exited with code 1)
+13/06/11 03:53:51 INFO SparkDeploySchedulerBackend: Executor app-20130611034830-0002/2 removed: Command exited with code 1
+13/06/11 03:53:51 INFO Client$ClientActor: Executor added: app-20130611034830-0002/6 on worker-20130611024827-ip-10-31-132-203.ec2.internal-47309 (ip-10-31-132-203.ec2.internal) with 8 cores
+13/06/11 03:53:51 INFO SparkDeploySchedulerBackend: Granted executor ID app-20130611034830-0002/6 on host ip-10-31-132-203.ec2.internal with 8 cores, 40.0 GB RAM
+13/06/11 03:53:51 INFO Client$ClientActor: Executor updated: app-20130611034830-0002/1 is now FAILED (Command exited with code 1)
+13/06/11 03:53:51 INFO SparkDeploySchedulerBackend: Executor app-20130611034830-0002/1 removed: Command exited with code 1
+13/06/11 03:53:51 INFO Client$ClientActor: Executor added: app-20130611034830-0002/7 on worker-20130611024827-ip-10-171-8-42.ec2.internal-35983 (ip-10-171-8-42.ec2.internal) with 8 cores
+13/06/11 03:53:51 INFO SparkDeploySchedulerBackend: Granted executor ID app-20130611034830-0002/7 on host ip-10-171-8-42.ec2.internal with 8 cores, 40.0 GB RAM
+13/06/11 03:53:51 INFO Client$ClientActor: Executor updated: app-20130611034830-0002/6 is now RUNNING
+13/06/11 03:53:51 INFO Client$ClientActor: Executor updated: app-20130611034830-0002/7 is now RUNNING
+13/06/11 03:53:52 INFO SparkDeploySchedulerBackend: Registered executor: Actor[akka://sparkExecutor@ip-10-232-8-42.ec2.internal:53945/user/Executor] with ID 4
+13/06/11 03:53:52 INFO TaskSetManager: Starting task 6.0:1 as TID 37 on executor 4: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:53:52 INFO TaskSetManager: Serialized task 6.0:1 as 2414 bytes in 0 ms
+13/06/11 03:53:52 INFO TaskSetManager: Starting task 6.0:3 as TID 38 on executor 4: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:53:52 INFO TaskSetManager: Serialized task 6.0:3 as 2414 bytes in 0 ms
+13/06/11 03:53:52 INFO TaskSetManager: Starting task 6.0:0 as TID 39 on executor 4: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:53:52 INFO TaskSetManager: Serialized task 6.0:0 as 2414 bytes in 0 ms
+13/06/11 03:53:52 INFO TaskSetManager: Starting task 6.0:2 as TID 40 on executor 4: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:53:52 INFO TaskSetManager: Serialized task 6.0:2 as 2414 bytes in 0 ms
+13/06/11 03:53:52 INFO SparkDeploySchedulerBackend: Registered executor: Actor[akka://sparkExecutor@ip-10-232-39-5.ec2.internal:59707/user/Executor] with ID 5
+13/06/11 03:53:52 INFO BlockManagerMasterActor$BlockManagerInfo: Registering block manager ip-10-232-8-42.ec2.internal:42078 with 40.4 GB RAM
+13/06/11 03:53:52 INFO BlockManagerMasterActor$BlockManagerInfo: Registering block manager ip-10-232-39-5.ec2.internal:41796 with 40.4 GB RAM
+13/06/11 03:53:53 INFO SparkDeploySchedulerBackend: Registered executor: Actor[akka://sparkExecutor@ip-10-171-8-42.ec2.internal:53421/user/Executor] with ID 7
+13/06/11 03:53:53 INFO SparkDeploySchedulerBackend: Registered executor: Actor[akka://sparkExecutor@ip-10-31-132-203.ec2.internal:52811/user/Executor] with ID 6
+13/06/11 03:53:53 INFO BlockManagerMasterActor$BlockManagerInfo: Registering block manager ip-10-171-8-42.ec2.internal:51135 with 40.4 GB RAM
+13/06/11 03:53:53 INFO BlockManagerMasterActor$BlockManagerInfo: Registering block manager ip-10-31-132-203.ec2.internal:49990 with 40.4 GB RAM
+13/06/11 03:53:54 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 1 to ip-10-232-8-42.ec2.internal
+13/06/11 03:53:54 INFO MapOutputTracker: Size of output statuses for shuffle 1 is 76 bytes
+13/06/11 03:53:54 INFO TaskSetManager: Lost TID 39 (task 6.0:0)
+13/06/11 03:53:54 INFO TaskSetManager: Loss was due to fetch failure from null
+13/06/11 03:53:54 INFO ClusterScheduler: Ignoring update from TID 37 because its task set is gone
+13/06/11 03:53:54 INFO ClusterScheduler: Ignoring update from TID 38 because its task set is gone
+13/06/11 03:53:54 INFO DAGScheduler: Marking Stage 6 (map at BALS.scala:128) for resubmision due to a fetch failure
+13/06/11 03:53:54 INFO DAGScheduler: The failed fetch was from Stage 7 (reduceByKey at BALS.scala:127); marking it for resubmission
+13/06/11 03:53:54 INFO ClusterScheduler: Ignoring update from TID 40 because its task set is gone
+13/06/11 03:53:54 INFO DAGScheduler: Resubmitting failed stages
+13/06/11 03:53:54 INFO DAGScheduler: Submitting Stage 7 (MapPartitionsRDD[12] at reduceByKey at BALS.scala:127), which has no missing parents
+13/06/11 03:53:54 INFO DAGScheduler: Submitting 4 missing tasks from Stage 7 (MapPartitionsRDD[12] at reduceByKey at BALS.scala:127)
+13/06/11 03:53:54 INFO ClusterScheduler: Adding task set 7.1 with 4 tasks
+13/06/11 03:53:54 INFO TaskSetManager: Starting task 7.1:0 as TID 41 on executor 5: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:53:54 INFO TaskSetManager: Serialized task 7.1:0 as 2216 bytes in 0 ms
+13/06/11 03:53:54 INFO TaskSetManager: Starting task 7.1:2 as TID 42 on executor 6: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:53:54 INFO TaskSetManager: Serialized task 7.1:2 as 2216 bytes in 0 ms
+13/06/11 03:53:54 INFO TaskSetManager: Starting task 7.1:3 as TID 43 on executor 4: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:53:54 INFO TaskSetManager: Serialized task 7.1:3 as 2216 bytes in 1 ms
+13/06/11 03:53:54 INFO TaskSetManager: Starting task 7.1:1 as TID 44 on executor 7: ip-10-171-8-42.ec2.internal (non-preferred, not one of 10.232.39.5, 10.171.8.42, 10.31.132.203)
+13/06/11 03:53:54 INFO TaskSetManager: Serialized task 7.1:1 as 2216 bytes in 0 ms
+13/06/11 03:54:13 INFO BlockManagerMasterActor$BlockManagerInfo: Added rdd_3_3 in memory on ip-10-232-8-42.ec2.internal:42078 (size: 73.1 MB, free: 40.4 GB)
+13/06/11 03:54:15 INFO BlockManagerMasterActor$BlockManagerInfo: Added rdd_3_2 in memory on ip-10-31-132-203.ec2.internal:49990 (size: 73.1 MB, free: 40.4 GB)
+13/06/11 03:54:15 INFO BlockManagerMasterActor$BlockManagerInfo: Added rdd_3_0 in memory on ip-10-232-39-5.ec2.internal:41796 (size: 73.4 MB, free: 40.4 GB)
+13/06/11 03:54:15 INFO BlockManagerMasterActor$BlockManagerInfo: Added rdd_3_1 in memory on ip-10-171-8-42.ec2.internal:51135 (size: 73.1 MB, free: 40.4 GB)
+13/06/11 03:56:24 INFO TaskSetManager: Finished TID 43 in 149750 ms (progress: 1/4)
+13/06/11 03:56:24 INFO DAGScheduler: Completed ShuffleMapTask(7, 3)
+13/06/11 03:56:25 INFO TaskSetManager: Finished TID 42 in 151105 ms (progress: 2/4)
+13/06/11 03:56:25 INFO DAGScheduler: Completed ShuffleMapTask(7, 2)
+13/06/11 03:56:25 INFO TaskSetManager: Finished TID 44 in 151162 ms (progress: 3/4)
+13/06/11 03:56:25 INFO DAGScheduler: Completed ShuffleMapTask(7, 1)
+13/06/11 03:56:29 INFO TaskSetManager: Finished TID 41 in 154540 ms (progress: 4/4)
+13/06/11 03:56:29 INFO DAGScheduler: Completed ShuffleMapTask(7, 0)
+13/06/11 03:56:29 INFO DAGScheduler: Stage 7 (reduceByKey at BALS.scala:127) finished in 289.957 s
+13/06/11 03:56:29 INFO DAGScheduler: looking for newly runnable stages
+13/06/11 03:56:29 INFO DAGScheduler: running: Set()
+13/06/11 03:56:29 INFO DAGScheduler: waiting: Set(Stage 6)
+13/06/11 03:56:29 INFO DAGScheduler: failed: Set()
+13/06/11 03:56:29 INFO DAGScheduler: Missing parents for Stage 6: List()
+13/06/11 03:56:29 INFO DAGScheduler: Submitting Stage 6 (MappedRDD[15] at map at BALS.scala:128), which is now runnable
+13/06/11 03:56:29 INFO DAGScheduler: Submitting 4 missing tasks from Stage 6 (MappedRDD[15] at map at BALS.scala:128)
+13/06/11 03:56:29 INFO ClusterScheduler: Adding task set 6.1 with 4 tasks
+13/06/11 03:56:29 INFO TaskSetManager: Starting task 6.1:0 as TID 45 on executor 5: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:56:29 INFO TaskSetManager: Serialized task 6.1:0 as 2414 bytes in 0 ms
+13/06/11 03:56:29 INFO TaskSetManager: Starting task 6.1:1 as TID 46 on executor 6: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:56:29 INFO TaskSetManager: Serialized task 6.1:1 as 2414 bytes in 0 ms
+13/06/11 03:56:29 INFO TaskSetManager: Starting task 6.1:2 as TID 47 on executor 4: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:56:29 INFO TaskSetManager: Serialized task 6.1:2 as 2414 bytes in 0 ms
+13/06/11 03:56:29 INFO TaskSetManager: Starting task 6.1:3 as TID 48 on executor 7: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 03:56:29 INFO TaskSetManager: Serialized task 6.1:3 as 2414 bytes in 0 ms
+13/06/11 03:56:29 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 1 to ip-10-232-8-42.ec2.internal
+13/06/11 03:56:29 INFO MapOutputTracker: Size of output statuses for shuffle 1 is 194 bytes
+13/06/11 03:56:29 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 1 to ip-10-232-39-5.ec2.internal
+13/06/11 03:56:29 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 1 to ip-10-31-132-203.ec2.internal
+13/06/11 03:56:29 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 1 to ip-10-171-8-42.ec2.internal
+13/06/11 03:56:34 INFO SparkDeploySchedulerBackend: Executor 7 disconnected, so removing it
+13/06/11 03:56:34 ERROR ClusterScheduler: Lost executor 7 on ip-10-171-8-42.ec2.internal: remote Akka client shutdown
+13/06/11 03:56:34 INFO TaskSetManager: Re-queueing tasks for 7 from TaskSet 6.1
+13/06/11 03:56:34 INFO TaskSetManager: Lost TID 48 (task 6.1:3)
+13/06/11 03:56:34 INFO DAGScheduler: Executor lost: 7 (generation 11)
+13/06/11 03:56:34 INFO BlockManagerMasterActor: Trying to remove executor 7 from BlockManagerMaster.
+13/06/11 03:56:34 INFO TaskSetManager: Starting task 6.1:3 as TID 49 on executor 5: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:56:34 INFO BlockManagerMaster: Removed 7 successfully in removeExecutor
+13/06/11 03:56:34 INFO TaskSetManager: Serialized task 6.1:3 as 2414 bytes in 1 ms
+13/06/11 03:56:34 INFO Stage: Stage 7 is now unavailable on executor 7 (3/4, false)
+13/06/11 03:56:35 INFO SparkDeploySchedulerBackend: Executor 5 disconnected, so removing it
+13/06/11 03:56:35 ERROR ClusterScheduler: Lost executor 5 on ip-10-232-39-5.ec2.internal: remote Akka client shutdown
+13/06/11 03:56:35 INFO TaskSetManager: Re-queueing tasks for 5 from TaskSet 6.1
+13/06/11 03:56:35 INFO TaskSetManager: Lost TID 45 (task 6.1:0)
+13/06/11 03:56:35 INFO TaskSetManager: Lost TID 49 (task 6.1:3)
+13/06/11 03:56:35 INFO DAGScheduler: Executor lost: 5 (generation 13)
+13/06/11 03:56:35 INFO TaskSetManager: Starting task 6.1:3 as TID 50 on executor 6: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:56:35 INFO BlockManagerMasterActor: Trying to remove executor 5 from BlockManagerMaster.
+13/06/11 03:56:35 INFO BlockManagerMaster: Removed 5 successfully in removeExecutor
+13/06/11 03:56:35 INFO TaskSetManager: Serialized task 6.1:3 as 2414 bytes in 0 ms
+13/06/11 03:56:35 INFO Stage: Stage 7 is now unavailable on executor 5 (2/4, false)
+13/06/11 03:56:35 INFO TaskSetManager: Starting task 6.1:0 as TID 51 on executor 4: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:56:35 INFO TaskSetManager: Serialized task 6.1:0 as 2414 bytes in 0 ms
+13/06/11 03:56:35 INFO SparkDeploySchedulerBackend: Executor 4 disconnected, so removing it
+13/06/11 03:56:35 ERROR ClusterScheduler: Lost executor 4 on ip-10-232-8-42.ec2.internal: remote Akka client shutdown
+13/06/11 03:56:35 INFO TaskSetManager: Re-queueing tasks for 4 from TaskSet 6.1
+13/06/11 03:56:35 INFO TaskSetManager: Lost TID 51 (task 6.1:0)
+13/06/11 03:56:35 INFO TaskSetManager: Lost TID 47 (task 6.1:2)
+13/06/11 03:56:35 INFO DAGScheduler: Executor lost: 4 (generation 15)
+13/06/11 03:56:35 INFO TaskSetManager: Starting task 6.1:2 as TID 52 on executor 6: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:56:35 INFO BlockManagerMasterActor: Trying to remove executor 4 from BlockManagerMaster.
+13/06/11 03:56:35 INFO BlockManagerMaster: Removed 4 successfully in removeExecutor
+13/06/11 03:56:35 INFO TaskSetManager: Serialized task 6.1:2 as 2414 bytes in 1 ms
+13/06/11 03:56:35 INFO TaskSetManager: Starting task 6.1:0 as TID 53 on executor 6: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:56:35 INFO Stage: Stage 7 is now unavailable on executor 4 (1/4, false)
+13/06/11 03:56:35 INFO TaskSetManager: Serialized task 6.1:0 as 2414 bytes in 0 ms
+13/06/11 03:56:35 INFO SparkDeploySchedulerBackend: Executor 6 disconnected, so removing it
+13/06/11 03:56:35 ERROR ClusterScheduler: Lost executor 6 on ip-10-31-132-203.ec2.internal: remote Akka client shutdown
+13/06/11 03:56:35 INFO TaskSetManager: Re-queueing tasks for 6 from TaskSet 6.1
+13/06/11 03:56:35 INFO TaskSetManager: Lost TID 53 (task 6.1:0)
+13/06/11 03:56:35 INFO TaskSetManager: Lost TID 46 (task 6.1:1)
+13/06/11 03:56:35 INFO TaskSetManager: Lost TID 52 (task 6.1:2)
+13/06/11 03:56:35 INFO TaskSetManager: Lost TID 50 (task 6.1:3)
+13/06/11 03:56:35 INFO DAGScheduler: Executor lost: 6 (generation 17)
+13/06/11 03:56:35 INFO BlockManagerMasterActor: Trying to remove executor 6 from BlockManagerMaster.
+13/06/11 03:56:35 INFO BlockManagerMaster: Removed 6 successfully in removeExecutor
+13/06/11 03:56:35 INFO Stage: Stage 7 is now unavailable on executor 6 (0/4, false)
+13/06/11 03:56:36 INFO Client$ClientActor: Executor updated: app-20130611034830-0002/7 is now FAILED (Command exited with code 1)
+13/06/11 03:56:36 INFO SparkDeploySchedulerBackend: Executor app-20130611034830-0002/7 removed: Command exited with code 1
+13/06/11 03:56:36 INFO Client$ClientActor: Executor added: app-20130611034830-0002/8 on worker-20130611024827-ip-10-171-8-42.ec2.internal-35983 (ip-10-171-8-42.ec2.internal) with 8 cores
+13/06/11 03:56:36 INFO SparkDeploySchedulerBackend: Granted executor ID app-20130611034830-0002/8 on host ip-10-171-8-42.ec2.internal with 8 cores, 40.0 GB RAM
+13/06/11 03:56:36 INFO Client$ClientActor: Executor updated: app-20130611034830-0002/8 is now RUNNING
+13/06/11 03:56:36 INFO Client$ClientActor: Executor updated: app-20130611034830-0002/5 is now FAILED (Command exited with code 1)
+13/06/11 03:56:36 INFO SparkDeploySchedulerBackend: Executor app-20130611034830-0002/5 removed: Command exited with code 1
+13/06/11 03:56:36 INFO Client$ClientActor: Executor added: app-20130611034830-0002/9 on worker-20130611024827-ip-10-232-39-5.ec2.internal-48669 (ip-10-232-39-5.ec2.internal) with 8 cores
+13/06/11 03:56:36 INFO SparkDeploySchedulerBackend: Granted executor ID app-20130611034830-0002/9 on host ip-10-232-39-5.ec2.internal with 8 cores, 40.0 GB RAM
+13/06/11 03:56:36 INFO Client$ClientActor: Executor updated: app-20130611034830-0002/9 is now RUNNING
+13/06/11 03:56:37 INFO Client$ClientActor: Executor updated: app-20130611034830-0002/4 is now FAILED (Command exited with code 1)
+13/06/11 03:56:37 INFO SparkDeploySchedulerBackend: Executor app-20130611034830-0002/4 removed: Command exited with code 1
+13/06/11 03:56:37 INFO Client$ClientActor: Executor added: app-20130611034830-0002/10 on worker-20130611024827-ip-10-232-8-42.ec2.internal-42081 (ip-10-232-8-42.ec2.internal) with 8 cores
+13/06/11 03:56:37 INFO SparkDeploySchedulerBackend: Granted executor ID app-20130611034830-0002/10 on host ip-10-232-8-42.ec2.internal with 8 cores, 40.0 GB RAM
+13/06/11 03:56:37 INFO Client$ClientActor: Executor updated: app-20130611034830-0002/10 is now RUNNING
+13/06/11 03:56:37 INFO Client$ClientActor: Executor updated: app-20130611034830-0002/6 is now FAILED (Command exited with code 1)
+13/06/11 03:56:37 INFO SparkDeploySchedulerBackend: Executor app-20130611034830-0002/6 removed: Command exited with code 1
+13/06/11 03:56:37 INFO Client$ClientActor: Executor added: app-20130611034830-0002/11 on worker-20130611024827-ip-10-31-132-203.ec2.internal-47309 (ip-10-31-132-203.ec2.internal) with 8 cores
+13/06/11 03:56:37 INFO SparkDeploySchedulerBackend: Granted executor ID app-20130611034830-0002/11 on host ip-10-31-132-203.ec2.internal with 8 cores, 40.0 GB RAM
+13/06/11 03:56:37 INFO Client$ClientActor: Executor updated: app-20130611034830-0002/11 is now RUNNING
+13/06/11 03:56:38 INFO SparkDeploySchedulerBackend: Registered executor: Actor[akka://sparkExecutor@ip-10-232-39-5.ec2.internal:59682/user/Executor] with ID 9
+13/06/11 03:56:38 INFO TaskSetManager: Starting task 6.1:3 as TID 54 on executor 9: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:56:38 INFO TaskSetManager: Serialized task 6.1:3 as 2414 bytes in 0 ms
+13/06/11 03:56:38 INFO TaskSetManager: Starting task 6.1:2 as TID 55 on executor 9: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:56:38 INFO TaskSetManager: Serialized task 6.1:2 as 2414 bytes in 0 ms
+13/06/11 03:56:38 INFO TaskSetManager: Starting task 6.1:1 as TID 56 on executor 9: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:56:38 INFO TaskSetManager: Serialized task 6.1:1 as 2414 bytes in 0 ms
+13/06/11 03:56:38 INFO TaskSetManager: Starting task 6.1:0 as TID 57 on executor 9: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:56:38 INFO TaskSetManager: Serialized task 6.1:0 as 2414 bytes in 0 ms
+13/06/11 03:56:38 INFO SparkDeploySchedulerBackend: Registered executor: Actor[akka://sparkExecutor@ip-10-171-8-42.ec2.internal:49168/user/Executor] with ID 8
+13/06/11 03:56:38 INFO BlockManagerMasterActor$BlockManagerInfo: Registering block manager ip-10-232-39-5.ec2.internal:59716 with 40.4 GB RAM
+13/06/11 03:56:38 INFO BlockManagerMasterActor$BlockManagerInfo: Registering block manager ip-10-171-8-42.ec2.internal:36534 with 40.4 GB RAM
+13/06/11 03:56:39 INFO SparkDeploySchedulerBackend: Registered executor: Actor[akka://sparkExecutor@ip-10-232-8-42.ec2.internal:43929/user/Executor] with ID 10
+13/06/11 03:56:39 INFO BlockManagerMasterActor$BlockManagerInfo: Registering block manager ip-10-232-8-42.ec2.internal:48352 with 40.4 GB RAM
+13/06/11 03:56:39 INFO SparkDeploySchedulerBackend: Registered executor: Actor[akka://sparkExecutor@ip-10-31-132-203.ec2.internal:59002/user/Executor] with ID 11
+13/06/11 03:56:39 INFO BlockManagerMasterActor$BlockManagerInfo: Registering block manager ip-10-31-132-203.ec2.internal:34284 with 40.4 GB RAM
+13/06/11 03:56:40 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 1 to ip-10-232-39-5.ec2.internal
+13/06/11 03:56:40 INFO MapOutputTracker: Size of output statuses for shuffle 1 is 76 bytes
+13/06/11 03:56:40 INFO TaskSetManager: Lost TID 54 (task 6.1:3)
+13/06/11 03:56:40 INFO TaskSetManager: Loss was due to fetch failure from null
+13/06/11 03:56:40 INFO DAGScheduler: Marking Stage 6 (map at BALS.scala:128) for resubmision due to a fetch failure
+13/06/11 03:56:40 INFO DAGScheduler: The failed fetch was from Stage 7 (reduceByKey at BALS.scala:127); marking it for resubmission
+13/06/11 03:56:40 INFO ClusterScheduler: Ignoring update from TID 55 because its task set is gone
+13/06/11 03:56:40 INFO ClusterScheduler: Ignoring update from TID 57 because its task set is gone
+13/06/11 03:56:40 INFO ClusterScheduler: Ignoring update from TID 56 because its task set is gone
+13/06/11 03:56:40 INFO DAGScheduler: Resubmitting failed stages
+13/06/11 03:56:40 INFO DAGScheduler: Submitting Stage 7 (MapPartitionsRDD[12] at reduceByKey at BALS.scala:127), which has no missing parents
+13/06/11 03:56:40 INFO DAGScheduler: Submitting 4 missing tasks from Stage 7 (MapPartitionsRDD[12] at reduceByKey at BALS.scala:127)
+13/06/11 03:56:40 INFO ClusterScheduler: Adding task set 7.2 with 4 tasks
+13/06/11 03:56:40 INFO TaskSetManager: Starting task 7.2:0 as TID 58 on executor 9: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:56:40 INFO TaskSetManager: Serialized task 7.2:0 as 2216 bytes in 1 ms
+13/06/11 03:56:40 INFO TaskSetManager: Starting task 7.2:2 as TID 59 on executor 8: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 03:56:40 INFO TaskSetManager: Serialized task 7.2:2 as 2216 bytes in 0 ms
+13/06/11 03:56:40 INFO TaskSetManager: Starting task 7.2:3 as TID 60 on executor 10: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:56:40 INFO TaskSetManager: Serialized task 7.2:3 as 2216 bytes in 1 ms
+13/06/11 03:56:40 INFO TaskSetManager: Starting task 7.2:1 as TID 61 on executor 11: ip-10-31-132-203.ec2.internal (non-preferred, not one of 10.232.39.5, 10.171.8.42, 10.31.132.203)
+13/06/11 03:56:40 INFO TaskSetManager: Serialized task 7.2:1 as 2216 bytes in 0 ms
+13/06/11 03:56:59 INFO BlockManagerMasterActor$BlockManagerInfo: Added rdd_3_0 in memory on ip-10-232-39-5.ec2.internal:59716 (size: 73.4 MB, free: 40.4 GB)
+13/06/11 03:57:01 INFO BlockManagerMasterActor$BlockManagerInfo: Added rdd_3_1 in memory on ip-10-31-132-203.ec2.internal:34284 (size: 73.1 MB, free: 40.4 GB)
+13/06/11 03:57:01 INFO BlockManagerMasterActor$BlockManagerInfo: Added rdd_3_2 in memory on ip-10-171-8-42.ec2.internal:36534 (size: 73.1 MB, free: 40.4 GB)
+13/06/11 03:57:02 INFO BlockManagerMasterActor$BlockManagerInfo: Added rdd_3_3 in memory on ip-10-232-8-42.ec2.internal:48352 (size: 73.1 MB, free: 40.4 GB)
+13/06/11 03:59:11 INFO TaskSetManager: Finished TID 60 in 151591 ms (progress: 1/4)
+13/06/11 03:59:11 INFO DAGScheduler: Completed ShuffleMapTask(7, 3)
+13/06/11 03:59:11 INFO TaskSetManager: Finished TID 61 in 151597 ms (progress: 2/4)
+13/06/11 03:59:11 INFO DAGScheduler: Completed ShuffleMapTask(7, 1)
+13/06/11 03:59:12 INFO TaskSetManager: Finished TID 58 in 152317 ms (progress: 3/4)
+13/06/11 03:59:12 INFO DAGScheduler: Completed ShuffleMapTask(7, 0)
+13/06/11 03:59:12 INFO TaskSetManager: Finished TID 59 in 152561 ms (progress: 4/4)
+13/06/11 03:59:12 INFO DAGScheduler: Completed ShuffleMapTask(7, 2)
+13/06/11 03:59:12 INFO DAGScheduler: Stage 7 (reduceByKey at BALS.scala:127) finished in 453.814 s
+13/06/11 03:59:12 INFO DAGScheduler: looking for newly runnable stages
+13/06/11 03:59:12 INFO DAGScheduler: running: Set()
+13/06/11 03:59:12 INFO DAGScheduler: waiting: Set(Stage 6)
+13/06/11 03:59:12 INFO DAGScheduler: failed: Set()
+13/06/11 03:59:12 INFO DAGScheduler: Missing parents for Stage 6: List()
+13/06/11 03:59:12 INFO DAGScheduler: Submitting Stage 6 (MappedRDD[15] at map at BALS.scala:128), which is now runnable
+13/06/11 03:59:12 INFO DAGScheduler: Submitting 4 missing tasks from Stage 6 (MappedRDD[15] at map at BALS.scala:128)
+13/06/11 03:59:12 INFO ClusterScheduler: Adding task set 6.2 with 4 tasks
+13/06/11 03:59:12 INFO TaskSetManager: Starting task 6.2:0 as TID 62 on executor 9: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:59:12 INFO TaskSetManager: Serialized task 6.2:0 as 2414 bytes in 0 ms
+13/06/11 03:59:12 INFO TaskSetManager: Starting task 6.2:1 as TID 63 on executor 8: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 03:59:12 INFO TaskSetManager: Serialized task 6.2:1 as 2414 bytes in 0 ms
+13/06/11 03:59:12 INFO TaskSetManager: Starting task 6.2:2 as TID 64 on executor 10: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:59:12 INFO TaskSetManager: Serialized task 6.2:2 as 2414 bytes in 0 ms
+13/06/11 03:59:12 INFO TaskSetManager: Starting task 6.2:3 as TID 65 on executor 11: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:59:12 INFO TaskSetManager: Serialized task 6.2:3 as 2414 bytes in 0 ms
+13/06/11 03:59:12 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 1 to ip-10-232-39-5.ec2.internal
+13/06/11 03:59:12 INFO MapOutputTracker: Size of output statuses for shuffle 1 is 199 bytes
+13/06/11 03:59:12 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 1 to ip-10-171-8-42.ec2.internal
+13/06/11 03:59:12 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 1 to ip-10-31-132-203.ec2.internal
+13/06/11 03:59:12 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 1 to ip-10-232-8-42.ec2.internal
+13/06/11 03:59:18 INFO SparkDeploySchedulerBackend: Executor 8 disconnected, so removing it
+13/06/11 03:59:18 ERROR ClusterScheduler: Lost executor 8 on ip-10-171-8-42.ec2.internal: remote Akka client shutdown
+13/06/11 03:59:18 INFO TaskSetManager: Re-queueing tasks for 8 from TaskSet 6.2
+13/06/11 03:59:18 INFO TaskSetManager: Lost TID 63 (task 6.2:1)
+13/06/11 03:59:18 INFO DAGScheduler: Executor lost: 8 (generation 20)
+13/06/11 03:59:18 INFO TaskSetManager: Starting task 6.2:1 as TID 66 on executor 9: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:59:18 INFO BlockManagerMasterActor: Trying to remove executor 8 from BlockManagerMaster.
+13/06/11 03:59:18 INFO BlockManagerMaster: Removed 8 successfully in removeExecutor
+13/06/11 03:59:18 INFO TaskSetManager: Serialized task 6.2:1 as 2414 bytes in 0 ms
+13/06/11 03:59:18 INFO Stage: Stage 7 is now unavailable on executor 8 (3/4, false)
+13/06/11 03:59:19 INFO SparkDeploySchedulerBackend: Executor 9 disconnected, so removing it
+13/06/11 03:59:19 ERROR ClusterScheduler: Lost executor 9 on ip-10-232-39-5.ec2.internal: remote Akka client shutdown
+13/06/11 03:59:19 INFO TaskSetManager: Re-queueing tasks for 9 from TaskSet 6.2
+13/06/11 03:59:19 INFO TaskSetManager: Lost TID 62 (task 6.2:0)
+13/06/11 03:59:19 INFO TaskSetManager: Lost TID 66 (task 6.2:1)
+13/06/11 03:59:19 INFO DAGScheduler: Executor lost: 9 (generation 22)
+13/06/11 03:59:19 INFO BlockManagerMasterActor: Trying to remove executor 9 from BlockManagerMaster.
+13/06/11 03:59:19 INFO TaskSetManager: Starting task 6.2:1 as TID 67 on executor 10: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:59:19 INFO BlockManagerMaster: Removed 9 successfully in removeExecutor
+13/06/11 03:59:19 INFO TaskSetManager: Serialized task 6.2:1 as 2414 bytes in 0 ms
+13/06/11 03:59:19 INFO Stage: Stage 7 is now unavailable on executor 9 (2/4, false)
+13/06/11 03:59:19 INFO TaskSetManager: Starting task 6.2:0 as TID 68 on executor 11: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:59:19 INFO TaskSetManager: Serialized task 6.2:0 as 2414 bytes in 0 ms
+13/06/11 03:59:20 INFO Client$ClientActor: Executor updated: app-20130611034830-0002/8 is now FAILED (Command exited with code 1)
+13/06/11 03:59:20 INFO SparkDeploySchedulerBackend: Executor app-20130611034830-0002/8 removed: Command exited with code 1
+13/06/11 03:59:20 INFO Client$ClientActor: Executor added: app-20130611034830-0002/12 on worker-20130611024827-ip-10-171-8-42.ec2.internal-35983 (ip-10-171-8-42.ec2.internal) with 8 cores
+13/06/11 03:59:20 INFO SparkDeploySchedulerBackend: Granted executor ID app-20130611034830-0002/12 on host ip-10-171-8-42.ec2.internal with 8 cores, 40.0 GB RAM
+13/06/11 03:59:20 INFO TaskSetManager: Lost TID 65 (task 6.2:3)
+13/06/11 03:59:20 INFO TaskSetManager: Loss was due to fetch failure from BlockManagerId(8, ip-10-171-8-42.ec2.internal, 36534)
+13/06/11 03:59:20 INFO DAGScheduler: Marking Stage 6 (map at BALS.scala:128) for resubmision due to a fetch failure
+13/06/11 03:59:20 INFO DAGScheduler: The failed fetch was from Stage 7 (reduceByKey at BALS.scala:127); marking it for resubmission
+13/06/11 03:59:20 INFO Client$ClientActor: Executor updated: app-20130611034830-0002/12 is now RUNNING
+13/06/11 03:59:20 INFO DAGScheduler: Resubmitting failed stages
+13/06/11 03:59:20 INFO DAGScheduler: Submitting Stage 7 (MapPartitionsRDD[12] at reduceByKey at BALS.scala:127), which has no missing parents
+13/06/11 03:59:20 INFO DAGScheduler: Submitting 2 missing tasks from Stage 7 (MapPartitionsRDD[12] at reduceByKey at BALS.scala:127)
+13/06/11 03:59:20 INFO ClusterScheduler: Adding task set 7.3 with 2 tasks
+13/06/11 03:59:20 INFO TaskSetManager: Starting task 7.3:0 as TID 69 on executor 11: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:59:20 INFO TaskSetManager: Serialized task 7.3:0 as 2216 bytes in 0 ms
+13/06/11 03:59:20 INFO TaskSetManager: Starting task 7.3:1 as TID 70 on executor 11: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:59:20 INFO TaskSetManager: Serialized task 7.3:1 as 2216 bytes in 0 ms
+13/06/11 03:59:20 INFO ClusterScheduler: Ignoring update from TID 67 because its task set is gone
+13/06/11 03:59:20 INFO SparkDeploySchedulerBackend: Executor 10 disconnected, so removing it
+13/06/11 03:59:20 ERROR ClusterScheduler: Lost executor 10 on ip-10-232-8-42.ec2.internal: remote Akka client shutdown
+13/06/11 03:59:20 INFO TaskSetManager: Re-queueing tasks for 10 from TaskSet 7.3
+13/06/11 03:59:20 INFO DAGScheduler: Executor lost: 10 (generation 25)
+13/06/11 03:59:20 INFO BlockManagerMasterActor: Trying to remove executor 10 from BlockManagerMaster.
+13/06/11 03:59:20 INFO BlockManagerMaster: Removed 10 successfully in removeExecutor
+13/06/11 03:59:20 INFO Stage: Stage 7 is now unavailable on executor 10 (1/4, false)
+13/06/11 03:59:21 INFO ClusterScheduler: Ignoring update from TID 68 because its task set is gone
+13/06/11 03:59:21 INFO Client$ClientActor: Executor updated: app-20130611034830-0002/9 is now FAILED (Command exited with code 1)
+13/06/11 03:59:21 INFO SparkDeploySchedulerBackend: Executor app-20130611034830-0002/9 removed: Command exited with code 1
+13/06/11 03:59:21 INFO TaskSetManager: Lost TID 70 (task 7.3:1)
+13/06/11 03:59:21 INFO TaskSetManager: Loss was due to java.io.IOException: Filesystem closed
+	at org.apache.hadoop.hdfs.DFSClient.checkOpen(DFSClient.java:264)
+	at org.apache.hadoop.hdfs.DFSClient.access$1100(DFSClient.java:74)
+	at org.apache.hadoop.hdfs.DFSClient$DFSInputStream.read(DFSClient.java:2213)
+	at java.io.DataInputStream.read(DataInputStream.java:100)
+	at org.apache.hadoop.util.LineReader.readLine(LineReader.java:134)
+	at org.apache.hadoop.mapred.LineRecordReader.next(LineRecordReader.java:133)
+	at org.apache.hadoop.mapred.LineRecordReader.next(LineRecordReader.java:38)
+	at spark.rdd.HadoopRDD$$anon$1.hasNext(HadoopRDD.scala:84)
+	at scala.collection.Iterator$$anon$19.hasNext(Iterator.scala:400)
+	at scala.collection.Iterator$$anon$19.hasNext(Iterator.scala:400)
+	at scala.collection.Iterator$$anon$19.hasNext(Iterator.scala:400)
+	at scala.collection.Iterator$class.foreach(Iterator.scala:772)
+	at scala.collection.Iterator$$anon$19.foreach(Iterator.scala:399)
+	at scala.collection.generic.Growable$class.$plus$plus$eq(Growable.scala:48)
+	at scala.collection.mutable.ArrayBuffer.$plus$plus$eq(ArrayBuffer.scala:102)
+	at spark.CacheManager.getOrCompute(CacheManager.scala:53)
+	at spark.RDD.iterator(RDD.scala:193)
+	at spark.rdd.MappedRDD.compute(MappedRDD.scala:12)
+	at spark.RDD.computeOrReadCheckpoint(RDD.scala:206)
+	at spark.RDD.iterator(RDD.scala:195)
+	at spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:19)
+	at spark.RDD.computeOrReadCheckpoint(RDD.scala:206)
+	at spark.RDD.iterator(RDD.scala:195)
+	at spark.scheduler.ShuffleMapTask.run(ShuffleMapTask.scala:125)
+	at spark.scheduler.ShuffleMapTask.run(ShuffleMapTask.scala:74)
+	at spark.executor.Executor$TaskRunner.run(Executor.scala:101)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1146)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:679)
+13/06/11 03:59:21 INFO TaskSetManager: Starting task 7.3:1 as TID 71 on executor 11: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:59:21 INFO TaskSetManager: Serialized task 7.3:1 as 2216 bytes in 0 ms
+13/06/11 03:59:21 INFO TaskSetManager: Lost TID 69 (task 7.3:0)
+13/06/11 03:59:21 INFO TaskSetManager: Loss was due to java.io.IOException: Filesystem closed [duplicate 1]
+13/06/11 03:59:21 INFO TaskSetManager: Starting task 7.3:0 as TID 72 on executor 11: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:59:21 INFO TaskSetManager: Serialized task 7.3:0 as 2216 bytes in 1 ms
+13/06/11 03:59:23 INFO SparkDeploySchedulerBackend: Executor 11 disconnected, so removing it
+13/06/11 03:59:23 ERROR ClusterScheduler: Lost executor 11 on ip-10-31-132-203.ec2.internal: remote Akka client shutdown
+13/06/11 03:59:23 INFO TaskSetManager: Re-queueing tasks for 11 from TaskSet 7.3
+13/06/11 03:59:23 INFO TaskSetManager: Lost TID 72 (task 7.3:0)
+13/06/11 03:59:23 INFO TaskSetManager: Lost TID 71 (task 7.3:1)
+13/06/11 03:59:23 INFO DAGScheduler: Executor lost: 11 (generation 27)
+13/06/11 03:59:23 INFO BlockManagerMasterActor: Trying to remove executor 11 from BlockManagerMaster.
+13/06/11 03:59:23 INFO BlockManagerMaster: Removed 11 successfully in removeExecutor
+13/06/11 03:59:23 INFO Stage: Stage 7 is now unavailable on executor 11 (0/4, false)

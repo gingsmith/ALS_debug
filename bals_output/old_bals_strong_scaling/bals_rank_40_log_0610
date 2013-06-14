@@ -1,0 +1,1417 @@
+[0m[[0minfo[0m] [0mLoading project definition from /mnt/ALS_debug/project[0m
+[0m[[0minfo[0m] [0mSet current project to als_debug (in build file:/mnt/ALS_debug/)[0m
+[0m[[0minfo[0m] [0mRunning als_debug.Broadcast_ALS --master=spark://ec2-23-22-131-218.compute-1.amazonaws.com:7077 --jars=/mnt/ALS_debug/target/als_debug-assembly-1.0.jar --sparkhome=/root/spark --train=hdfs://ec2-23-22-131-218.compute-1.amazonaws.com:9000/data/netflix_randSplit1_data.txt --niter=10 --m=17770 --npslits=32 --n=480189 --rank=40[0m
+master:       spark://ec2-23-22-131-218.compute-1.amazonaws.com:7077
+train:        hdfs://ec2-23-22-131-218.compute-1.amazonaws.com:9000/data/netflix_randSplit1_data.txt
+test:         
+rank:         40
+lambda:       0.01
+niter:        10
+jar:          /mnt/ALS_debug/target/als_debug-assembly-1.0.jar
+sparkhome:    /root/spark
+nsplits:      4
+big:          false
+m:            17770
+n:            480189
+13/06/11 02:49:04 INFO Slf4jEventHandler: Slf4jEventHandler started
+13/06/11 02:49:05 INFO BlockManagerMaster: Registered BlockManagerMaster Actor
+13/06/11 02:49:05 INFO MemoryStore: MemoryStore started with capacity 18.8 GB.
+13/06/11 02:49:05 INFO DiskStore: Created local directory at /tmp/spark-local-20130611024905-fcef
+13/06/11 02:49:05 INFO ConnectionManager: Bound socket to port 36026 with id = ConnectionManagerId(ip-10-31-129-101.ec2.internal,36026)
+13/06/11 02:49:05 INFO BlockManagerMaster: Trying to register BlockManager
+13/06/11 02:49:05 INFO BlockManagerMaster: Registered BlockManager
+13/06/11 02:49:05 INFO HttpBroadcast: Broadcast server started at http://10.31.129.101:49129
+13/06/11 02:49:05 INFO MapOutputTracker: Registered MapOutputTrackerActor actor
+13/06/11 02:49:05 INFO HttpFileServer: HTTP File server directory is /tmp/spark-d851c13a-0ab1-4e68-af7d-7ca1f9d25ac3
+13/06/11 02:49:05 INFO IoWorker: IoWorker thread 'spray-io-worker-0' started
+13/06/11 02:49:05 INFO HttpServer: akka://spark/user/BlockManagerHTTPServer started on /0.0.0.0:35085
+13/06/11 02:49:05 INFO BlockManagerUI: Started BlockManager web UI at http://ip-10-31-129-101.ec2.internal:35085
+13/06/11 02:49:05 INFO SparkContext: Added JAR /mnt/ALS_debug/target/als_debug-assembly-1.0.jar at http://10.31.129.101:49858/jars/als_debug-assembly-1.0.jar with timestamp 1370918945845
+13/06/11 02:49:05 INFO Client$ClientActor: Connecting to master spark://ec2-23-22-131-218.compute-1.amazonaws.com:7077
+13/06/11 02:49:06 INFO SparkDeploySchedulerBackend: Connected to Spark cluster with app ID app-20130611024906-0000
+13/06/11 02:49:06 INFO Client$ClientActor: Executor added: app-20130611024906-0000/0 on worker-20130611024827-ip-10-232-39-5.ec2.internal-48669 (ip-10-232-39-5.ec2.internal) with 8 cores
+13/06/11 02:49:06 INFO SparkDeploySchedulerBackend: Granted executor ID app-20130611024906-0000/0 on host ip-10-232-39-5.ec2.internal with 8 cores, 40.0 GB RAM
+13/06/11 02:49:06 INFO Client$ClientActor: Executor added: app-20130611024906-0000/1 on worker-20130611024827-ip-10-171-8-42.ec2.internal-35983 (ip-10-171-8-42.ec2.internal) with 8 cores
+13/06/11 02:49:06 INFO SparkDeploySchedulerBackend: Granted executor ID app-20130611024906-0000/1 on host ip-10-171-8-42.ec2.internal with 8 cores, 40.0 GB RAM
+13/06/11 02:49:06 INFO Client$ClientActor: Executor added: app-20130611024906-0000/2 on worker-20130611024827-ip-10-31-132-203.ec2.internal-47309 (ip-10-31-132-203.ec2.internal) with 8 cores
+13/06/11 02:49:06 INFO SparkDeploySchedulerBackend: Granted executor ID app-20130611024906-0000/2 on host ip-10-31-132-203.ec2.internal with 8 cores, 40.0 GB RAM
+13/06/11 02:49:06 INFO Client$ClientActor: Executor added: app-20130611024906-0000/3 on worker-20130611024827-ip-10-232-8-42.ec2.internal-42081 (ip-10-232-8-42.ec2.internal) with 8 cores
+13/06/11 02:49:06 INFO SparkDeploySchedulerBackend: Granted executor ID app-20130611024906-0000/3 on host ip-10-232-8-42.ec2.internal with 8 cores, 40.0 GB RAM
+13/06/11 02:49:06 INFO MemoryStore: ensureFreeSpace(45937) called with curMem=0, maxMem=20157722787
+13/06/11 02:49:06 INFO MemoryStore: Block broadcast_0 stored as values to memory (estimated size 44.9 KB, free 18.8 GB)
+13/06/11 02:49:06 INFO Client$ClientActor: Executor updated: app-20130611024906-0000/1 is now RUNNING
+13/06/11 02:49:06 INFO Client$ClientActor: Executor updated: app-20130611024906-0000/2 is now RUNNING
+13/06/11 02:49:06 INFO Client$ClientActor: Executor updated: app-20130611024906-0000/3 is now RUNNING
+13/06/11 02:49:06 INFO Client$ClientActor: Executor updated: app-20130611024906-0000/0 is now RUNNING
+13/06/11 02:49:06 INFO KryoSerializer: Running user registrator: als_debug.CCDKryoRegistrator
+13/06/11 02:49:07 INFO MemoryStore: ensureFreeSpace(6966048) called with curMem=45937, maxMem=20157722787
+13/06/11 02:49:07 INFO MemoryStore: Block broadcast_1 stored as values to memory (estimated size 6.6 MB, free 18.8 GB)
+13/06/11 02:49:07 INFO MemoryStore: ensureFreeSpace(188234296) called with curMem=7011985, maxMem=20157722787
+13/06/11 02:49:07 INFO MemoryStore: Block broadcast_2 stored as values to memory (estimated size 179.5 MB, free 18.6 GB)
+13/06/11 02:49:07 INFO SparkDeploySchedulerBackend: Registered executor: Actor[akka://sparkExecutor@ip-10-171-8-42.ec2.internal:47439/user/Executor] with ID 1
+13/06/11 02:49:07 INFO SparkDeploySchedulerBackend: Registered executor: Actor[akka://sparkExecutor@ip-10-31-132-203.ec2.internal:41432/user/Executor] with ID 2
+13/06/11 02:49:07 INFO SparkDeploySchedulerBackend: Registered executor: Actor[akka://sparkExecutor@ip-10-232-39-5.ec2.internal:33949/user/Executor] with ID 0
+13/06/11 02:49:07 INFO SparkDeploySchedulerBackend: Registered executor: Actor[akka://sparkExecutor@ip-10-232-8-42.ec2.internal:60752/user/Executor] with ID 3
+13/06/11 02:49:08 INFO BlockManagerMasterActor$BlockManagerInfo: Registering block manager ip-10-171-8-42.ec2.internal:37812 with 40.4 GB RAM
+13/06/11 02:49:08 INFO BlockManagerMasterActor$BlockManagerInfo: Registering block manager ip-10-31-132-203.ec2.internal:51083 with 40.4 GB RAM
+13/06/11 02:49:08 INFO BlockManagerMasterActor$BlockManagerInfo: Registering block manager ip-10-232-8-42.ec2.internal:42667 with 40.4 GB RAM
+13/06/11 02:49:08 INFO BlockManagerMasterActor$BlockManagerInfo: Registering block manager ip-10-232-39-5.ec2.internal:42145 with 40.4 GB RAM
+=================================
+W_b SIZE is: 17770
+13/06/11 02:49:09 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+13/06/11 02:49:09 WARN LoadSnappy: Snappy native library not loaded
+13/06/11 02:49:10 INFO FileInputFormat: Total input paths to process : 1
+13/06/11 02:49:10 INFO NetworkTopology: Adding a new node: /default-rack/10.171.8.42:50010
+13/06/11 02:49:10 INFO NetworkTopology: Adding a new node: /default-rack/10.31.132.203:50010
+13/06/11 02:49:10 INFO NetworkTopology: Adding a new node: /default-rack/10.232.39.5:50010
+13/06/11 02:49:10 INFO SparkContext: Starting job: reduce at BALS.scala:102
+13/06/11 02:49:10 INFO DAGScheduler: Got job 0 (reduce at BALS.scala:102) with 4 output partitions (allowLocal=false)
+13/06/11 02:49:10 INFO DAGScheduler: Final stage: Stage 0 (map at BALS.scala:102)
+13/06/11 02:49:10 INFO DAGScheduler: Parents of final stage: List()
+13/06/11 02:49:10 INFO DAGScheduler: Missing parents: List()
+13/06/11 02:49:10 INFO DAGScheduler: Submitting Stage 0 (MappedRDD[4] at map at BALS.scala:102), which has no missing parents
+13/06/11 02:49:10 INFO DAGScheduler: Submitting 4 missing tasks from Stage 0 (MappedRDD[4] at map at BALS.scala:102)
+13/06/11 02:49:10 INFO ClusterScheduler: Adding task set 0.0 with 4 tasks
+13/06/11 02:49:10 INFO TaskSetManager: Starting task 0.0:0 as TID 0 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 02:49:10 INFO TaskSetManager: Serialized task 0.0:0 as 1744 bytes in 37 ms
+13/06/11 02:49:10 INFO TaskSetManager: Starting task 0.0:2 as TID 1 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 02:49:10 INFO TaskSetManager: Serialized task 0.0:2 as 1744 bytes in 0 ms
+13/06/11 02:49:10 INFO TaskSetManager: Starting task 0.0:3 as TID 2 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 02:49:10 INFO TaskSetManager: Serialized task 0.0:3 as 1744 bytes in 0 ms
+13/06/11 02:49:10 INFO TaskSetManager: Starting task 0.0:1 as TID 3 on executor 2: ip-10-31-132-203.ec2.internal (non-preferred, not one of 10.171.8.42, 10.31.132.203, 10.232.39.5)
+13/06/11 02:49:10 INFO TaskSetManager: Serialized task 0.0:1 as 1744 bytes in 0 ms
+13/06/11 02:49:31 INFO BlockManagerMasterActor$BlockManagerInfo: Added rdd_3_2 in memory on ip-10-171-8-42.ec2.internal:37812 (size: 73.1 MB, free: 40.4 GB)
+13/06/11 02:49:31 INFO BlockManagerMasterActor$BlockManagerInfo: Added rdd_3_3 in memory on ip-10-232-8-42.ec2.internal:42667 (size: 73.1 MB, free: 40.4 GB)
+13/06/11 02:49:31 INFO BlockManagerMasterActor$BlockManagerInfo: Added rdd_3_1 in memory on ip-10-31-132-203.ec2.internal:51083 (size: 73.1 MB, free: 40.4 GB)
+13/06/11 02:49:31 INFO TaskSetManager: Finished TID 1 in 21493 ms (progress: 1/4)
+13/06/11 02:49:31 INFO DAGScheduler: Completed ResultTask(0, 2)
+13/06/11 02:49:31 INFO BlockManagerMasterActor$BlockManagerInfo: Added rdd_3_0 in memory on ip-10-232-39-5.ec2.internal:42145 (size: 73.4 MB, free: 40.4 GB)
+13/06/11 02:49:32 INFO TaskSetManager: Finished TID 2 in 21795 ms (progress: 2/4)
+13/06/11 02:49:32 INFO DAGScheduler: Completed ResultTask(0, 3)
+13/06/11 02:49:32 INFO TaskSetManager: Finished TID 3 in 21975 ms (progress: 3/4)
+13/06/11 02:49:32 INFO DAGScheduler: Completed ResultTask(0, 1)
+13/06/11 02:49:32 INFO TaskSetManager: Finished TID 0 in 22158 ms (progress: 4/4)
+13/06/11 02:49:32 INFO DAGScheduler: Completed ResultTask(0, 0)
+13/06/11 02:49:32 INFO DAGScheduler: Stage 0 (map at BALS.scala:102) finished in 22.160 s
+13/06/11 02:49:32 INFO SparkContext: Job finished: reduce at BALS.scala:102, took 22.197298109 s
+MAX ROW: 17769
+13/06/11 02:49:32 INFO SparkContext: Starting job: reduce at BALS.scala:103
+13/06/11 02:49:32 INFO DAGScheduler: Got job 1 (reduce at BALS.scala:103) with 4 output partitions (allowLocal=false)
+13/06/11 02:49:32 INFO DAGScheduler: Final stage: Stage 1 (map at BALS.scala:103)
+13/06/11 02:49:32 INFO DAGScheduler: Parents of final stage: List()
+13/06/11 02:49:32 INFO DAGScheduler: Missing parents: List()
+13/06/11 02:49:32 INFO DAGScheduler: Submitting Stage 1 (MappedRDD[5] at map at BALS.scala:103), which has no missing parents
+13/06/11 02:49:32 INFO DAGScheduler: Submitting 4 missing tasks from Stage 1 (MappedRDD[5] at map at BALS.scala:103)
+13/06/11 02:49:32 INFO ClusterScheduler: Adding task set 1.0 with 4 tasks
+13/06/11 02:49:32 INFO TaskSetManager: Starting task 1.0:0 as TID 4 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 02:49:32 INFO TaskSetManager: Serialized task 1.0:0 as 1747 bytes in 4 ms
+13/06/11 02:49:32 INFO TaskSetManager: Starting task 1.0:2 as TID 5 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 02:49:32 INFO TaskSetManager: Serialized task 1.0:2 as 1747 bytes in 0 ms
+13/06/11 02:49:32 INFO TaskSetManager: Starting task 1.0:3 as TID 6 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 02:49:32 INFO TaskSetManager: Serialized task 1.0:3 as 1747 bytes in 0 ms
+13/06/11 02:49:32 INFO TaskSetManager: Starting task 1.0:1 as TID 7 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 02:49:32 INFO TaskSetManager: Serialized task 1.0:1 as 1747 bytes in 0 ms
+13/06/11 02:49:34 INFO TaskSetManager: Finished TID 6 in 1808 ms (progress: 1/4)
+13/06/11 02:49:34 INFO DAGScheduler: Completed ResultTask(1, 3)
+13/06/11 02:49:34 INFO TaskSetManager: Finished TID 7 in 1817 ms (progress: 2/4)
+13/06/11 02:49:34 INFO DAGScheduler: Completed ResultTask(1, 1)
+13/06/11 02:49:34 INFO TaskSetManager: Finished TID 5 in 1824 ms (progress: 3/4)
+13/06/11 02:49:34 INFO DAGScheduler: Completed ResultTask(1, 2)
+13/06/11 02:49:34 INFO TaskSetManager: Finished TID 4 in 1864 ms (progress: 4/4)
+13/06/11 02:49:34 INFO DAGScheduler: Completed ResultTask(1, 0)
+13/06/11 02:49:34 INFO DAGScheduler: Stage 1 (map at BALS.scala:103) finished in 1.865 s
+13/06/11 02:49:34 INFO SparkContext: Job finished: reduce at BALS.scala:103, took 1.868880501 s
+MAX COL: 84382
+13/06/11 02:49:34 INFO SparkContext: Starting job: count at BALS.scala:104
+13/06/11 02:49:34 INFO DAGScheduler: Got job 2 (count at BALS.scala:104) with 4 output partitions (allowLocal=false)
+13/06/11 02:49:34 INFO DAGScheduler: Final stage: Stage 2 (map at BALS.scala:70)
+13/06/11 02:49:34 INFO DAGScheduler: Parents of final stage: List()
+13/06/11 02:49:34 INFO DAGScheduler: Missing parents: List()
+13/06/11 02:49:34 INFO DAGScheduler: Submitting Stage 2 (MappedRDD[3] at map at BALS.scala:70), which has no missing parents
+13/06/11 02:49:34 INFO DAGScheduler: Submitting 4 missing tasks from Stage 2 (MappedRDD[3] at map at BALS.scala:70)
+13/06/11 02:49:34 INFO ClusterScheduler: Adding task set 2.0 with 4 tasks
+13/06/11 02:49:34 INFO TaskSetManager: Starting task 2.0:0 as TID 8 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 02:49:34 INFO TaskSetManager: Serialized task 2.0:0 as 1702 bytes in 3 ms
+13/06/11 02:49:34 INFO TaskSetManager: Starting task 2.0:2 as TID 9 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 02:49:34 INFO TaskSetManager: Serialized task 2.0:2 as 1702 bytes in 0 ms
+13/06/11 02:49:34 INFO TaskSetManager: Starting task 2.0:3 as TID 10 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 02:49:34 INFO TaskSetManager: Serialized task 2.0:3 as 1702 bytes in 0 ms
+13/06/11 02:49:34 INFO TaskSetManager: Starting task 2.0:1 as TID 11 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 02:49:34 INFO TaskSetManager: Serialized task 2.0:1 as 1702 bytes in 0 ms
+13/06/11 02:49:35 INFO TaskSetManager: Finished TID 9 in 1413 ms (progress: 1/4)
+13/06/11 02:49:35 INFO DAGScheduler: Completed ResultTask(2, 2)
+13/06/11 02:49:35 INFO TaskSetManager: Finished TID 11 in 1414 ms (progress: 2/4)
+13/06/11 02:49:35 INFO DAGScheduler: Completed ResultTask(2, 1)
+13/06/11 02:49:35 INFO TaskSetManager: Finished TID 10 in 1417 ms (progress: 3/4)
+13/06/11 02:49:35 INFO DAGScheduler: Completed ResultTask(2, 3)
+13/06/11 02:49:35 INFO TaskSetManager: Finished TID 8 in 1501 ms (progress: 4/4)
+13/06/11 02:49:35 INFO DAGScheduler: Completed ResultTask(2, 0)
+13/06/11 02:49:35 INFO DAGScheduler: Stage 2 (map at BALS.scala:70) finished in 1.502 s
+13/06/11 02:49:35 INFO SparkContext: Job finished: count at BALS.scala:104, took 1.503955526 s
+NNZ : 17600139
+13/06/11 02:49:35 INFO SparkContext: Starting job: count at BALS.scala:105
+13/06/11 02:49:35 INFO DAGScheduler: Got job 3 (count at BALS.scala:105) with 4 output partitions (allowLocal=false)
+13/06/11 02:49:35 INFO DAGScheduler: Final stage: Stage 3 (map at BALS.scala:70)
+13/06/11 02:49:35 INFO DAGScheduler: Parents of final stage: List()
+13/06/11 02:49:35 INFO DAGScheduler: Missing parents: List()
+13/06/11 02:49:35 INFO DAGScheduler: Submitting Stage 3 (MappedRDD[3] at map at BALS.scala:70), which has no missing parents
+13/06/11 02:49:35 INFO DAGScheduler: Submitting 4 missing tasks from Stage 3 (MappedRDD[3] at map at BALS.scala:70)
+13/06/11 02:49:35 INFO ClusterScheduler: Adding task set 3.0 with 4 tasks
+13/06/11 02:49:35 INFO TaskSetManager: Starting task 3.0:0 as TID 12 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 02:49:35 INFO TaskSetManager: Serialized task 3.0:0 as 1702 bytes in 2 ms
+13/06/11 02:49:35 INFO TaskSetManager: Starting task 3.0:2 as TID 13 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 02:49:35 INFO TaskSetManager: Serialized task 3.0:2 as 1702 bytes in 0 ms
+13/06/11 02:49:35 INFO TaskSetManager: Starting task 3.0:3 as TID 14 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 02:49:35 INFO TaskSetManager: Serialized task 3.0:3 as 1702 bytes in 0 ms
+13/06/11 02:49:35 INFO TaskSetManager: Starting task 3.0:1 as TID 15 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 02:49:35 INFO TaskSetManager: Serialized task 3.0:1 as 1702 bytes in 0 ms
+13/06/11 02:49:37 INFO TaskSetManager: Finished TID 13 in 1415 ms (progress: 1/4)
+13/06/11 02:49:37 INFO DAGScheduler: Completed ResultTask(3, 2)
+13/06/11 02:49:37 INFO TaskSetManager: Finished TID 14 in 1426 ms (progress: 2/4)
+13/06/11 02:49:37 INFO DAGScheduler: Completed ResultTask(3, 3)
+13/06/11 02:49:37 INFO TaskSetManager: Finished TID 15 in 1448 ms (progress: 3/4)
+13/06/11 02:49:37 INFO DAGScheduler: Completed ResultTask(3, 1)
+13/06/11 02:49:37 INFO TaskSetManager: Finished TID 12 in 1513 ms (progress: 4/4)
+13/06/11 02:49:37 INFO DAGScheduler: Completed ResultTask(3, 0)
+13/06/11 02:49:37 INFO DAGScheduler: Stage 3 (map at BALS.scala:70) finished in 1.513 s
+13/06/11 02:49:37 INFO SparkContext: Job finished: count at BALS.scala:105, took 1.516003045 s
+Iteration: 0
+13/06/11 02:49:37 INFO SparkContext: Starting job: collect at BALS.scala:117
+13/06/11 02:49:37 INFO DAGScheduler: Registering RDD 7 (reduceByKey at BALS.scala:116)
+13/06/11 02:49:37 INFO DAGScheduler: Got job 4 (collect at BALS.scala:117) with 4 output partitions (allowLocal=false)
+13/06/11 02:49:37 INFO DAGScheduler: Final stage: Stage 4 (map at BALS.scala:117)
+13/06/11 02:49:37 INFO DAGScheduler: Parents of final stage: List(Stage 5)
+13/06/11 02:49:37 INFO DAGScheduler: Missing parents: List(Stage 5)
+13/06/11 02:49:37 INFO DAGScheduler: Submitting Stage 5 (MapPartitionsRDD[7] at reduceByKey at BALS.scala:116), which has no missing parents
+13/06/11 02:49:37 INFO DAGScheduler: Submitting 4 missing tasks from Stage 5 (MapPartitionsRDD[7] at reduceByKey at BALS.scala:116)
+13/06/11 02:49:37 INFO ClusterScheduler: Adding task set 5.0 with 4 tasks
+13/06/11 02:49:37 INFO TaskSetManager: Starting task 5.0:0 as TID 16 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 02:49:37 INFO TaskSetManager: Serialized task 5.0:0 as 2214 bytes in 18 ms
+13/06/11 02:49:37 INFO TaskSetManager: Starting task 5.0:2 as TID 17 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 02:49:37 INFO TaskSetManager: Serialized task 5.0:2 as 2214 bytes in 0 ms
+13/06/11 02:49:37 INFO TaskSetManager: Starting task 5.0:3 as TID 18 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 02:49:37 INFO TaskSetManager: Serialized task 5.0:3 as 2214 bytes in 0 ms
+13/06/11 02:49:37 INFO TaskSetManager: Starting task 5.0:1 as TID 19 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 02:49:37 INFO TaskSetManager: Serialized task 5.0:1 as 2214 bytes in 0 ms
+13/06/11 02:50:58 INFO TaskSetManager: Finished TID 19 in 81032 ms (progress: 1/4)
+13/06/11 02:50:58 INFO DAGScheduler: Completed ShuffleMapTask(5, 1)
+13/06/11 02:50:58 INFO TaskSetManager: Finished TID 18 in 81197 ms (progress: 2/4)
+13/06/11 02:50:58 INFO DAGScheduler: Completed ShuffleMapTask(5, 3)
+13/06/11 02:51:00 INFO TaskSetManager: Finished TID 17 in 83197 ms (progress: 3/4)
+13/06/11 02:51:00 INFO DAGScheduler: Completed ShuffleMapTask(5, 2)
+13/06/11 02:51:02 INFO TaskSetManager: Finished TID 16 in 85309 ms (progress: 4/4)
+13/06/11 02:51:02 INFO DAGScheduler: Completed ShuffleMapTask(5, 0)
+13/06/11 02:51:02 INFO DAGScheduler: Stage 5 (reduceByKey at BALS.scala:116) finished in 85.310 s
+13/06/11 02:51:02 INFO DAGScheduler: looking for newly runnable stages
+13/06/11 02:51:02 INFO DAGScheduler: running: Set()
+13/06/11 02:51:02 INFO DAGScheduler: waiting: Set(Stage 4)
+13/06/11 02:51:02 INFO DAGScheduler: failed: Set()
+13/06/11 02:51:02 INFO DAGScheduler: Missing parents for Stage 4: List()
+13/06/11 02:51:02 INFO DAGScheduler: Submitting Stage 4 (MappedRDD[10] at map at BALS.scala:117), which is now runnable
+13/06/11 02:51:02 INFO DAGScheduler: Submitting 4 missing tasks from Stage 4 (MappedRDD[10] at map at BALS.scala:117)
+13/06/11 02:51:02 INFO ClusterScheduler: Adding task set 4.0 with 4 tasks
+13/06/11 02:51:02 INFO TaskSetManager: Starting task 4.0:0 as TID 20 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 02:51:02 INFO TaskSetManager: Serialized task 4.0:0 as 2335 bytes in 8 ms
+13/06/11 02:51:02 INFO TaskSetManager: Starting task 4.0:1 as TID 21 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 02:51:02 INFO TaskSetManager: Serialized task 4.0:1 as 2335 bytes in 0 ms
+13/06/11 02:51:02 INFO TaskSetManager: Starting task 4.0:2 as TID 22 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 02:51:02 INFO TaskSetManager: Serialized task 4.0:2 as 2335 bytes in 0 ms
+13/06/11 02:51:02 INFO TaskSetManager: Starting task 4.0:3 as TID 23 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 02:51:02 INFO TaskSetManager: Serialized task 4.0:3 as 2335 bytes in 0 ms
+13/06/11 02:51:02 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 0 to ip-10-232-39-5.ec2.internal
+13/06/11 02:51:02 INFO MapOutputTracker: Size of output statuses for shuffle 0 is 195 bytes
+13/06/11 02:51:02 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 0 to ip-10-171-8-42.ec2.internal
+13/06/11 02:51:02 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 0 to ip-10-232-8-42.ec2.internal
+13/06/11 02:51:02 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 0 to ip-10-31-132-203.ec2.internal
+13/06/11 02:51:04 INFO TaskSetManager: Finished TID 22 in 1807 ms (progress: 1/4)
+13/06/11 02:51:04 INFO DAGScheduler: Completed ResultTask(4, 2)
+13/06/11 02:51:04 INFO TaskSetManager: Finished TID 20 in 1965 ms (progress: 2/4)
+13/06/11 02:51:04 INFO DAGScheduler: Completed ResultTask(4, 0)
+13/06/11 02:51:04 INFO TaskSetManager: Finished TID 23 in 2010 ms (progress: 3/4)
+13/06/11 02:51:04 INFO DAGScheduler: Completed ResultTask(4, 3)
+13/06/11 02:51:04 INFO TaskSetManager: Finished TID 21 in 2031 ms (progress: 4/4)
+13/06/11 02:51:04 INFO DAGScheduler: Completed ResultTask(4, 1)
+13/06/11 02:51:04 INFO DAGScheduler: Stage 4 (map at BALS.scala:117) finished in 2.061 s
+13/06/11 02:51:04 INFO SparkContext: Job finished: collect at BALS.scala:117, took 87.391945763 s
+13/06/11 02:51:04 INFO MemoryStore: ensureFreeSpace(6966048) called with curMem=195246281, maxMem=20157722787
+13/06/11 02:51:04 INFO MemoryStore: Block broadcast_3 stored as values to memory (estimated size 6.6 MB, free 18.6 GB)
+13/06/11 02:51:04 INFO SparkContext: Starting job: collect at BALS.scala:128
+13/06/11 02:51:04 INFO DAGScheduler: Registering RDD 12 (reduceByKey at BALS.scala:127)
+13/06/11 02:51:04 INFO DAGScheduler: Got job 5 (collect at BALS.scala:128) with 4 output partitions (allowLocal=false)
+13/06/11 02:51:04 INFO DAGScheduler: Final stage: Stage 6 (map at BALS.scala:128)
+13/06/11 02:51:04 INFO DAGScheduler: Parents of final stage: List(Stage 7)
+13/06/11 02:51:04 INFO DAGScheduler: Missing parents: List(Stage 7)
+13/06/11 02:51:04 INFO DAGScheduler: Submitting Stage 7 (MapPartitionsRDD[12] at reduceByKey at BALS.scala:127), which has no missing parents
+13/06/11 02:51:04 INFO DAGScheduler: Submitting 4 missing tasks from Stage 7 (MapPartitionsRDD[12] at reduceByKey at BALS.scala:127)
+13/06/11 02:51:04 INFO ClusterScheduler: Adding task set 7.0 with 4 tasks
+13/06/11 02:51:04 INFO TaskSetManager: Starting task 7.0:0 as TID 24 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 02:51:04 INFO TaskSetManager: Serialized task 7.0:0 as 2216 bytes in 4 ms
+13/06/11 02:51:04 INFO TaskSetManager: Starting task 7.0:2 as TID 25 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 02:51:04 INFO TaskSetManager: Serialized task 7.0:2 as 2216 bytes in 0 ms
+13/06/11 02:51:04 INFO TaskSetManager: Starting task 7.0:3 as TID 26 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 02:51:04 INFO TaskSetManager: Serialized task 7.0:3 as 2216 bytes in 1 ms
+13/06/11 02:51:04 INFO TaskSetManager: Starting task 7.0:1 as TID 27 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 02:51:04 INFO TaskSetManager: Serialized task 7.0:1 as 2216 bytes in 0 ms
+13/06/11 02:52:08 INFO TaskSetManager: Finished TID 27 in 63712 ms (progress: 1/4)
+13/06/11 02:52:08 INFO DAGScheduler: Completed ShuffleMapTask(7, 1)
+13/06/11 02:52:08 INFO TaskSetManager: Finished TID 26 in 63958 ms (progress: 2/4)
+13/06/11 02:52:08 INFO DAGScheduler: Completed ShuffleMapTask(7, 3)
+13/06/11 02:52:10 INFO TaskSetManager: Finished TID 25 in 65195 ms (progress: 3/4)
+13/06/11 02:52:10 INFO DAGScheduler: Completed ShuffleMapTask(7, 2)
+13/06/11 02:52:11 INFO TaskSetManager: Finished TID 24 in 67105 ms (progress: 4/4)
+13/06/11 02:52:11 INFO DAGScheduler: Completed ShuffleMapTask(7, 0)
+13/06/11 02:52:11 INFO DAGScheduler: Stage 7 (reduceByKey at BALS.scala:127) finished in 67.107 s
+13/06/11 02:52:11 INFO DAGScheduler: looking for newly runnable stages
+13/06/11 02:52:11 INFO DAGScheduler: running: Set()
+13/06/11 02:52:11 INFO DAGScheduler: waiting: Set(Stage 6)
+13/06/11 02:52:11 INFO DAGScheduler: failed: Set()
+13/06/11 02:52:11 INFO DAGScheduler: Missing parents for Stage 6: List()
+13/06/11 02:52:11 INFO DAGScheduler: Submitting Stage 6 (MappedRDD[15] at map at BALS.scala:128), which is now runnable
+13/06/11 02:52:11 INFO DAGScheduler: Submitting 4 missing tasks from Stage 6 (MappedRDD[15] at map at BALS.scala:128)
+13/06/11 02:52:11 INFO ClusterScheduler: Adding task set 6.0 with 4 tasks
+13/06/11 02:52:11 INFO TaskSetManager: Starting task 6.0:0 as TID 28 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 02:52:11 INFO TaskSetManager: Serialized task 6.0:0 as 2336 bytes in 5 ms
+13/06/11 02:52:11 INFO TaskSetManager: Starting task 6.0:1 as TID 29 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 02:52:11 INFO TaskSetManager: Serialized task 6.0:1 as 2336 bytes in 0 ms
+13/06/11 02:52:11 INFO TaskSetManager: Starting task 6.0:2 as TID 30 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 02:52:11 INFO TaskSetManager: Serialized task 6.0:2 as 2336 bytes in 0 ms
+13/06/11 02:52:11 INFO TaskSetManager: Starting task 6.0:3 as TID 31 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 02:52:11 INFO TaskSetManager: Serialized task 6.0:3 as 2336 bytes in 0 ms
+13/06/11 02:52:11 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 1 to ip-10-232-39-5.ec2.internal
+13/06/11 02:52:11 INFO MapOutputTracker: Size of output statuses for shuffle 1 is 195 bytes
+13/06/11 02:52:11 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 1 to ip-10-171-8-42.ec2.internal
+13/06/11 02:52:11 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 1 to ip-10-232-8-42.ec2.internal
+13/06/11 02:52:11 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 1 to ip-10-31-132-203.ec2.internal
+13/06/11 02:52:14 INFO TaskSetManager: Finished TID 31 in 2313 ms (progress: 1/4)
+13/06/11 02:52:14 INFO DAGScheduler: Completed ResultTask(6, 3)
+13/06/11 02:52:14 INFO TaskSetManager: Finished TID 30 in 2605 ms (progress: 2/4)
+13/06/11 02:52:14 INFO DAGScheduler: Completed ResultTask(6, 2)
+13/06/11 02:52:14 INFO TaskSetManager: Finished TID 29 in 2702 ms (progress: 3/4)
+13/06/11 02:52:14 INFO DAGScheduler: Completed ResultTask(6, 1)
+13/06/11 02:52:14 INFO TaskSetManager: Finished TID 28 in 2979 ms (progress: 4/4)
+13/06/11 02:52:14 INFO DAGScheduler: Completed ResultTask(6, 0)
+13/06/11 02:52:14 INFO DAGScheduler: Stage 6 (map at BALS.scala:128) finished in 3.007 s
+13/06/11 02:52:14 INFO SparkContext: Job finished: collect at BALS.scala:128, took 70.122525601 s
+13/06/11 02:52:14 INFO MemoryStore: ensureFreeSpace(188234296) called with curMem=202212329, maxMem=20157722787
+13/06/11 02:52:14 INFO MemoryStore: Block broadcast_4 stored as values to memory (estimated size 179.5 MB, free 18.4 GB)
+Runtime: 160293
+Iteration: 1
+13/06/11 02:52:17 INFO SparkContext: Starting job: collect at BALS.scala:117
+13/06/11 02:52:17 INFO DAGScheduler: Registering RDD 17 (reduceByKey at BALS.scala:116)
+13/06/11 02:52:17 INFO DAGScheduler: Got job 6 (collect at BALS.scala:117) with 4 output partitions (allowLocal=false)
+13/06/11 02:52:17 INFO DAGScheduler: Final stage: Stage 8 (map at BALS.scala:117)
+13/06/11 02:52:17 INFO DAGScheduler: Parents of final stage: List(Stage 9)
+13/06/11 02:52:17 INFO DAGScheduler: Missing parents: List(Stage 9)
+13/06/11 02:52:17 INFO DAGScheduler: Submitting Stage 9 (MapPartitionsRDD[17] at reduceByKey at BALS.scala:116), which has no missing parents
+13/06/11 02:52:17 INFO DAGScheduler: Submitting 4 missing tasks from Stage 9 (MapPartitionsRDD[17] at reduceByKey at BALS.scala:116)
+13/06/11 02:52:17 INFO ClusterScheduler: Adding task set 9.0 with 4 tasks
+13/06/11 02:52:17 INFO TaskSetManager: Starting task 9.0:0 as TID 32 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 02:52:17 INFO TaskSetManager: Serialized task 9.0:0 as 2214 bytes in 3 ms
+13/06/11 02:52:17 INFO TaskSetManager: Starting task 9.0:2 as TID 33 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 02:52:17 INFO TaskSetManager: Serialized task 9.0:2 as 2214 bytes in 0 ms
+13/06/11 02:52:17 INFO TaskSetManager: Starting task 9.0:3 as TID 34 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 02:52:17 INFO TaskSetManager: Serialized task 9.0:3 as 2214 bytes in 0 ms
+13/06/11 02:52:17 INFO TaskSetManager: Starting task 9.0:1 as TID 35 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 02:52:17 INFO TaskSetManager: Serialized task 9.0:1 as 2214 bytes in 0 ms
+13/06/11 02:53:28 INFO TaskSetManager: Finished TID 34 in 71125 ms (progress: 1/4)
+13/06/11 02:53:28 INFO DAGScheduler: Completed ShuffleMapTask(9, 3)
+13/06/11 02:53:29 INFO TaskSetManager: Finished TID 35 in 71636 ms (progress: 2/4)
+13/06/11 02:53:29 INFO DAGScheduler: Completed ShuffleMapTask(9, 1)
+13/06/11 02:53:29 INFO TaskSetManager: Finished TID 33 in 71979 ms (progress: 3/4)
+13/06/11 02:53:29 INFO DAGScheduler: Completed ShuffleMapTask(9, 2)
+13/06/11 02:53:32 INFO TaskSetManager: Finished TID 32 in 74450 ms (progress: 4/4)
+13/06/11 02:53:32 INFO DAGScheduler: Completed ShuffleMapTask(9, 0)
+13/06/11 02:53:32 INFO DAGScheduler: Stage 9 (reduceByKey at BALS.scala:116) finished in 74.451 s
+13/06/11 02:53:32 INFO DAGScheduler: looking for newly runnable stages
+13/06/11 02:53:32 INFO DAGScheduler: running: Set()
+13/06/11 02:53:32 INFO DAGScheduler: waiting: Set(Stage 8)
+13/06/11 02:53:32 INFO DAGScheduler: failed: Set()
+13/06/11 02:53:32 INFO DAGScheduler: Missing parents for Stage 8: List()
+13/06/11 02:53:32 INFO DAGScheduler: Submitting Stage 8 (MappedRDD[20] at map at BALS.scala:117), which is now runnable
+13/06/11 02:53:32 INFO DAGScheduler: Submitting 4 missing tasks from Stage 8 (MappedRDD[20] at map at BALS.scala:117)
+13/06/11 02:53:32 INFO ClusterScheduler: Adding task set 8.0 with 4 tasks
+13/06/11 02:53:32 INFO TaskSetManager: Starting task 8.0:0 as TID 36 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 02:53:32 INFO TaskSetManager: Serialized task 8.0:0 as 2335 bytes in 4 ms
+13/06/11 02:53:32 INFO TaskSetManager: Starting task 8.0:1 as TID 37 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 02:53:32 INFO TaskSetManager: Serialized task 8.0:1 as 2335 bytes in 0 ms
+13/06/11 02:53:32 INFO TaskSetManager: Starting task 8.0:2 as TID 38 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 02:53:32 INFO TaskSetManager: Serialized task 8.0:2 as 2335 bytes in 0 ms
+13/06/11 02:53:32 INFO TaskSetManager: Starting task 8.0:3 as TID 39 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 02:53:32 INFO TaskSetManager: Serialized task 8.0:3 as 2335 bytes in 0 ms
+13/06/11 02:53:32 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 2 to ip-10-171-8-42.ec2.internal
+13/06/11 02:53:32 INFO MapOutputTracker: Size of output statuses for shuffle 2 is 195 bytes
+13/06/11 02:53:32 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 2 to ip-10-232-39-5.ec2.internal
+13/06/11 02:53:32 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 2 to ip-10-31-132-203.ec2.internal
+13/06/11 02:53:32 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 2 to ip-10-232-8-42.ec2.internal
+13/06/11 02:53:33 INFO TaskSetManager: Finished TID 38 in 1410 ms (progress: 1/4)
+13/06/11 02:53:33 INFO DAGScheduler: Completed ResultTask(8, 2)
+13/06/11 02:53:33 INFO TaskSetManager: Finished TID 39 in 1427 ms (progress: 2/4)
+13/06/11 02:53:33 INFO DAGScheduler: Completed ResultTask(8, 3)
+13/06/11 02:53:33 INFO TaskSetManager: Finished TID 37 in 1460 ms (progress: 3/4)
+13/06/11 02:53:33 INFO DAGScheduler: Completed ResultTask(8, 1)
+13/06/11 02:53:33 INFO TaskSetManager: Finished TID 36 in 1518 ms (progress: 4/4)
+13/06/11 02:53:33 INFO DAGScheduler: Completed ResultTask(8, 0)
+13/06/11 02:53:33 INFO DAGScheduler: Stage 8 (map at BALS.scala:117) finished in 1.525 s
+13/06/11 02:53:33 INFO SparkContext: Job finished: collect at BALS.scala:117, took 75.984365749 s
+13/06/11 02:53:33 INFO MemoryStore: ensureFreeSpace(6966048) called with curMem=390446625, maxMem=20157722787
+13/06/11 02:53:33 INFO MemoryStore: Block broadcast_5 stored as values to memory (estimated size 6.6 MB, free 18.4 GB)
+13/06/11 02:53:33 INFO SparkContext: Starting job: collect at BALS.scala:128
+13/06/11 02:53:33 INFO DAGScheduler: Registering RDD 22 (reduceByKey at BALS.scala:127)
+13/06/11 02:53:33 INFO DAGScheduler: Got job 7 (collect at BALS.scala:128) with 4 output partitions (allowLocal=false)
+13/06/11 02:53:33 INFO DAGScheduler: Final stage: Stage 10 (map at BALS.scala:128)
+13/06/11 02:53:33 INFO DAGScheduler: Parents of final stage: List(Stage 11)
+13/06/11 02:53:33 INFO DAGScheduler: Missing parents: List(Stage 11)
+13/06/11 02:53:33 INFO DAGScheduler: Submitting Stage 11 (MapPartitionsRDD[22] at reduceByKey at BALS.scala:127), which has no missing parents
+13/06/11 02:53:33 INFO DAGScheduler: Submitting 4 missing tasks from Stage 11 (MapPartitionsRDD[22] at reduceByKey at BALS.scala:127)
+13/06/11 02:53:33 INFO ClusterScheduler: Adding task set 11.0 with 4 tasks
+13/06/11 02:53:33 INFO TaskSetManager: Starting task 11.0:0 as TID 40 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 02:53:33 INFO TaskSetManager: Serialized task 11.0:0 as 2216 bytes in 2 ms
+13/06/11 02:53:33 INFO TaskSetManager: Starting task 11.0:2 as TID 41 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 02:53:33 INFO TaskSetManager: Serialized task 11.0:2 as 2216 bytes in 0 ms
+13/06/11 02:53:33 INFO TaskSetManager: Starting task 11.0:3 as TID 42 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 02:53:33 INFO TaskSetManager: Serialized task 11.0:3 as 2216 bytes in 1 ms
+13/06/11 02:53:33 INFO TaskSetManager: Starting task 11.0:1 as TID 43 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 02:53:33 INFO TaskSetManager: Serialized task 11.0:1 as 2216 bytes in 0 ms
+13/06/11 02:54:37 INFO TaskSetManager: Finished TID 42 in 63904 ms (progress: 1/4)
+13/06/11 02:54:37 INFO DAGScheduler: Completed ShuffleMapTask(11, 3)
+13/06/11 02:54:37 INFO TaskSetManager: Finished TID 41 in 63962 ms (progress: 2/4)
+13/06/11 02:54:37 INFO DAGScheduler: Completed ShuffleMapTask(11, 2)
+13/06/11 02:54:37 INFO TaskSetManager: Finished TID 43 in 63990 ms (progress: 3/4)
+13/06/11 02:54:37 INFO DAGScheduler: Completed ShuffleMapTask(11, 1)
+13/06/11 02:54:40 INFO TaskSetManager: Finished TID 40 in 66801 ms (progress: 4/4)
+13/06/11 02:54:40 INFO DAGScheduler: Completed ShuffleMapTask(11, 0)
+13/06/11 02:54:40 INFO DAGScheduler: Stage 11 (reduceByKey at BALS.scala:127) finished in 66.802 s
+13/06/11 02:54:40 INFO DAGScheduler: looking for newly runnable stages
+13/06/11 02:54:40 INFO DAGScheduler: running: Set()
+13/06/11 02:54:40 INFO DAGScheduler: waiting: Set(Stage 10)
+13/06/11 02:54:40 INFO DAGScheduler: failed: Set()
+13/06/11 02:54:40 INFO DAGScheduler: Missing parents for Stage 10: List()
+13/06/11 02:54:40 INFO DAGScheduler: Submitting Stage 10 (MappedRDD[25] at map at BALS.scala:128), which is now runnable
+13/06/11 02:54:40 INFO DAGScheduler: Submitting 4 missing tasks from Stage 10 (MappedRDD[25] at map at BALS.scala:128)
+13/06/11 02:54:40 INFO ClusterScheduler: Adding task set 10.0 with 4 tasks
+13/06/11 02:54:40 INFO TaskSetManager: Starting task 10.0:0 as TID 44 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 02:54:40 INFO TaskSetManager: Serialized task 10.0:0 as 2337 bytes in 3 ms
+13/06/11 02:54:40 INFO TaskSetManager: Starting task 10.0:1 as TID 45 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 02:54:40 INFO TaskSetManager: Serialized task 10.0:1 as 2337 bytes in 0 ms
+13/06/11 02:54:40 INFO TaskSetManager: Starting task 10.0:2 as TID 46 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 02:54:40 INFO TaskSetManager: Serialized task 10.0:2 as 2337 bytes in 0 ms
+13/06/11 02:54:40 INFO TaskSetManager: Starting task 10.0:3 as TID 47 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 02:54:40 INFO TaskSetManager: Serialized task 10.0:3 as 2337 bytes in 0 ms
+13/06/11 02:54:40 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 3 to ip-10-232-39-5.ec2.internal
+13/06/11 02:54:40 INFO MapOutputTracker: Size of output statuses for shuffle 3 is 195 bytes
+13/06/11 02:54:40 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 3 to ip-10-232-8-42.ec2.internal
+13/06/11 02:54:40 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 3 to ip-10-171-8-42.ec2.internal
+13/06/11 02:54:40 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 3 to ip-10-31-132-203.ec2.internal
+13/06/11 02:54:42 INFO TaskSetManager: Finished TID 45 in 2268 ms (progress: 1/4)
+13/06/11 02:54:42 INFO DAGScheduler: Completed ResultTask(10, 1)
+13/06/11 02:54:42 INFO TaskSetManager: Finished TID 44 in 2333 ms (progress: 2/4)
+13/06/11 02:54:42 INFO DAGScheduler: Completed ResultTask(10, 0)
+13/06/11 02:54:42 INFO TaskSetManager: Finished TID 47 in 2358 ms (progress: 3/4)
+13/06/11 02:54:42 INFO DAGScheduler: Completed ResultTask(10, 3)
+13/06/11 02:54:42 INFO TaskSetManager: Finished TID 46 in 2402 ms (progress: 4/4)
+13/06/11 02:54:42 INFO DAGScheduler: Completed ResultTask(10, 2)
+13/06/11 02:54:42 INFO DAGScheduler: Stage 10 (map at BALS.scala:128) finished in 2.435 s
+13/06/11 02:54:42 INFO SparkContext: Job finished: collect at BALS.scala:128, took 69.244068477 s
+13/06/11 02:54:42 INFO MemoryStore: ensureFreeSpace(188234296) called with curMem=397412673, maxMem=20157722787
+13/06/11 02:54:42 INFO MemoryStore: Block broadcast_6 stored as values to memory (estimated size 179.5 MB, free 18.2 GB)
+Runtime: 308268
+Iteration: 2
+13/06/11 02:54:45 INFO SparkContext: Starting job: collect at BALS.scala:117
+13/06/11 02:54:45 INFO DAGScheduler: Registering RDD 27 (reduceByKey at BALS.scala:116)
+13/06/11 02:54:45 INFO DAGScheduler: Got job 8 (collect at BALS.scala:117) with 4 output partitions (allowLocal=false)
+13/06/11 02:54:45 INFO DAGScheduler: Final stage: Stage 12 (map at BALS.scala:117)
+13/06/11 02:54:45 INFO DAGScheduler: Parents of final stage: List(Stage 13)
+13/06/11 02:54:45 INFO DAGScheduler: Missing parents: List(Stage 13)
+13/06/11 02:54:45 INFO DAGScheduler: Submitting Stage 13 (MapPartitionsRDD[27] at reduceByKey at BALS.scala:116), which has no missing parents
+13/06/11 02:54:45 INFO DAGScheduler: Submitting 4 missing tasks from Stage 13 (MapPartitionsRDD[27] at reduceByKey at BALS.scala:116)
+13/06/11 02:54:45 INFO ClusterScheduler: Adding task set 13.0 with 4 tasks
+13/06/11 02:54:45 INFO TaskSetManager: Starting task 13.0:0 as TID 48 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 02:54:45 INFO TaskSetManager: Serialized task 13.0:0 as 2215 bytes in 2 ms
+13/06/11 02:54:45 INFO TaskSetManager: Starting task 13.0:2 as TID 49 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 02:54:45 INFO TaskSetManager: Serialized task 13.0:2 as 2215 bytes in 0 ms
+13/06/11 02:54:45 INFO TaskSetManager: Starting task 13.0:3 as TID 50 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 02:54:45 INFO TaskSetManager: Serialized task 13.0:3 as 2215 bytes in 1 ms
+13/06/11 02:54:45 INFO TaskSetManager: Starting task 13.0:1 as TID 51 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 02:54:45 INFO TaskSetManager: Serialized task 13.0:1 as 2215 bytes in 0 ms
+13/06/11 02:55:57 INFO TaskSetManager: Finished TID 50 in 71619 ms (progress: 1/4)
+13/06/11 02:55:57 INFO DAGScheduler: Completed ShuffleMapTask(13, 3)
+13/06/11 02:55:57 INFO TaskSetManager: Finished TID 51 in 71818 ms (progress: 2/4)
+13/06/11 02:55:57 INFO DAGScheduler: Completed ShuffleMapTask(13, 1)
+13/06/11 02:55:58 INFO TaskSetManager: Finished TID 49 in 73006 ms (progress: 3/4)
+13/06/11 02:55:58 INFO DAGScheduler: Completed ShuffleMapTask(13, 2)
+13/06/11 02:56:00 INFO TaskSetManager: Finished TID 48 in 74593 ms (progress: 4/4)
+13/06/11 02:56:00 INFO DAGScheduler: Completed ShuffleMapTask(13, 0)
+13/06/11 02:56:00 INFO DAGScheduler: Stage 13 (reduceByKey at BALS.scala:116) finished in 74.594 s
+13/06/11 02:56:00 INFO DAGScheduler: looking for newly runnable stages
+13/06/11 02:56:00 INFO DAGScheduler: running: Set()
+13/06/11 02:56:00 INFO DAGScheduler: waiting: Set(Stage 12)
+13/06/11 02:56:00 INFO DAGScheduler: failed: Set()
+13/06/11 02:56:00 INFO DAGScheduler: Missing parents for Stage 12: List()
+13/06/11 02:56:00 INFO DAGScheduler: Submitting Stage 12 (MappedRDD[30] at map at BALS.scala:117), which is now runnable
+13/06/11 02:56:00 INFO DAGScheduler: Submitting 4 missing tasks from Stage 12 (MappedRDD[30] at map at BALS.scala:117)
+13/06/11 02:56:00 INFO ClusterScheduler: Adding task set 12.0 with 4 tasks
+13/06/11 02:56:00 INFO TaskSetManager: Starting task 12.0:0 as TID 52 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 02:56:00 INFO TaskSetManager: Serialized task 12.0:0 as 2336 bytes in 4 ms
+13/06/11 02:56:00 INFO TaskSetManager: Starting task 12.0:1 as TID 53 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 02:56:00 INFO TaskSetManager: Serialized task 12.0:1 as 2336 bytes in 0 ms
+13/06/11 02:56:00 INFO TaskSetManager: Starting task 12.0:2 as TID 54 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 02:56:00 INFO TaskSetManager: Serialized task 12.0:2 as 2336 bytes in 0 ms
+13/06/11 02:56:00 INFO TaskSetManager: Starting task 12.0:3 as TID 55 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 02:56:00 INFO TaskSetManager: Serialized task 12.0:3 as 2336 bytes in 0 ms
+13/06/11 02:56:00 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 4 to ip-10-232-39-5.ec2.internal
+13/06/11 02:56:00 INFO MapOutputTracker: Size of output statuses for shuffle 4 is 195 bytes
+13/06/11 02:56:00 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 4 to ip-10-171-8-42.ec2.internal
+13/06/11 02:56:00 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 4 to ip-10-31-132-203.ec2.internal
+13/06/11 02:56:00 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 4 to ip-10-232-8-42.ec2.internal
+13/06/11 02:56:01 INFO TaskSetManager: Finished TID 53 in 1447 ms (progress: 1/4)
+13/06/11 02:56:01 INFO DAGScheduler: Completed ResultTask(12, 1)
+13/06/11 02:56:01 INFO TaskSetManager: Finished TID 54 in 1502 ms (progress: 2/4)
+13/06/11 02:56:01 INFO DAGScheduler: Completed ResultTask(12, 2)
+13/06/11 02:56:01 INFO TaskSetManager: Finished TID 55 in 1516 ms (progress: 3/4)
+13/06/11 02:56:01 INFO DAGScheduler: Completed ResultTask(12, 3)
+13/06/11 02:56:01 INFO TaskSetManager: Finished TID 52 in 1534 ms (progress: 4/4)
+13/06/11 02:56:01 INFO DAGScheduler: Completed ResultTask(12, 0)
+13/06/11 02:56:01 INFO DAGScheduler: Stage 12 (map at BALS.scala:117) finished in 1.541 s
+13/06/11 02:56:01 INFO SparkContext: Job finished: collect at BALS.scala:117, took 76.14250321 s
+13/06/11 02:56:01 INFO MemoryStore: ensureFreeSpace(6966048) called with curMem=585646969, maxMem=20157722787
+13/06/11 02:56:01 INFO MemoryStore: Block broadcast_7 stored as values to memory (estimated size 6.6 MB, free 18.2 GB)
+13/06/11 02:56:01 INFO SparkContext: Starting job: collect at BALS.scala:128
+13/06/11 02:56:01 INFO DAGScheduler: Registering RDD 32 (reduceByKey at BALS.scala:127)
+13/06/11 02:56:01 INFO DAGScheduler: Got job 9 (collect at BALS.scala:128) with 4 output partitions (allowLocal=false)
+13/06/11 02:56:01 INFO DAGScheduler: Final stage: Stage 14 (map at BALS.scala:128)
+13/06/11 02:56:01 INFO DAGScheduler: Parents of final stage: List(Stage 15)
+13/06/11 02:56:01 INFO DAGScheduler: Missing parents: List(Stage 15)
+13/06/11 02:56:01 INFO DAGScheduler: Submitting Stage 15 (MapPartitionsRDD[32] at reduceByKey at BALS.scala:127), which has no missing parents
+13/06/11 02:56:01 INFO DAGScheduler: Submitting 4 missing tasks from Stage 15 (MapPartitionsRDD[32] at reduceByKey at BALS.scala:127)
+13/06/11 02:56:01 INFO ClusterScheduler: Adding task set 15.0 with 4 tasks
+13/06/11 02:56:01 INFO TaskSetManager: Starting task 15.0:0 as TID 56 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 02:56:01 INFO TaskSetManager: Serialized task 15.0:0 as 2217 bytes in 4 ms
+13/06/11 02:56:01 INFO TaskSetManager: Starting task 15.0:2 as TID 57 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 02:56:01 INFO TaskSetManager: Serialized task 15.0:2 as 2217 bytes in 1 ms
+13/06/11 02:56:01 INFO TaskSetManager: Starting task 15.0:3 as TID 58 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 02:56:01 INFO TaskSetManager: Serialized task 15.0:3 as 2217 bytes in 0 ms
+13/06/11 02:56:01 INFO TaskSetManager: Starting task 15.0:1 as TID 59 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 02:56:01 INFO TaskSetManager: Serialized task 15.0:1 as 2217 bytes in 0 ms
+13/06/11 02:57:05 INFO TaskSetManager: Finished TID 59 in 63412 ms (progress: 1/4)
+13/06/11 02:57:05 INFO DAGScheduler: Completed ShuffleMapTask(15, 1)
+13/06/11 02:57:05 INFO TaskSetManager: Finished TID 58 in 63456 ms (progress: 2/4)
+13/06/11 02:57:05 INFO DAGScheduler: Completed ShuffleMapTask(15, 3)
+13/06/11 02:57:06 INFO TaskSetManager: Finished TID 57 in 64465 ms (progress: 3/4)
+13/06/11 02:57:06 INFO DAGScheduler: Completed ShuffleMapTask(15, 2)
+13/06/11 02:57:08 INFO TaskSetManager: Finished TID 56 in 66564 ms (progress: 4/4)
+13/06/11 02:57:08 INFO DAGScheduler: Completed ShuffleMapTask(15, 0)
+13/06/11 02:57:08 INFO DAGScheduler: Stage 15 (reduceByKey at BALS.scala:127) finished in 66.565 s
+13/06/11 02:57:08 INFO DAGScheduler: looking for newly runnable stages
+13/06/11 02:57:08 INFO DAGScheduler: running: Set()
+13/06/11 02:57:08 INFO DAGScheduler: waiting: Set(Stage 14)
+13/06/11 02:57:08 INFO DAGScheduler: failed: Set()
+13/06/11 02:57:08 INFO DAGScheduler: Missing parents for Stage 14: List()
+13/06/11 02:57:08 INFO DAGScheduler: Submitting Stage 14 (MappedRDD[35] at map at BALS.scala:128), which is now runnable
+13/06/11 02:57:08 INFO DAGScheduler: Submitting 4 missing tasks from Stage 14 (MappedRDD[35] at map at BALS.scala:128)
+13/06/11 02:57:08 INFO ClusterScheduler: Adding task set 14.0 with 4 tasks
+13/06/11 02:57:08 INFO TaskSetManager: Starting task 14.0:0 as TID 60 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 02:57:08 INFO TaskSetManager: Serialized task 14.0:0 as 2337 bytes in 3 ms
+13/06/11 02:57:08 INFO TaskSetManager: Starting task 14.0:1 as TID 61 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 02:57:08 INFO TaskSetManager: Serialized task 14.0:1 as 2337 bytes in 0 ms
+13/06/11 02:57:08 INFO TaskSetManager: Starting task 14.0:2 as TID 62 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 02:57:08 INFO TaskSetManager: Serialized task 14.0:2 as 2337 bytes in 0 ms
+13/06/11 02:57:08 INFO TaskSetManager: Starting task 14.0:3 as TID 63 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 02:57:08 INFO TaskSetManager: Serialized task 14.0:3 as 2337 bytes in 0 ms
+13/06/11 02:57:08 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 5 to ip-10-171-8-42.ec2.internal
+13/06/11 02:57:08 INFO MapOutputTracker: Size of output statuses for shuffle 5 is 195 bytes
+13/06/11 02:57:08 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 5 to ip-10-232-39-5.ec2.internal
+13/06/11 02:57:08 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 5 to ip-10-232-8-42.ec2.internal
+13/06/11 02:57:08 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 5 to ip-10-31-132-203.ec2.internal
+13/06/11 02:57:10 INFO TaskSetManager: Finished TID 61 in 2223 ms (progress: 1/4)
+13/06/11 02:57:10 INFO DAGScheduler: Completed ResultTask(14, 1)
+13/06/11 02:57:10 INFO TaskSetManager: Finished TID 63 in 2260 ms (progress: 2/4)
+13/06/11 02:57:10 INFO DAGScheduler: Completed ResultTask(14, 3)
+13/06/11 02:57:10 INFO TaskSetManager: Finished TID 60 in 2299 ms (progress: 3/4)
+13/06/11 02:57:10 INFO DAGScheduler: Completed ResultTask(14, 0)
+13/06/11 02:57:10 INFO TaskSetManager: Finished TID 62 in 2334 ms (progress: 4/4)
+13/06/11 02:57:10 INFO DAGScheduler: Completed ResultTask(14, 2)
+13/06/11 02:57:10 INFO DAGScheduler: Stage 14 (map at BALS.scala:128) finished in 2.367 s
+13/06/11 02:57:10 INFO SparkContext: Job finished: collect at BALS.scala:128, took 68.939198619 s
+13/06/11 02:57:10 INFO MemoryStore: ensureFreeSpace(188234296) called with curMem=592613017, maxMem=20157722787
+13/06/11 02:57:10 INFO MemoryStore: Block broadcast_8 stored as values to memory (estimated size 179.5 MB, free 18.0 GB)
+Runtime: 456194
+Iteration: 3
+13/06/11 02:57:13 INFO SparkContext: Starting job: collect at BALS.scala:117
+13/06/11 02:57:13 INFO DAGScheduler: Registering RDD 37 (reduceByKey at BALS.scala:116)
+13/06/11 02:57:13 INFO DAGScheduler: Got job 10 (collect at BALS.scala:117) with 4 output partitions (allowLocal=false)
+13/06/11 02:57:13 INFO DAGScheduler: Final stage: Stage 16 (map at BALS.scala:117)
+13/06/11 02:57:13 INFO DAGScheduler: Parents of final stage: List(Stage 17)
+13/06/11 02:57:13 INFO DAGScheduler: Missing parents: List(Stage 17)
+13/06/11 02:57:13 INFO DAGScheduler: Submitting Stage 17 (MapPartitionsRDD[37] at reduceByKey at BALS.scala:116), which has no missing parents
+13/06/11 02:57:13 INFO DAGScheduler: Submitting 4 missing tasks from Stage 17 (MapPartitionsRDD[37] at reduceByKey at BALS.scala:116)
+13/06/11 02:57:13 INFO ClusterScheduler: Adding task set 17.0 with 4 tasks
+13/06/11 02:57:13 INFO TaskSetManager: Starting task 17.0:0 as TID 64 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 02:57:13 INFO TaskSetManager: Serialized task 17.0:0 as 2215 bytes in 2 ms
+13/06/11 02:57:13 INFO TaskSetManager: Starting task 17.0:2 as TID 65 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 02:57:13 INFO TaskSetManager: Serialized task 17.0:2 as 2215 bytes in 1 ms
+13/06/11 02:57:13 INFO TaskSetManager: Starting task 17.0:3 as TID 66 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 02:57:13 INFO TaskSetManager: Serialized task 17.0:3 as 2215 bytes in 0 ms
+13/06/11 02:57:13 INFO TaskSetManager: Starting task 17.0:1 as TID 67 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 02:57:13 INFO TaskSetManager: Serialized task 17.0:1 as 2215 bytes in 0 ms
+13/06/11 02:58:23 INFO TaskSetManager: Finished TID 66 in 70447 ms (progress: 1/4)
+13/06/11 02:58:23 INFO DAGScheduler: Completed ShuffleMapTask(17, 3)
+13/06/11 02:58:24 INFO TaskSetManager: Finished TID 67 in 71041 ms (progress: 2/4)
+13/06/11 02:58:24 INFO DAGScheduler: Completed ShuffleMapTask(17, 1)
+13/06/11 02:58:25 INFO TaskSetManager: Finished TID 65 in 72082 ms (progress: 3/4)
+13/06/11 02:58:25 INFO DAGScheduler: Completed ShuffleMapTask(17, 2)
+13/06/11 02:58:28 INFO TaskSetManager: Finished TID 64 in 75205 ms (progress: 4/4)
+13/06/11 02:58:28 INFO DAGScheduler: Completed ShuffleMapTask(17, 0)
+13/06/11 02:58:28 INFO DAGScheduler: Stage 17 (reduceByKey at BALS.scala:116) finished in 75.205 s
+13/06/11 02:58:28 INFO DAGScheduler: looking for newly runnable stages
+13/06/11 02:58:28 INFO DAGScheduler: running: Set()
+13/06/11 02:58:28 INFO DAGScheduler: waiting: Set(Stage 16)
+13/06/11 02:58:28 INFO DAGScheduler: failed: Set()
+13/06/11 02:58:28 INFO DAGScheduler: Missing parents for Stage 16: List()
+13/06/11 02:58:28 INFO DAGScheduler: Submitting Stage 16 (MappedRDD[40] at map at BALS.scala:117), which is now runnable
+13/06/11 02:58:28 INFO DAGScheduler: Submitting 4 missing tasks from Stage 16 (MappedRDD[40] at map at BALS.scala:117)
+13/06/11 02:58:28 INFO ClusterScheduler: Adding task set 16.0 with 4 tasks
+13/06/11 02:58:28 INFO TaskSetManager: Starting task 16.0:0 as TID 68 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 02:58:28 INFO TaskSetManager: Serialized task 16.0:0 as 2336 bytes in 3 ms
+13/06/11 02:58:28 INFO TaskSetManager: Starting task 16.0:1 as TID 69 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 02:58:28 INFO TaskSetManager: Serialized task 16.0:1 as 2336 bytes in 0 ms
+13/06/11 02:58:28 INFO TaskSetManager: Starting task 16.0:2 as TID 70 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 02:58:28 INFO TaskSetManager: Serialized task 16.0:2 as 2336 bytes in 0 ms
+13/06/11 02:58:28 INFO TaskSetManager: Starting task 16.0:3 as TID 71 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 02:58:28 INFO TaskSetManager: Serialized task 16.0:3 as 2336 bytes in 0 ms
+13/06/11 02:58:28 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 6 to ip-10-232-8-42.ec2.internal
+13/06/11 02:58:28 INFO MapOutputTracker: Size of output statuses for shuffle 6 is 195 bytes
+13/06/11 02:58:28 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 6 to ip-10-171-8-42.ec2.internal
+13/06/11 02:58:28 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 6 to ip-10-232-39-5.ec2.internal
+13/06/11 02:58:28 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 6 to ip-10-31-132-203.ec2.internal
+13/06/11 02:58:30 INFO TaskSetManager: Finished TID 69 in 1358 ms (progress: 1/4)
+13/06/11 02:58:30 INFO DAGScheduler: Completed ResultTask(16, 1)
+13/06/11 02:58:30 INFO TaskSetManager: Finished TID 71 in 1411 ms (progress: 2/4)
+13/06/11 02:58:30 INFO DAGScheduler: Completed ResultTask(16, 3)
+13/06/11 02:58:30 INFO TaskSetManager: Finished TID 68 in 1423 ms (progress: 3/4)
+13/06/11 02:58:30 INFO DAGScheduler: Completed ResultTask(16, 0)
+13/06/11 02:58:30 INFO TaskSetManager: Finished TID 70 in 1486 ms (progress: 4/4)
+13/06/11 02:58:30 INFO DAGScheduler: Completed ResultTask(16, 2)
+13/06/11 02:58:30 INFO DAGScheduler: Stage 16 (map at BALS.scala:117) finished in 1.496 s
+13/06/11 02:58:30 INFO SparkContext: Job finished: collect at BALS.scala:117, took 76.708143099 s
+13/06/11 02:58:30 INFO MemoryStore: ensureFreeSpace(6966048) called with curMem=780847313, maxMem=20157722787
+13/06/11 02:58:30 INFO MemoryStore: Block broadcast_9 stored as values to memory (estimated size 6.6 MB, free 18.0 GB)
+13/06/11 02:58:30 INFO SparkContext: Starting job: collect at BALS.scala:128
+13/06/11 02:58:30 INFO DAGScheduler: Registering RDD 42 (reduceByKey at BALS.scala:127)
+13/06/11 02:58:30 INFO DAGScheduler: Got job 11 (collect at BALS.scala:128) with 4 output partitions (allowLocal=false)
+13/06/11 02:58:30 INFO DAGScheduler: Final stage: Stage 18 (map at BALS.scala:128)
+13/06/11 02:58:30 INFO DAGScheduler: Parents of final stage: List(Stage 19)
+13/06/11 02:58:30 INFO DAGScheduler: Missing parents: List(Stage 19)
+13/06/11 02:58:30 INFO DAGScheduler: Submitting Stage 19 (MapPartitionsRDD[42] at reduceByKey at BALS.scala:127), which has no missing parents
+13/06/11 02:58:30 INFO DAGScheduler: Submitting 4 missing tasks from Stage 19 (MapPartitionsRDD[42] at reduceByKey at BALS.scala:127)
+13/06/11 02:58:30 INFO ClusterScheduler: Adding task set 19.0 with 4 tasks
+13/06/11 02:58:30 INFO TaskSetManager: Starting task 19.0:0 as TID 72 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 02:58:30 INFO TaskSetManager: Serialized task 19.0:0 as 2217 bytes in 3 ms
+13/06/11 02:58:30 INFO TaskSetManager: Starting task 19.0:2 as TID 73 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 02:58:30 INFO TaskSetManager: Serialized task 19.0:2 as 2217 bytes in 0 ms
+13/06/11 02:58:30 INFO TaskSetManager: Starting task 19.0:3 as TID 74 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 02:58:30 INFO TaskSetManager: Serialized task 19.0:3 as 2217 bytes in 0 ms
+13/06/11 02:58:30 INFO TaskSetManager: Starting task 19.0:1 as TID 75 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 02:58:30 INFO TaskSetManager: Serialized task 19.0:1 as 2217 bytes in 0 ms
+13/06/11 02:59:33 INFO TaskSetManager: Finished TID 75 in 63127 ms (progress: 1/4)
+13/06/11 02:59:33 INFO DAGScheduler: Completed ShuffleMapTask(19, 1)
+13/06/11 02:59:34 INFO TaskSetManager: Finished TID 74 in 63718 ms (progress: 2/4)
+13/06/11 02:59:34 INFO DAGScheduler: Completed ShuffleMapTask(19, 3)
+13/06/11 02:59:34 INFO TaskSetManager: Finished TID 73 in 64294 ms (progress: 3/4)
+13/06/11 02:59:34 INFO DAGScheduler: Completed ShuffleMapTask(19, 2)
+13/06/11 02:59:36 INFO TaskSetManager: Finished TID 72 in 66387 ms (progress: 4/4)
+13/06/11 02:59:36 INFO DAGScheduler: Completed ShuffleMapTask(19, 0)
+13/06/11 02:59:36 INFO DAGScheduler: Stage 19 (reduceByKey at BALS.scala:127) finished in 66.388 s
+13/06/11 02:59:36 INFO DAGScheduler: looking for newly runnable stages
+13/06/11 02:59:36 INFO DAGScheduler: running: Set()
+13/06/11 02:59:36 INFO DAGScheduler: waiting: Set(Stage 18)
+13/06/11 02:59:36 INFO DAGScheduler: failed: Set()
+13/06/11 02:59:36 INFO DAGScheduler: Missing parents for Stage 18: List()
+13/06/11 02:59:36 INFO DAGScheduler: Submitting Stage 18 (MappedRDD[45] at map at BALS.scala:128), which is now runnable
+13/06/11 02:59:36 INFO DAGScheduler: Submitting 4 missing tasks from Stage 18 (MappedRDD[45] at map at BALS.scala:128)
+13/06/11 02:59:36 INFO ClusterScheduler: Adding task set 18.0 with 4 tasks
+13/06/11 02:59:36 INFO TaskSetManager: Starting task 18.0:0 as TID 76 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 02:59:36 INFO TaskSetManager: Serialized task 18.0:0 as 2337 bytes in 4 ms
+13/06/11 02:59:36 INFO TaskSetManager: Starting task 18.0:1 as TID 77 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 02:59:36 INFO TaskSetManager: Serialized task 18.0:1 as 2337 bytes in 0 ms
+13/06/11 02:59:36 INFO TaskSetManager: Starting task 18.0:2 as TID 78 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 02:59:36 INFO TaskSetManager: Serialized task 18.0:2 as 2337 bytes in 0 ms
+13/06/11 02:59:36 INFO TaskSetManager: Starting task 18.0:3 as TID 79 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 02:59:36 INFO TaskSetManager: Serialized task 18.0:3 as 2337 bytes in 0 ms
+13/06/11 02:59:36 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 7 to ip-10-232-39-5.ec2.internal
+13/06/11 02:59:36 INFO MapOutputTracker: Size of output statuses for shuffle 7 is 195 bytes
+13/06/11 02:59:36 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 7 to ip-10-232-8-42.ec2.internal
+13/06/11 02:59:36 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 7 to ip-10-171-8-42.ec2.internal
+13/06/11 02:59:36 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 7 to ip-10-31-132-203.ec2.internal
+13/06/11 02:59:38 INFO TaskSetManager: Finished TID 77 in 2142 ms (progress: 1/4)
+13/06/11 02:59:38 INFO DAGScheduler: Completed ResultTask(18, 1)
+13/06/11 02:59:38 INFO TaskSetManager: Finished TID 79 in 2229 ms (progress: 2/4)
+13/06/11 02:59:38 INFO DAGScheduler: Completed ResultTask(18, 3)
+13/06/11 02:59:38 INFO TaskSetManager: Finished TID 76 in 2263 ms (progress: 3/4)
+13/06/11 02:59:38 INFO DAGScheduler: Completed ResultTask(18, 0)
+13/06/11 02:59:39 INFO TaskSetManager: Finished TID 78 in 2352 ms (progress: 4/4)
+13/06/11 02:59:39 INFO DAGScheduler: Completed ResultTask(18, 2)
+13/06/11 02:59:39 INFO DAGScheduler: Stage 18 (map at BALS.scala:128) finished in 2.385 s
+13/06/11 02:59:39 INFO SparkContext: Job finished: collect at BALS.scala:128, took 68.779742579 s
+13/06/11 02:59:39 INFO MemoryStore: ensureFreeSpace(188234296) called with curMem=787813361, maxMem=20157722787
+13/06/11 02:59:39 INFO MemoryStore: Block broadcast_10 stored as values to memory (estimated size 179.5 MB, free 17.9 GB)
+Runtime: 604419
+Iteration: 4
+13/06/11 02:59:41 INFO SparkContext: Starting job: collect at BALS.scala:117
+13/06/11 02:59:41 INFO DAGScheduler: Registering RDD 47 (reduceByKey at BALS.scala:116)
+13/06/11 02:59:41 INFO DAGScheduler: Got job 12 (collect at BALS.scala:117) with 4 output partitions (allowLocal=false)
+13/06/11 02:59:41 INFO DAGScheduler: Final stage: Stage 20 (map at BALS.scala:117)
+13/06/11 02:59:41 INFO DAGScheduler: Parents of final stage: List(Stage 21)
+13/06/11 02:59:41 INFO DAGScheduler: Missing parents: List(Stage 21)
+13/06/11 02:59:41 INFO DAGScheduler: Submitting Stage 21 (MapPartitionsRDD[47] at reduceByKey at BALS.scala:116), which has no missing parents
+13/06/11 02:59:41 INFO DAGScheduler: Submitting 4 missing tasks from Stage 21 (MapPartitionsRDD[47] at reduceByKey at BALS.scala:116)
+13/06/11 02:59:41 INFO ClusterScheduler: Adding task set 21.0 with 4 tasks
+13/06/11 02:59:41 INFO TaskSetManager: Starting task 21.0:0 as TID 80 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 02:59:41 INFO TaskSetManager: Serialized task 21.0:0 as 2215 bytes in 3 ms
+13/06/11 02:59:41 INFO TaskSetManager: Starting task 21.0:2 as TID 81 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 02:59:41 INFO TaskSetManager: Serialized task 21.0:2 as 2215 bytes in 0 ms
+13/06/11 02:59:41 INFO TaskSetManager: Starting task 21.0:3 as TID 82 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 02:59:41 INFO TaskSetManager: Serialized task 21.0:3 as 2215 bytes in 1 ms
+13/06/11 02:59:41 INFO TaskSetManager: Starting task 21.0:1 as TID 83 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 02:59:41 INFO TaskSetManager: Serialized task 21.0:1 as 2215 bytes in 0 ms
+13/06/11 03:00:52 INFO TaskSetManager: Finished TID 83 in 71102 ms (progress: 1/4)
+13/06/11 03:00:52 INFO DAGScheduler: Completed ShuffleMapTask(21, 1)
+13/06/11 03:00:53 INFO TaskSetManager: Finished TID 82 in 71453 ms (progress: 2/4)
+13/06/11 03:00:53 INFO DAGScheduler: Completed ShuffleMapTask(21, 3)
+13/06/11 03:00:54 INFO TaskSetManager: Finished TID 81 in 72971 ms (progress: 3/4)
+13/06/11 03:00:54 INFO DAGScheduler: Completed ShuffleMapTask(21, 2)
+13/06/11 03:00:57 INFO TaskSetManager: Finished TID 80 in 75519 ms (progress: 4/4)
+13/06/11 03:00:57 INFO DAGScheduler: Completed ShuffleMapTask(21, 0)
+13/06/11 03:00:57 INFO DAGScheduler: Stage 21 (reduceByKey at BALS.scala:116) finished in 75.519 s
+13/06/11 03:00:57 INFO DAGScheduler: looking for newly runnable stages
+13/06/11 03:00:57 INFO DAGScheduler: running: Set()
+13/06/11 03:00:57 INFO DAGScheduler: waiting: Set(Stage 20)
+13/06/11 03:00:57 INFO DAGScheduler: failed: Set()
+13/06/11 03:00:57 INFO DAGScheduler: Missing parents for Stage 20: List()
+13/06/11 03:00:57 INFO DAGScheduler: Submitting Stage 20 (MappedRDD[50] at map at BALS.scala:117), which is now runnable
+13/06/11 03:00:57 INFO DAGScheduler: Submitting 4 missing tasks from Stage 20 (MappedRDD[50] at map at BALS.scala:117)
+13/06/11 03:00:57 INFO ClusterScheduler: Adding task set 20.0 with 4 tasks
+13/06/11 03:00:57 INFO TaskSetManager: Starting task 20.0:0 as TID 84 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:00:57 INFO TaskSetManager: Serialized task 20.0:0 as 2335 bytes in 3 ms
+13/06/11 03:00:57 INFO TaskSetManager: Starting task 20.0:1 as TID 85 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 03:00:57 INFO TaskSetManager: Serialized task 20.0:1 as 2335 bytes in 0 ms
+13/06/11 03:00:57 INFO TaskSetManager: Starting task 20.0:2 as TID 86 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:00:57 INFO TaskSetManager: Serialized task 20.0:2 as 2335 bytes in 0 ms
+13/06/11 03:00:57 INFO TaskSetManager: Starting task 20.0:3 as TID 87 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:00:57 INFO TaskSetManager: Serialized task 20.0:3 as 2335 bytes in 1 ms
+13/06/11 03:00:57 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 8 to ip-10-171-8-42.ec2.internal
+13/06/11 03:00:57 INFO MapOutputTracker: Size of output statuses for shuffle 8 is 195 bytes
+13/06/11 03:00:57 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 8 to ip-10-232-39-5.ec2.internal
+13/06/11 03:00:57 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 8 to ip-10-31-132-203.ec2.internal
+13/06/11 03:00:57 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 8 to ip-10-232-8-42.ec2.internal
+13/06/11 03:00:58 INFO TaskSetManager: Finished TID 87 in 1385 ms (progress: 1/4)
+13/06/11 03:00:58 INFO DAGScheduler: Completed ResultTask(20, 3)
+13/06/11 03:00:58 INFO TaskSetManager: Finished TID 85 in 1398 ms (progress: 2/4)
+13/06/11 03:00:58 INFO DAGScheduler: Completed ResultTask(20, 1)
+13/06/11 03:00:58 INFO TaskSetManager: Finished TID 84 in 1411 ms (progress: 3/4)
+13/06/11 03:00:58 INFO DAGScheduler: Completed ResultTask(20, 0)
+13/06/11 03:00:58 INFO TaskSetManager: Finished TID 86 in 1465 ms (progress: 4/4)
+13/06/11 03:00:58 INFO DAGScheduler: Completed ResultTask(20, 2)
+13/06/11 03:00:58 INFO DAGScheduler: Stage 20 (map at BALS.scala:117) finished in 1.476 s
+13/06/11 03:00:58 INFO SparkContext: Job finished: collect at BALS.scala:117, took 77.001906524 s
+13/06/11 03:00:58 INFO MemoryStore: ensureFreeSpace(6966048) called with curMem=976047657, maxMem=20157722787
+13/06/11 03:00:58 INFO MemoryStore: Block broadcast_11 stored as values to memory (estimated size 6.6 MB, free 17.9 GB)
+13/06/11 03:00:58 INFO SparkContext: Starting job: collect at BALS.scala:128
+13/06/11 03:00:58 INFO DAGScheduler: Registering RDD 52 (reduceByKey at BALS.scala:127)
+13/06/11 03:00:58 INFO DAGScheduler: Got job 13 (collect at BALS.scala:128) with 4 output partitions (allowLocal=false)
+13/06/11 03:00:58 INFO DAGScheduler: Final stage: Stage 22 (map at BALS.scala:128)
+13/06/11 03:00:58 INFO DAGScheduler: Parents of final stage: List(Stage 23)
+13/06/11 03:00:58 INFO DAGScheduler: Missing parents: List(Stage 23)
+13/06/11 03:00:58 INFO DAGScheduler: Submitting Stage 23 (MapPartitionsRDD[52] at reduceByKey at BALS.scala:127), which has no missing parents
+13/06/11 03:00:58 INFO DAGScheduler: Submitting 4 missing tasks from Stage 23 (MapPartitionsRDD[52] at reduceByKey at BALS.scala:127)
+13/06/11 03:00:58 INFO ClusterScheduler: Adding task set 23.0 with 4 tasks
+13/06/11 03:00:58 INFO TaskSetManager: Starting task 23.0:0 as TID 88 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:00:58 INFO TaskSetManager: Serialized task 23.0:0 as 2216 bytes in 2 ms
+13/06/11 03:00:58 INFO TaskSetManager: Starting task 23.0:2 as TID 89 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 03:00:58 INFO TaskSetManager: Serialized task 23.0:2 as 2216 bytes in 0 ms
+13/06/11 03:00:58 INFO TaskSetManager: Starting task 23.0:3 as TID 90 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:00:58 INFO TaskSetManager: Serialized task 23.0:3 as 2216 bytes in 0 ms
+13/06/11 03:00:58 INFO TaskSetManager: Starting task 23.0:1 as TID 91 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:00:58 INFO TaskSetManager: Serialized task 23.0:1 as 2216 bytes in 0 ms
+13/06/11 03:02:02 INFO TaskSetManager: Finished TID 91 in 63267 ms (progress: 1/4)
+13/06/11 03:02:02 INFO DAGScheduler: Completed ShuffleMapTask(23, 1)
+13/06/11 03:02:02 INFO TaskSetManager: Finished TID 90 in 63466 ms (progress: 2/4)
+13/06/11 03:02:02 INFO DAGScheduler: Completed ShuffleMapTask(23, 3)
+13/06/11 03:02:02 INFO TaskSetManager: Finished TID 89 in 64005 ms (progress: 3/4)
+13/06/11 03:02:02 INFO DAGScheduler: Completed ShuffleMapTask(23, 2)
+13/06/11 03:02:05 INFO TaskSetManager: Finished TID 88 in 66608 ms (progress: 4/4)
+13/06/11 03:02:05 INFO DAGScheduler: Completed ShuffleMapTask(23, 0)
+13/06/11 03:02:05 INFO DAGScheduler: Stage 23 (reduceByKey at BALS.scala:127) finished in 66.608 s
+13/06/11 03:02:05 INFO DAGScheduler: looking for newly runnable stages
+13/06/11 03:02:05 INFO DAGScheduler: running: Set()
+13/06/11 03:02:05 INFO DAGScheduler: waiting: Set(Stage 22)
+13/06/11 03:02:05 INFO DAGScheduler: failed: Set()
+13/06/11 03:02:05 INFO DAGScheduler: Missing parents for Stage 22: List()
+13/06/11 03:02:05 INFO DAGScheduler: Submitting Stage 22 (MappedRDD[55] at map at BALS.scala:128), which is now runnable
+13/06/11 03:02:05 INFO DAGScheduler: Submitting 4 missing tasks from Stage 22 (MappedRDD[55] at map at BALS.scala:128)
+13/06/11 03:02:05 INFO ClusterScheduler: Adding task set 22.0 with 4 tasks
+13/06/11 03:02:05 INFO TaskSetManager: Starting task 22.0:0 as TID 92 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:02:05 INFO TaskSetManager: Serialized task 22.0:0 as 2337 bytes in 3 ms
+13/06/11 03:02:05 INFO TaskSetManager: Starting task 22.0:1 as TID 93 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 03:02:05 INFO TaskSetManager: Serialized task 22.0:1 as 2337 bytes in 0 ms
+13/06/11 03:02:05 INFO TaskSetManager: Starting task 22.0:2 as TID 94 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:02:05 INFO TaskSetManager: Serialized task 22.0:2 as 2337 bytes in 0 ms
+13/06/11 03:02:05 INFO TaskSetManager: Starting task 22.0:3 as TID 95 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:02:05 INFO TaskSetManager: Serialized task 22.0:3 as 2337 bytes in 0 ms
+13/06/11 03:02:05 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 9 to ip-10-232-39-5.ec2.internal
+13/06/11 03:02:05 INFO MapOutputTracker: Size of output statuses for shuffle 9 is 195 bytes
+13/06/11 03:02:05 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 9 to ip-10-171-8-42.ec2.internal
+13/06/11 03:02:05 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 9 to ip-10-232-8-42.ec2.internal
+13/06/11 03:02:05 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 9 to ip-10-31-132-203.ec2.internal
+13/06/11 03:02:07 INFO TaskSetManager: Finished TID 95 in 2235 ms (progress: 1/4)
+13/06/11 03:02:07 INFO DAGScheduler: Completed ResultTask(22, 3)
+13/06/11 03:02:07 INFO TaskSetManager: Finished TID 92 in 2299 ms (progress: 2/4)
+13/06/11 03:02:07 INFO DAGScheduler: Completed ResultTask(22, 0)
+13/06/11 03:02:07 INFO TaskSetManager: Finished TID 94 in 2334 ms (progress: 3/4)
+13/06/11 03:02:07 INFO DAGScheduler: Completed ResultTask(22, 2)
+13/06/11 03:02:08 INFO TaskSetManager: Finished TID 93 in 2593 ms (progress: 4/4)
+13/06/11 03:02:08 INFO DAGScheduler: Completed ResultTask(22, 1)
+13/06/11 03:02:08 INFO DAGScheduler: Stage 22 (map at BALS.scala:128) finished in 2.625 s
+13/06/11 03:02:08 INFO SparkContext: Job finished: collect at BALS.scala:128, took 69.239396815 s
+13/06/11 03:02:08 INFO MemoryStore: ensureFreeSpace(188234296) called with curMem=983013705, maxMem=20157722787
+13/06/11 03:02:08 INFO MemoryStore: Block broadcast_12 stored as values to memory (estimated size 179.5 MB, free 17.7 GB)
+Runtime: 753398
+Iteration: 5
+13/06/11 03:02:10 INFO SparkContext: Starting job: collect at BALS.scala:117
+13/06/11 03:02:10 INFO DAGScheduler: Registering RDD 57 (reduceByKey at BALS.scala:116)
+13/06/11 03:02:10 INFO DAGScheduler: Got job 14 (collect at BALS.scala:117) with 4 output partitions (allowLocal=false)
+13/06/11 03:02:10 INFO DAGScheduler: Final stage: Stage 24 (map at BALS.scala:117)
+13/06/11 03:02:10 INFO DAGScheduler: Parents of final stage: List(Stage 25)
+13/06/11 03:02:10 INFO DAGScheduler: Missing parents: List(Stage 25)
+13/06/11 03:02:10 INFO DAGScheduler: Submitting Stage 25 (MapPartitionsRDD[57] at reduceByKey at BALS.scala:116), which has no missing parents
+13/06/11 03:02:10 INFO DAGScheduler: Submitting 4 missing tasks from Stage 25 (MapPartitionsRDD[57] at reduceByKey at BALS.scala:116)
+13/06/11 03:02:10 INFO ClusterScheduler: Adding task set 25.0 with 4 tasks
+13/06/11 03:02:10 INFO TaskSetManager: Starting task 25.0:0 as TID 96 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:02:10 INFO TaskSetManager: Serialized task 25.0:0 as 2215 bytes in 2 ms
+13/06/11 03:02:10 INFO TaskSetManager: Starting task 25.0:2 as TID 97 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 03:02:10 INFO TaskSetManager: Serialized task 25.0:2 as 2215 bytes in 0 ms
+13/06/11 03:02:10 INFO TaskSetManager: Starting task 25.0:3 as TID 98 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:02:10 INFO TaskSetManager: Serialized task 25.0:3 as 2215 bytes in 0 ms
+13/06/11 03:02:10 INFO TaskSetManager: Starting task 25.0:1 as TID 99 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:02:10 INFO TaskSetManager: Serialized task 25.0:1 as 2215 bytes in 0 ms
+13/06/11 03:03:21 INFO TaskSetManager: Finished TID 99 in 71149 ms (progress: 1/4)
+13/06/11 03:03:21 INFO DAGScheduler: Completed ShuffleMapTask(25, 1)
+13/06/11 03:03:22 INFO TaskSetManager: Finished TID 98 in 71471 ms (progress: 2/4)
+13/06/11 03:03:22 INFO DAGScheduler: Completed ShuffleMapTask(25, 3)
+13/06/11 03:03:23 INFO TaskSetManager: Finished TID 97 in 73271 ms (progress: 3/4)
+13/06/11 03:03:23 INFO DAGScheduler: Completed ShuffleMapTask(25, 2)
+13/06/11 03:03:25 INFO TaskSetManager: Finished TID 96 in 75070 ms (progress: 4/4)
+13/06/11 03:03:25 INFO DAGScheduler: Completed ShuffleMapTask(25, 0)
+13/06/11 03:03:25 INFO DAGScheduler: Stage 25 (reduceByKey at BALS.scala:116) finished in 75.071 s
+13/06/11 03:03:25 INFO DAGScheduler: looking for newly runnable stages
+13/06/11 03:03:25 INFO DAGScheduler: running: Set()
+13/06/11 03:03:25 INFO DAGScheduler: waiting: Set(Stage 24)
+13/06/11 03:03:25 INFO DAGScheduler: failed: Set()
+13/06/11 03:03:25 INFO DAGScheduler: Missing parents for Stage 24: List()
+13/06/11 03:03:25 INFO DAGScheduler: Submitting Stage 24 (MappedRDD[60] at map at BALS.scala:117), which is now runnable
+13/06/11 03:03:25 INFO DAGScheduler: Submitting 4 missing tasks from Stage 24 (MappedRDD[60] at map at BALS.scala:117)
+13/06/11 03:03:25 INFO ClusterScheduler: Adding task set 24.0 with 4 tasks
+13/06/11 03:03:25 INFO TaskSetManager: Starting task 24.0:0 as TID 100 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:03:25 INFO TaskSetManager: Serialized task 24.0:0 as 2336 bytes in 3 ms
+13/06/11 03:03:25 INFO TaskSetManager: Starting task 24.0:1 as TID 101 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 03:03:25 INFO TaskSetManager: Serialized task 24.0:1 as 2336 bytes in 0 ms
+13/06/11 03:03:25 INFO TaskSetManager: Starting task 24.0:2 as TID 102 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:03:25 INFO TaskSetManager: Serialized task 24.0:2 as 2336 bytes in 0 ms
+13/06/11 03:03:25 INFO TaskSetManager: Starting task 24.0:3 as TID 103 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:03:25 INFO TaskSetManager: Serialized task 24.0:3 as 2336 bytes in 0 ms
+13/06/11 03:03:25 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 10 to ip-10-232-39-5.ec2.internal
+13/06/11 03:03:25 INFO MapOutputTracker: Size of output statuses for shuffle 10 is 195 bytes
+13/06/11 03:03:25 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 10 to ip-10-171-8-42.ec2.internal
+13/06/11 03:03:25 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 10 to ip-10-232-8-42.ec2.internal
+13/06/11 03:03:25 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 10 to ip-10-31-132-203.ec2.internal
+13/06/11 03:03:27 INFO TaskSetManager: Finished TID 103 in 1389 ms (progress: 1/4)
+13/06/11 03:03:27 INFO DAGScheduler: Completed ResultTask(24, 3)
+13/06/11 03:03:27 INFO TaskSetManager: Finished TID 100 in 1406 ms (progress: 2/4)
+13/06/11 03:03:27 INFO DAGScheduler: Completed ResultTask(24, 0)
+13/06/11 03:03:27 INFO TaskSetManager: Finished TID 102 in 1410 ms (progress: 3/4)
+13/06/11 03:03:27 INFO DAGScheduler: Completed ResultTask(24, 2)
+13/06/11 03:03:27 INFO TaskSetManager: Finished TID 101 in 1416 ms (progress: 4/4)
+13/06/11 03:03:27 INFO DAGScheduler: Completed ResultTask(24, 1)
+13/06/11 03:03:27 INFO DAGScheduler: Stage 24 (map at BALS.scala:117) finished in 1.427 s
+13/06/11 03:03:27 INFO SparkContext: Job finished: collect at BALS.scala:117, took 76.503614372 s
+13/06/11 03:03:27 INFO MemoryStore: ensureFreeSpace(6966048) called with curMem=1171248001, maxMem=20157722787
+13/06/11 03:03:27 INFO MemoryStore: Block broadcast_13 stored as values to memory (estimated size 6.6 MB, free 17.7 GB)
+13/06/11 03:03:27 INFO SparkContext: Starting job: collect at BALS.scala:128
+13/06/11 03:03:27 INFO DAGScheduler: Registering RDD 62 (reduceByKey at BALS.scala:127)
+13/06/11 03:03:27 INFO DAGScheduler: Got job 15 (collect at BALS.scala:128) with 4 output partitions (allowLocal=false)
+13/06/11 03:03:27 INFO DAGScheduler: Final stage: Stage 26 (map at BALS.scala:128)
+13/06/11 03:03:27 INFO DAGScheduler: Parents of final stage: List(Stage 27)
+13/06/11 03:03:27 INFO DAGScheduler: Missing parents: List(Stage 27)
+13/06/11 03:03:27 INFO DAGScheduler: Submitting Stage 27 (MapPartitionsRDD[62] at reduceByKey at BALS.scala:127), which has no missing parents
+13/06/11 03:03:27 INFO DAGScheduler: Submitting 4 missing tasks from Stage 27 (MapPartitionsRDD[62] at reduceByKey at BALS.scala:127)
+13/06/11 03:03:27 INFO ClusterScheduler: Adding task set 27.0 with 4 tasks
+13/06/11 03:03:27 INFO TaskSetManager: Starting task 27.0:0 as TID 104 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:03:27 INFO TaskSetManager: Serialized task 27.0:0 as 2216 bytes in 3 ms
+13/06/11 03:03:27 INFO TaskSetManager: Starting task 27.0:2 as TID 105 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 03:03:27 INFO TaskSetManager: Serialized task 27.0:2 as 2216 bytes in 0 ms
+13/06/11 03:03:27 INFO TaskSetManager: Starting task 27.0:3 as TID 106 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:03:27 INFO TaskSetManager: Serialized task 27.0:3 as 2216 bytes in 0 ms
+13/06/11 03:03:27 INFO TaskSetManager: Starting task 27.0:1 as TID 107 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:03:27 INFO TaskSetManager: Serialized task 27.0:1 as 2216 bytes in 0 ms
+13/06/11 03:04:30 INFO TaskSetManager: Finished TID 107 in 63042 ms (progress: 1/4)
+13/06/11 03:04:30 INFO DAGScheduler: Completed ShuffleMapTask(27, 1)
+13/06/11 03:04:30 INFO TaskSetManager: Finished TID 106 in 63328 ms (progress: 2/4)
+13/06/11 03:04:30 INFO DAGScheduler: Completed ShuffleMapTask(27, 3)
+13/06/11 03:04:31 INFO TaskSetManager: Finished TID 105 in 63927 ms (progress: 3/4)
+13/06/11 03:04:31 INFO DAGScheduler: Completed ShuffleMapTask(27, 2)
+13/06/11 03:04:35 INFO TaskSetManager: Finished TID 104 in 67786 ms (progress: 4/4)
+13/06/11 03:04:35 INFO DAGScheduler: Completed ShuffleMapTask(27, 0)
+13/06/11 03:04:35 INFO DAGScheduler: Stage 27 (reduceByKey at BALS.scala:127) finished in 67.786 s
+13/06/11 03:04:35 INFO DAGScheduler: looking for newly runnable stages
+13/06/11 03:04:35 INFO DAGScheduler: running: Set()
+13/06/11 03:04:35 INFO DAGScheduler: waiting: Set(Stage 26)
+13/06/11 03:04:35 INFO DAGScheduler: failed: Set()
+13/06/11 03:04:35 INFO DAGScheduler: Missing parents for Stage 26: List()
+13/06/11 03:04:35 INFO DAGScheduler: Submitting Stage 26 (MappedRDD[65] at map at BALS.scala:128), which is now runnable
+13/06/11 03:04:35 INFO DAGScheduler: Submitting 4 missing tasks from Stage 26 (MappedRDD[65] at map at BALS.scala:128)
+13/06/11 03:04:35 INFO ClusterScheduler: Adding task set 26.0 with 4 tasks
+13/06/11 03:04:35 INFO TaskSetManager: Starting task 26.0:0 as TID 108 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:04:35 INFO TaskSetManager: Serialized task 26.0:0 as 2336 bytes in 2 ms
+13/06/11 03:04:35 INFO TaskSetManager: Starting task 26.0:1 as TID 109 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 03:04:35 INFO TaskSetManager: Serialized task 26.0:1 as 2336 bytes in 0 ms
+13/06/11 03:04:35 INFO TaskSetManager: Starting task 26.0:2 as TID 110 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:04:35 INFO TaskSetManager: Serialized task 26.0:2 as 2336 bytes in 0 ms
+13/06/11 03:04:35 INFO TaskSetManager: Starting task 26.0:3 as TID 111 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:04:35 INFO TaskSetManager: Serialized task 26.0:3 as 2336 bytes in 0 ms
+13/06/11 03:04:35 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 11 to ip-10-232-39-5.ec2.internal
+13/06/11 03:04:35 INFO MapOutputTracker: Size of output statuses for shuffle 11 is 195 bytes
+13/06/11 03:04:35 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 11 to ip-10-31-132-203.ec2.internal
+13/06/11 03:04:35 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 11 to ip-10-171-8-42.ec2.internal
+13/06/11 03:04:35 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 11 to ip-10-232-8-42.ec2.internal
+13/06/11 03:04:37 INFO TaskSetManager: Finished TID 109 in 2233 ms (progress: 1/4)
+13/06/11 03:04:37 INFO DAGScheduler: Completed ResultTask(26, 1)
+13/06/11 03:04:37 INFO TaskSetManager: Finished TID 108 in 2267 ms (progress: 2/4)
+13/06/11 03:04:37 INFO DAGScheduler: Completed ResultTask(26, 0)
+13/06/11 03:04:37 INFO TaskSetManager: Finished TID 111 in 2293 ms (progress: 3/4)
+13/06/11 03:04:37 INFO DAGScheduler: Completed ResultTask(26, 3)
+13/06/11 03:04:37 INFO TaskSetManager: Finished TID 110 in 2322 ms (progress: 4/4)
+13/06/11 03:04:37 INFO DAGScheduler: Completed ResultTask(26, 2)
+13/06/11 03:04:37 INFO DAGScheduler: Stage 26 (map at BALS.scala:128) finished in 2.383 s
+13/06/11 03:04:37 INFO SparkContext: Job finished: collect at BALS.scala:128, took 70.176025536 s
+13/06/11 03:04:37 INFO MemoryStore: ensureFreeSpace(188234296) called with curMem=1178214049, maxMem=20157722787
+13/06/11 03:04:37 INFO MemoryStore: Block broadcast_14 stored as values to memory (estimated size 179.5 MB, free 17.5 GB)
+Runtime: 902804
+Iteration: 6
+13/06/11 03:04:40 INFO SparkContext: Starting job: collect at BALS.scala:117
+13/06/11 03:04:40 INFO DAGScheduler: Registering RDD 67 (reduceByKey at BALS.scala:116)
+13/06/11 03:04:40 INFO DAGScheduler: Got job 16 (collect at BALS.scala:117) with 4 output partitions (allowLocal=false)
+13/06/11 03:04:40 INFO DAGScheduler: Final stage: Stage 28 (map at BALS.scala:117)
+13/06/11 03:04:40 INFO DAGScheduler: Parents of final stage: List(Stage 29)
+13/06/11 03:04:40 INFO DAGScheduler: Missing parents: List(Stage 29)
+13/06/11 03:04:40 INFO DAGScheduler: Submitting Stage 29 (MapPartitionsRDD[67] at reduceByKey at BALS.scala:116), which has no missing parents
+13/06/11 03:04:40 INFO DAGScheduler: Submitting 4 missing tasks from Stage 29 (MapPartitionsRDD[67] at reduceByKey at BALS.scala:116)
+13/06/11 03:04:40 INFO ClusterScheduler: Adding task set 29.0 with 4 tasks
+13/06/11 03:04:40 INFO TaskSetManager: Starting task 29.0:0 as TID 112 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:04:40 INFO TaskSetManager: Serialized task 29.0:0 as 2215 bytes in 2 ms
+13/06/11 03:04:40 INFO TaskSetManager: Starting task 29.0:2 as TID 113 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 03:04:40 INFO TaskSetManager: Serialized task 29.0:2 as 2215 bytes in 0 ms
+13/06/11 03:04:40 INFO TaskSetManager: Starting task 29.0:3 as TID 114 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:04:40 INFO TaskSetManager: Serialized task 29.0:3 as 2215 bytes in 0 ms
+13/06/11 03:04:40 INFO TaskSetManager: Starting task 29.0:1 as TID 115 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:04:40 INFO TaskSetManager: Serialized task 29.0:1 as 2215 bytes in 0 ms
+13/06/11 03:05:51 INFO TaskSetManager: Finished TID 114 in 70914 ms (progress: 1/4)
+13/06/11 03:05:51 INFO DAGScheduler: Completed ShuffleMapTask(29, 3)
+13/06/11 03:05:51 INFO TaskSetManager: Finished TID 115 in 71592 ms (progress: 2/4)
+13/06/11 03:05:51 INFO DAGScheduler: Completed ShuffleMapTask(29, 1)
+13/06/11 03:05:52 INFO TaskSetManager: Finished TID 113 in 72252 ms (progress: 3/4)
+13/06/11 03:05:52 INFO DAGScheduler: Completed ShuffleMapTask(29, 2)
+13/06/11 03:05:54 INFO TaskSetManager: Finished TID 112 in 74237 ms (progress: 4/4)
+13/06/11 03:05:54 INFO DAGScheduler: Completed ShuffleMapTask(29, 0)
+13/06/11 03:05:54 INFO DAGScheduler: Stage 29 (reduceByKey at BALS.scala:116) finished in 74.238 s
+13/06/11 03:05:54 INFO DAGScheduler: looking for newly runnable stages
+13/06/11 03:05:54 INFO DAGScheduler: running: Set()
+13/06/11 03:05:54 INFO DAGScheduler: waiting: Set(Stage 28)
+13/06/11 03:05:54 INFO DAGScheduler: failed: Set()
+13/06/11 03:05:54 INFO DAGScheduler: Missing parents for Stage 28: List()
+13/06/11 03:05:54 INFO DAGScheduler: Submitting Stage 28 (MappedRDD[70] at map at BALS.scala:117), which is now runnable
+13/06/11 03:05:54 INFO DAGScheduler: Submitting 4 missing tasks from Stage 28 (MappedRDD[70] at map at BALS.scala:117)
+13/06/11 03:05:54 INFO ClusterScheduler: Adding task set 28.0 with 4 tasks
+13/06/11 03:05:54 INFO TaskSetManager: Starting task 28.0:0 as TID 116 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:05:54 INFO TaskSetManager: Serialized task 28.0:0 as 2336 bytes in 3 ms
+13/06/11 03:05:54 INFO TaskSetManager: Starting task 28.0:1 as TID 117 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 03:05:54 INFO TaskSetManager: Serialized task 28.0:1 as 2336 bytes in 0 ms
+13/06/11 03:05:54 INFO TaskSetManager: Starting task 28.0:2 as TID 118 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:05:54 INFO TaskSetManager: Serialized task 28.0:2 as 2336 bytes in 0 ms
+13/06/11 03:05:54 INFO TaskSetManager: Starting task 28.0:3 as TID 119 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:05:54 INFO TaskSetManager: Serialized task 28.0:3 as 2336 bytes in 0 ms
+13/06/11 03:05:54 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 12 to ip-10-232-39-5.ec2.internal
+13/06/11 03:05:54 INFO MapOutputTracker: Size of output statuses for shuffle 12 is 195 bytes
+13/06/11 03:05:54 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 12 to ip-10-171-8-42.ec2.internal
+13/06/11 03:05:54 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 12 to ip-10-31-132-203.ec2.internal
+13/06/11 03:05:54 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 12 to ip-10-232-8-42.ec2.internal
+13/06/11 03:05:55 INFO TaskSetManager: Finished TID 119 in 1386 ms (progress: 1/4)
+13/06/11 03:05:55 INFO DAGScheduler: Completed ResultTask(28, 3)
+13/06/11 03:05:55 INFO TaskSetManager: Finished TID 116 in 1397 ms (progress: 2/4)
+13/06/11 03:05:55 INFO DAGScheduler: Completed ResultTask(28, 0)
+13/06/11 03:05:55 INFO TaskSetManager: Finished TID 117 in 1403 ms (progress: 3/4)
+13/06/11 03:05:55 INFO DAGScheduler: Completed ResultTask(28, 1)
+13/06/11 03:05:55 INFO TaskSetManager: Finished TID 118 in 1476 ms (progress: 4/4)
+13/06/11 03:05:55 INFO DAGScheduler: Completed ResultTask(28, 2)
+13/06/11 03:05:55 INFO DAGScheduler: Stage 28 (map at BALS.scala:117) finished in 1.486 s
+13/06/11 03:05:55 INFO SparkContext: Job finished: collect at BALS.scala:117, took 75.730547389 s
+13/06/11 03:05:55 INFO MemoryStore: ensureFreeSpace(6966048) called with curMem=1366448345, maxMem=20157722787
+13/06/11 03:05:55 INFO MemoryStore: Block broadcast_15 stored as values to memory (estimated size 6.6 MB, free 17.5 GB)
+13/06/11 03:05:55 INFO SparkContext: Starting job: collect at BALS.scala:128
+13/06/11 03:05:55 INFO DAGScheduler: Registering RDD 72 (reduceByKey at BALS.scala:127)
+13/06/11 03:05:55 INFO DAGScheduler: Got job 17 (collect at BALS.scala:128) with 4 output partitions (allowLocal=false)
+13/06/11 03:05:55 INFO DAGScheduler: Final stage: Stage 30 (map at BALS.scala:128)
+13/06/11 03:05:55 INFO DAGScheduler: Parents of final stage: List(Stage 31)
+13/06/11 03:05:55 INFO DAGScheduler: Missing parents: List(Stage 31)
+13/06/11 03:05:55 INFO DAGScheduler: Submitting Stage 31 (MapPartitionsRDD[72] at reduceByKey at BALS.scala:127), which has no missing parents
+13/06/11 03:05:55 INFO DAGScheduler: Submitting 4 missing tasks from Stage 31 (MapPartitionsRDD[72] at reduceByKey at BALS.scala:127)
+13/06/11 03:05:55 INFO ClusterScheduler: Adding task set 31.0 with 4 tasks
+13/06/11 03:05:55 INFO TaskSetManager: Starting task 31.0:0 as TID 120 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:05:55 INFO TaskSetManager: Serialized task 31.0:0 as 2216 bytes in 2 ms
+13/06/11 03:05:55 INFO TaskSetManager: Starting task 31.0:2 as TID 121 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 03:05:55 INFO TaskSetManager: Serialized task 31.0:2 as 2216 bytes in 1 ms
+13/06/11 03:05:55 INFO TaskSetManager: Starting task 31.0:3 as TID 122 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:05:55 INFO TaskSetManager: Serialized task 31.0:3 as 2216 bytes in 0 ms
+13/06/11 03:05:55 INFO TaskSetManager: Starting task 31.0:1 as TID 123 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:05:55 INFO TaskSetManager: Serialized task 31.0:1 as 2216 bytes in 1 ms
+13/06/11 03:06:59 INFO TaskSetManager: Finished TID 123 in 63096 ms (progress: 1/4)
+13/06/11 03:06:59 INFO DAGScheduler: Completed ShuffleMapTask(31, 1)
+13/06/11 03:06:59 INFO TaskSetManager: Finished TID 122 in 63529 ms (progress: 2/4)
+13/06/11 03:06:59 INFO DAGScheduler: Completed ShuffleMapTask(31, 3)
+13/06/11 03:06:59 INFO TaskSetManager: Finished TID 121 in 63826 ms (progress: 3/4)
+13/06/11 03:06:59 INFO DAGScheduler: Completed ShuffleMapTask(31, 2)
+13/06/11 03:07:04 INFO TaskSetManager: Finished TID 120 in 68677 ms (progress: 4/4)
+13/06/11 03:07:04 INFO DAGScheduler: Completed ShuffleMapTask(31, 0)
+13/06/11 03:07:04 INFO DAGScheduler: Stage 31 (reduceByKey at BALS.scala:127) finished in 68.678 s
+13/06/11 03:07:04 INFO DAGScheduler: looking for newly runnable stages
+13/06/11 03:07:04 INFO DAGScheduler: running: Set()
+13/06/11 03:07:04 INFO DAGScheduler: waiting: Set(Stage 30)
+13/06/11 03:07:04 INFO DAGScheduler: failed: Set()
+13/06/11 03:07:04 INFO DAGScheduler: Missing parents for Stage 30: List()
+13/06/11 03:07:04 INFO DAGScheduler: Submitting Stage 30 (MappedRDD[75] at map at BALS.scala:128), which is now runnable
+13/06/11 03:07:04 INFO DAGScheduler: Submitting 4 missing tasks from Stage 30 (MappedRDD[75] at map at BALS.scala:128)
+13/06/11 03:07:04 INFO ClusterScheduler: Adding task set 30.0 with 4 tasks
+13/06/11 03:07:04 INFO TaskSetManager: Starting task 30.0:0 as TID 124 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:07:04 INFO TaskSetManager: Serialized task 30.0:0 as 2336 bytes in 2 ms
+13/06/11 03:07:04 INFO TaskSetManager: Starting task 30.0:1 as TID 125 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 03:07:04 INFO TaskSetManager: Serialized task 30.0:1 as 2336 bytes in 0 ms
+13/06/11 03:07:04 INFO TaskSetManager: Starting task 30.0:2 as TID 126 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:07:04 INFO TaskSetManager: Serialized task 30.0:2 as 2336 bytes in 0 ms
+13/06/11 03:07:04 INFO TaskSetManager: Starting task 30.0:3 as TID 127 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:07:04 INFO TaskSetManager: Serialized task 30.0:3 as 2336 bytes in 0 ms
+13/06/11 03:07:04 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 13 to ip-10-232-39-5.ec2.internal
+13/06/11 03:07:04 INFO MapOutputTracker: Size of output statuses for shuffle 13 is 195 bytes
+13/06/11 03:07:04 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 13 to ip-10-171-8-42.ec2.internal
+13/06/11 03:07:04 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 13 to ip-10-31-132-203.ec2.internal
+13/06/11 03:07:04 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 13 to ip-10-232-8-42.ec2.internal
+13/06/11 03:07:06 INFO TaskSetManager: Finished TID 125 in 2274 ms (progress: 1/4)
+13/06/11 03:07:06 INFO DAGScheduler: Completed ResultTask(30, 1)
+13/06/11 03:07:06 INFO TaskSetManager: Finished TID 127 in 2346 ms (progress: 2/4)
+13/06/11 03:07:07 INFO DAGScheduler: Completed ResultTask(30, 3)
+13/06/11 03:07:07 INFO TaskSetManager: Finished TID 126 in 2419 ms (progress: 3/4)
+13/06/11 03:07:07 INFO DAGScheduler: Completed ResultTask(30, 2)
+13/06/11 03:07:07 INFO TaskSetManager: Finished TID 124 in 2451 ms (progress: 4/4)
+13/06/11 03:07:07 INFO DAGScheduler: Completed ResultTask(30, 0)
+13/06/11 03:07:07 INFO DAGScheduler: Stage 30 (map at BALS.scala:128) finished in 2.480 s
+13/06/11 03:07:07 INFO SparkContext: Job finished: collect at BALS.scala:128, took 71.164444689 s
+13/06/11 03:07:07 INFO MemoryStore: ensureFreeSpace(188234296) called with curMem=1373414393, maxMem=20157722787
+13/06/11 03:07:07 INFO MemoryStore: Block broadcast_16 stored as values to memory (estimated size 179.5 MB, free 17.3 GB)
+Runtime: 1052425
+Iteration: 7
+13/06/11 03:07:09 INFO SparkContext: Starting job: collect at BALS.scala:117
+13/06/11 03:07:09 INFO DAGScheduler: Registering RDD 77 (reduceByKey at BALS.scala:116)
+13/06/11 03:07:09 INFO DAGScheduler: Got job 18 (collect at BALS.scala:117) with 4 output partitions (allowLocal=false)
+13/06/11 03:07:09 INFO DAGScheduler: Final stage: Stage 32 (map at BALS.scala:117)
+13/06/11 03:07:09 INFO DAGScheduler: Parents of final stage: List(Stage 33)
+13/06/11 03:07:09 INFO DAGScheduler: Missing parents: List(Stage 33)
+13/06/11 03:07:09 INFO DAGScheduler: Submitting Stage 33 (MapPartitionsRDD[77] at reduceByKey at BALS.scala:116), which has no missing parents
+13/06/11 03:07:09 INFO DAGScheduler: Submitting 4 missing tasks from Stage 33 (MapPartitionsRDD[77] at reduceByKey at BALS.scala:116)
+13/06/11 03:07:09 INFO ClusterScheduler: Adding task set 33.0 with 4 tasks
+13/06/11 03:07:09 INFO TaskSetManager: Starting task 33.0:0 as TID 128 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:07:09 INFO TaskSetManager: Serialized task 33.0:0 as 2215 bytes in 2 ms
+13/06/11 03:07:09 INFO TaskSetManager: Starting task 33.0:2 as TID 129 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 03:07:09 INFO TaskSetManager: Serialized task 33.0:2 as 2215 bytes in 0 ms
+13/06/11 03:07:09 INFO TaskSetManager: Starting task 33.0:3 as TID 130 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:07:09 INFO TaskSetManager: Serialized task 33.0:3 as 2215 bytes in 0 ms
+13/06/11 03:07:09 INFO TaskSetManager: Starting task 33.0:1 as TID 131 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:07:09 INFO TaskSetManager: Serialized task 33.0:1 as 2215 bytes in 0 ms
+13/06/11 03:08:20 INFO TaskSetManager: Finished TID 130 in 71002 ms (progress: 1/4)
+13/06/11 03:08:20 INFO DAGScheduler: Completed ShuffleMapTask(33, 3)
+13/06/11 03:08:21 INFO TaskSetManager: Finished TID 131 in 71361 ms (progress: 2/4)
+13/06/11 03:08:21 INFO DAGScheduler: Completed ShuffleMapTask(33, 1)
+13/06/11 03:08:22 INFO TaskSetManager: Finished TID 129 in 72793 ms (progress: 3/4)
+13/06/11 03:08:22 INFO DAGScheduler: Completed ShuffleMapTask(33, 2)
+13/06/11 03:08:24 INFO TaskSetManager: Finished TID 128 in 75193 ms (progress: 4/4)
+13/06/11 03:08:24 INFO DAGScheduler: Completed ShuffleMapTask(33, 0)
+13/06/11 03:08:24 INFO DAGScheduler: Stage 33 (reduceByKey at BALS.scala:116) finished in 75.194 s
+13/06/11 03:08:24 INFO DAGScheduler: looking for newly runnable stages
+13/06/11 03:08:24 INFO DAGScheduler: running: Set()
+13/06/11 03:08:24 INFO DAGScheduler: waiting: Set(Stage 32)
+13/06/11 03:08:24 INFO DAGScheduler: failed: Set()
+13/06/11 03:08:24 INFO DAGScheduler: Missing parents for Stage 32: List()
+13/06/11 03:08:24 INFO DAGScheduler: Submitting Stage 32 (MappedRDD[80] at map at BALS.scala:117), which is now runnable
+13/06/11 03:08:24 INFO DAGScheduler: Submitting 4 missing tasks from Stage 32 (MappedRDD[80] at map at BALS.scala:117)
+13/06/11 03:08:24 INFO ClusterScheduler: Adding task set 32.0 with 4 tasks
+13/06/11 03:08:24 INFO TaskSetManager: Starting task 32.0:0 as TID 132 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:08:24 INFO TaskSetManager: Serialized task 32.0:0 as 2336 bytes in 3 ms
+13/06/11 03:08:24 INFO TaskSetManager: Starting task 32.0:1 as TID 133 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 03:08:24 INFO TaskSetManager: Serialized task 32.0:1 as 2336 bytes in 1 ms
+13/06/11 03:08:24 INFO TaskSetManager: Starting task 32.0:2 as TID 134 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:08:24 INFO TaskSetManager: Serialized task 32.0:2 as 2336 bytes in 0 ms
+13/06/11 03:08:24 INFO TaskSetManager: Starting task 32.0:3 as TID 135 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:08:24 INFO TaskSetManager: Serialized task 32.0:3 as 2336 bytes in 0 ms
+13/06/11 03:08:24 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 14 to ip-10-232-39-5.ec2.internal
+13/06/11 03:08:24 INFO MapOutputTracker: Size of output statuses for shuffle 14 is 195 bytes
+13/06/11 03:08:24 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 14 to ip-10-171-8-42.ec2.internal
+13/06/11 03:08:24 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 14 to ip-10-232-8-42.ec2.internal
+13/06/11 03:08:24 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 14 to ip-10-31-132-203.ec2.internal
+13/06/11 03:08:26 INFO TaskSetManager: Finished TID 133 in 1392 ms (progress: 1/4)
+13/06/11 03:08:26 INFO DAGScheduler: Completed ResultTask(32, 1)
+13/06/11 03:08:26 INFO TaskSetManager: Finished TID 135 in 1398 ms (progress: 2/4)
+13/06/11 03:08:26 INFO DAGScheduler: Completed ResultTask(32, 3)
+13/06/11 03:08:26 INFO TaskSetManager: Finished TID 132 in 1408 ms (progress: 3/4)
+13/06/11 03:08:26 INFO DAGScheduler: Completed ResultTask(32, 0)
+13/06/11 03:08:26 INFO TaskSetManager: Finished TID 134 in 1492 ms (progress: 4/4)
+13/06/11 03:08:26 INFO DAGScheduler: Completed ResultTask(32, 2)
+13/06/11 03:08:26 INFO DAGScheduler: Stage 32 (map at BALS.scala:117) finished in 1.502 s
+13/06/11 03:08:26 INFO SparkContext: Job finished: collect at BALS.scala:117, took 76.703174503 s
+13/06/11 03:08:26 INFO MemoryStore: ensureFreeSpace(6966048) called with curMem=1561648689, maxMem=20157722787
+13/06/11 03:08:26 INFO MemoryStore: Block broadcast_17 stored as values to memory (estimated size 6.6 MB, free 17.3 GB)
+13/06/11 03:08:26 INFO SparkContext: Starting job: collect at BALS.scala:128
+13/06/11 03:08:26 INFO DAGScheduler: Registering RDD 82 (reduceByKey at BALS.scala:127)
+13/06/11 03:08:26 INFO DAGScheduler: Got job 19 (collect at BALS.scala:128) with 4 output partitions (allowLocal=false)
+13/06/11 03:08:26 INFO DAGScheduler: Final stage: Stage 34 (map at BALS.scala:128)
+13/06/11 03:08:26 INFO DAGScheduler: Parents of final stage: List(Stage 35)
+13/06/11 03:08:26 INFO DAGScheduler: Missing parents: List(Stage 35)
+13/06/11 03:08:26 INFO DAGScheduler: Submitting Stage 35 (MapPartitionsRDD[82] at reduceByKey at BALS.scala:127), which has no missing parents
+13/06/11 03:08:26 INFO DAGScheduler: Submitting 4 missing tasks from Stage 35 (MapPartitionsRDD[82] at reduceByKey at BALS.scala:127)
+13/06/11 03:08:26 INFO ClusterScheduler: Adding task set 35.0 with 4 tasks
+13/06/11 03:08:26 INFO TaskSetManager: Starting task 35.0:0 as TID 136 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:08:26 INFO TaskSetManager: Serialized task 35.0:0 as 2217 bytes in 2 ms
+13/06/11 03:08:26 INFO TaskSetManager: Starting task 35.0:2 as TID 137 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 03:08:26 INFO TaskSetManager: Serialized task 35.0:2 as 2217 bytes in 0 ms
+13/06/11 03:08:26 INFO TaskSetManager: Starting task 35.0:3 as TID 138 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:08:26 INFO TaskSetManager: Serialized task 35.0:3 as 2217 bytes in 0 ms
+13/06/11 03:08:26 INFO TaskSetManager: Starting task 35.0:1 as TID 139 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:08:26 INFO TaskSetManager: Serialized task 35.0:1 as 2217 bytes in 0 ms
+13/06/11 03:09:29 INFO TaskSetManager: Finished TID 139 in 63330 ms (progress: 1/4)
+13/06/11 03:09:29 INFO DAGScheduler: Completed ShuffleMapTask(35, 1)
+13/06/11 03:09:29 INFO TaskSetManager: Finished TID 138 in 63465 ms (progress: 2/4)
+13/06/11 03:09:29 INFO DAGScheduler: Completed ShuffleMapTask(35, 3)
+13/06/11 03:09:30 INFO TaskSetManager: Finished TID 137 in 63919 ms (progress: 3/4)
+13/06/11 03:09:30 INFO DAGScheduler: Completed ShuffleMapTask(35, 2)
+13/06/11 03:09:33 INFO TaskSetManager: Finished TID 136 in 67242 ms (progress: 4/4)
+13/06/11 03:09:33 INFO DAGScheduler: Completed ShuffleMapTask(35, 0)
+13/06/11 03:09:33 INFO DAGScheduler: Stage 35 (reduceByKey at BALS.scala:127) finished in 67.243 s
+13/06/11 03:09:33 INFO DAGScheduler: looking for newly runnable stages
+13/06/11 03:09:33 INFO DAGScheduler: running: Set()
+13/06/11 03:09:33 INFO DAGScheduler: waiting: Set(Stage 34)
+13/06/11 03:09:33 INFO DAGScheduler: failed: Set()
+13/06/11 03:09:33 INFO DAGScheduler: Missing parents for Stage 34: List()
+13/06/11 03:09:33 INFO DAGScheduler: Submitting Stage 34 (MappedRDD[85] at map at BALS.scala:128), which is now runnable
+13/06/11 03:09:33 INFO DAGScheduler: Submitting 4 missing tasks from Stage 34 (MappedRDD[85] at map at BALS.scala:128)
+13/06/11 03:09:33 INFO ClusterScheduler: Adding task set 34.0 with 4 tasks
+13/06/11 03:09:33 INFO TaskSetManager: Starting task 34.0:0 as TID 140 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:09:33 INFO TaskSetManager: Serialized task 34.0:0 as 2337 bytes in 3 ms
+13/06/11 03:09:33 INFO TaskSetManager: Starting task 34.0:1 as TID 141 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 03:09:33 INFO TaskSetManager: Serialized task 34.0:1 as 2337 bytes in 0 ms
+13/06/11 03:09:33 INFO TaskSetManager: Starting task 34.0:2 as TID 142 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:09:33 INFO TaskSetManager: Serialized task 34.0:2 as 2337 bytes in 0 ms
+13/06/11 03:09:33 INFO TaskSetManager: Starting task 34.0:3 as TID 143 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:09:33 INFO TaskSetManager: Serialized task 34.0:3 as 2337 bytes in 0 ms
+13/06/11 03:09:33 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 15 to ip-10-232-39-5.ec2.internal
+13/06/11 03:09:33 INFO MapOutputTracker: Size of output statuses for shuffle 15 is 195 bytes
+13/06/11 03:09:33 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 15 to ip-10-232-8-42.ec2.internal
+13/06/11 03:09:33 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 15 to ip-10-31-132-203.ec2.internal
+13/06/11 03:09:33 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 15 to ip-10-171-8-42.ec2.internal
+13/06/11 03:09:36 INFO TaskSetManager: Finished TID 141 in 2258 ms (progress: 1/4)
+13/06/11 03:09:36 INFO DAGScheduler: Completed ResultTask(34, 1)
+13/06/11 03:09:36 INFO TaskSetManager: Finished TID 143 in 2288 ms (progress: 2/4)
+13/06/11 03:09:36 INFO DAGScheduler: Completed ResultTask(34, 3)
+13/06/11 03:09:36 INFO TaskSetManager: Finished TID 142 in 2347 ms (progress: 3/4)
+13/06/11 03:09:36 INFO DAGScheduler: Completed ResultTask(34, 2)
+13/06/11 03:09:36 INFO TaskSetManager: Finished TID 140 in 3066 ms (progress: 4/4)
+13/06/11 03:09:36 INFO DAGScheduler: Completed ResultTask(34, 0)
+13/06/11 03:09:36 INFO DAGScheduler: Stage 34 (map at BALS.scala:128) finished in 3.118 s
+13/06/11 03:09:36 INFO SparkContext: Job finished: collect at BALS.scala:128, took 70.36717358 s
+13/06/11 03:09:36 INFO MemoryStore: ensureFreeSpace(188234296) called with curMem=1568614737, maxMem=20157722787
+13/06/11 03:09:36 INFO MemoryStore: Block broadcast_18 stored as values to memory (estimated size 179.5 MB, free 17.1 GB)
+Runtime: 1202223
+Iteration: 8
+13/06/11 03:09:39 INFO SparkContext: Starting job: collect at BALS.scala:117
+13/06/11 03:09:39 INFO DAGScheduler: Registering RDD 87 (reduceByKey at BALS.scala:116)
+13/06/11 03:09:39 INFO DAGScheduler: Got job 20 (collect at BALS.scala:117) with 4 output partitions (allowLocal=false)
+13/06/11 03:09:39 INFO DAGScheduler: Final stage: Stage 36 (map at BALS.scala:117)
+13/06/11 03:09:39 INFO DAGScheduler: Parents of final stage: List(Stage 37)
+13/06/11 03:09:39 INFO DAGScheduler: Missing parents: List(Stage 37)
+13/06/11 03:09:39 INFO DAGScheduler: Submitting Stage 37 (MapPartitionsRDD[87] at reduceByKey at BALS.scala:116), which has no missing parents
+13/06/11 03:09:39 INFO DAGScheduler: Submitting 4 missing tasks from Stage 37 (MapPartitionsRDD[87] at reduceByKey at BALS.scala:116)
+13/06/11 03:09:39 INFO ClusterScheduler: Adding task set 37.0 with 4 tasks
+13/06/11 03:09:39 INFO TaskSetManager: Starting task 37.0:0 as TID 144 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:09:39 INFO TaskSetManager: Serialized task 37.0:0 as 2216 bytes in 2 ms
+13/06/11 03:09:39 INFO TaskSetManager: Starting task 37.0:2 as TID 145 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 03:09:39 INFO TaskSetManager: Serialized task 37.0:2 as 2216 bytes in 0 ms
+13/06/11 03:09:39 INFO TaskSetManager: Starting task 37.0:3 as TID 146 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:09:39 INFO TaskSetManager: Serialized task 37.0:3 as 2216 bytes in 0 ms
+13/06/11 03:09:39 INFO TaskSetManager: Starting task 37.0:1 as TID 147 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:09:39 INFO TaskSetManager: Serialized task 37.0:1 as 2216 bytes in 1 ms
+13/06/11 03:10:50 INFO TaskSetManager: Finished TID 146 in 71092 ms (progress: 1/4)
+13/06/11 03:10:50 INFO DAGScheduler: Completed ShuffleMapTask(37, 3)
+13/06/11 03:10:50 INFO TaskSetManager: Finished TID 147 in 71196 ms (progress: 2/4)
+13/06/11 03:10:50 INFO DAGScheduler: Completed ShuffleMapTask(37, 1)
+13/06/11 03:10:51 INFO TaskSetManager: Finished TID 145 in 72385 ms (progress: 3/4)
+13/06/11 03:10:51 INFO DAGScheduler: Completed ShuffleMapTask(37, 2)
+13/06/11 03:10:56 INFO TaskSetManager: Finished TID 144 in 76522 ms (progress: 4/4)
+13/06/11 03:10:56 INFO DAGScheduler: Completed ShuffleMapTask(37, 0)
+13/06/11 03:10:56 INFO DAGScheduler: Stage 37 (reduceByKey at BALS.scala:116) finished in 76.523 s
+13/06/11 03:10:56 INFO DAGScheduler: looking for newly runnable stages
+13/06/11 03:10:56 INFO DAGScheduler: running: Set()
+13/06/11 03:10:56 INFO DAGScheduler: waiting: Set(Stage 36)
+13/06/11 03:10:56 INFO DAGScheduler: failed: Set()
+13/06/11 03:10:56 INFO DAGScheduler: Missing parents for Stage 36: List()
+13/06/11 03:10:56 INFO DAGScheduler: Submitting Stage 36 (MappedRDD[90] at map at BALS.scala:117), which is now runnable
+13/06/11 03:10:56 INFO DAGScheduler: Submitting 4 missing tasks from Stage 36 (MappedRDD[90] at map at BALS.scala:117)
+13/06/11 03:10:56 INFO ClusterScheduler: Adding task set 36.0 with 4 tasks
+13/06/11 03:10:56 INFO TaskSetManager: Starting task 36.0:0 as TID 148 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:10:56 INFO TaskSetManager: Serialized task 36.0:0 as 2337 bytes in 3 ms
+13/06/11 03:10:56 INFO TaskSetManager: Starting task 36.0:1 as TID 149 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 03:10:56 INFO TaskSetManager: Serialized task 36.0:1 as 2337 bytes in 0 ms
+13/06/11 03:10:56 INFO TaskSetManager: Starting task 36.0:2 as TID 150 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:10:56 INFO TaskSetManager: Serialized task 36.0:2 as 2337 bytes in 1 ms
+13/06/11 03:10:56 INFO TaskSetManager: Starting task 36.0:3 as TID 151 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:10:56 INFO TaskSetManager: Serialized task 36.0:3 as 2337 bytes in 0 ms
+13/06/11 03:10:56 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 16 to ip-10-232-39-5.ec2.internal
+13/06/11 03:10:56 INFO MapOutputTracker: Size of output statuses for shuffle 16 is 195 bytes
+13/06/11 03:10:56 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 16 to ip-10-31-132-203.ec2.internal
+13/06/11 03:10:56 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 16 to ip-10-171-8-42.ec2.internal
+13/06/11 03:10:56 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 16 to ip-10-232-8-42.ec2.internal
+13/06/11 03:10:57 INFO TaskSetManager: Finished TID 148 in 1392 ms (progress: 1/4)
+13/06/11 03:10:57 INFO DAGScheduler: Completed ResultTask(36, 0)
+13/06/11 03:10:57 INFO TaskSetManager: Finished TID 151 in 1395 ms (progress: 2/4)
+13/06/11 03:10:57 INFO DAGScheduler: Completed ResultTask(36, 3)
+13/06/11 03:10:57 INFO TaskSetManager: Finished TID 149 in 1405 ms (progress: 3/4)
+13/06/11 03:10:57 INFO DAGScheduler: Completed ResultTask(36, 1)
+13/06/11 03:10:57 INFO TaskSetManager: Finished TID 150 in 1479 ms (progress: 4/4)
+13/06/11 03:10:57 INFO DAGScheduler: Completed ResultTask(36, 2)
+13/06/11 03:10:57 INFO DAGScheduler: Stage 36 (map at BALS.scala:117) finished in 1.488 s
+13/06/11 03:10:57 INFO SparkContext: Job finished: collect at BALS.scala:117, took 78.01829573 s
+13/06/11 03:10:57 INFO MemoryStore: ensureFreeSpace(6966048) called with curMem=1756849033, maxMem=20157722787
+13/06/11 03:10:57 INFO MemoryStore: Block broadcast_19 stored as values to memory (estimated size 6.6 MB, free 17.1 GB)
+13/06/11 03:10:57 INFO SparkContext: Starting job: collect at BALS.scala:128
+13/06/11 03:10:57 INFO DAGScheduler: Registering RDD 92 (reduceByKey at BALS.scala:127)
+13/06/11 03:10:57 INFO DAGScheduler: Got job 21 (collect at BALS.scala:128) with 4 output partitions (allowLocal=false)
+13/06/11 03:10:57 INFO DAGScheduler: Final stage: Stage 38 (map at BALS.scala:128)
+13/06/11 03:10:57 INFO DAGScheduler: Parents of final stage: List(Stage 39)
+13/06/11 03:10:57 INFO DAGScheduler: Missing parents: List(Stage 39)
+13/06/11 03:10:57 INFO DAGScheduler: Submitting Stage 39 (MapPartitionsRDD[92] at reduceByKey at BALS.scala:127), which has no missing parents
+13/06/11 03:10:57 INFO DAGScheduler: Submitting 4 missing tasks from Stage 39 (MapPartitionsRDD[92] at reduceByKey at BALS.scala:127)
+13/06/11 03:10:57 INFO ClusterScheduler: Adding task set 39.0 with 4 tasks
+13/06/11 03:10:57 INFO TaskSetManager: Starting task 39.0:0 as TID 152 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:10:57 INFO TaskSetManager: Serialized task 39.0:0 as 2216 bytes in 2 ms
+13/06/11 03:10:57 INFO TaskSetManager: Starting task 39.0:2 as TID 153 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 03:10:57 INFO TaskSetManager: Serialized task 39.0:2 as 2216 bytes in 0 ms
+13/06/11 03:10:57 INFO TaskSetManager: Starting task 39.0:3 as TID 154 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:10:57 INFO TaskSetManager: Serialized task 39.0:3 as 2216 bytes in 0 ms
+13/06/11 03:10:57 INFO TaskSetManager: Starting task 39.0:1 as TID 155 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:10:57 INFO TaskSetManager: Serialized task 39.0:1 as 2216 bytes in 0 ms
+13/06/11 03:12:00 INFO TaskSetManager: Finished TID 155 in 63248 ms (progress: 1/4)
+13/06/11 03:12:00 INFO DAGScheduler: Completed ShuffleMapTask(39, 1)
+13/06/11 03:12:01 INFO TaskSetManager: Finished TID 154 in 63406 ms (progress: 2/4)
+13/06/11 03:12:01 INFO DAGScheduler: Completed ShuffleMapTask(39, 3)
+13/06/11 03:12:01 INFO TaskSetManager: Finished TID 153 in 63913 ms (progress: 3/4)
+13/06/11 03:12:01 INFO DAGScheduler: Completed ShuffleMapTask(39, 2)
+13/06/11 03:12:04 INFO TaskSetManager: Finished TID 152 in 67234 ms (progress: 4/4)
+13/06/11 03:12:04 INFO DAGScheduler: Completed ShuffleMapTask(39, 0)
+13/06/11 03:12:04 INFO DAGScheduler: Stage 39 (reduceByKey at BALS.scala:127) finished in 67.234 s
+13/06/11 03:12:04 INFO DAGScheduler: looking for newly runnable stages
+13/06/11 03:12:04 INFO DAGScheduler: running: Set()
+13/06/11 03:12:04 INFO DAGScheduler: waiting: Set(Stage 38)
+13/06/11 03:12:04 INFO DAGScheduler: failed: Set()
+13/06/11 03:12:04 INFO DAGScheduler: Missing parents for Stage 38: List()
+13/06/11 03:12:04 INFO DAGScheduler: Submitting Stage 38 (MappedRDD[95] at map at BALS.scala:128), which is now runnable
+13/06/11 03:12:04 INFO DAGScheduler: Submitting 4 missing tasks from Stage 38 (MappedRDD[95] at map at BALS.scala:128)
+13/06/11 03:12:04 INFO ClusterScheduler: Adding task set 38.0 with 4 tasks
+13/06/11 03:12:04 INFO TaskSetManager: Starting task 38.0:0 as TID 156 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:12:04 INFO TaskSetManager: Serialized task 38.0:0 as 2336 bytes in 3 ms
+13/06/11 03:12:04 INFO TaskSetManager: Starting task 38.0:1 as TID 157 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 03:12:04 INFO TaskSetManager: Serialized task 38.0:1 as 2336 bytes in 0 ms
+13/06/11 03:12:04 INFO TaskSetManager: Starting task 38.0:2 as TID 158 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:12:04 INFO TaskSetManager: Serialized task 38.0:2 as 2336 bytes in 0 ms
+13/06/11 03:12:04 INFO TaskSetManager: Starting task 38.0:3 as TID 159 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:12:04 INFO TaskSetManager: Serialized task 38.0:3 as 2336 bytes in 0 ms
+13/06/11 03:12:04 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 17 to ip-10-232-39-5.ec2.internal
+13/06/11 03:12:04 INFO MapOutputTracker: Size of output statuses for shuffle 17 is 195 bytes
+13/06/11 03:12:04 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 17 to ip-10-171-8-42.ec2.internal
+13/06/11 03:12:04 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 17 to ip-10-232-8-42.ec2.internal
+13/06/11 03:12:04 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 17 to ip-10-31-132-203.ec2.internal
+13/06/11 03:12:07 INFO TaskSetManager: Finished TID 157 in 2242 ms (progress: 1/4)
+13/06/11 03:12:07 INFO DAGScheduler: Completed ResultTask(38, 1)
+13/06/11 03:12:07 INFO TaskSetManager: Finished TID 159 in 2334 ms (progress: 2/4)
+13/06/11 03:12:07 INFO DAGScheduler: Completed ResultTask(38, 3)
+13/06/11 03:12:07 INFO TaskSetManager: Finished TID 156 in 2367 ms (progress: 3/4)
+13/06/11 03:12:07 INFO DAGScheduler: Completed ResultTask(38, 0)
+13/06/11 03:12:07 INFO TaskSetManager: Finished TID 158 in 2393 ms (progress: 4/4)
+13/06/11 03:12:07 INFO DAGScheduler: Completed ResultTask(38, 2)
+13/06/11 03:12:07 INFO DAGScheduler: Stage 38 (map at BALS.scala:128) finished in 2.424 s
+13/06/11 03:12:07 INFO SparkContext: Job finished: collect at BALS.scala:128, took 69.665100435 s
+13/06/11 03:12:07 INFO MemoryStore: ensureFreeSpace(188234296) called with curMem=1763815081, maxMem=20157722787
+13/06/11 03:12:07 INFO MemoryStore: Block broadcast_20 stored as values to memory (estimated size 179.5 MB, free 17.0 GB)
+Runtime: 1352634
+Iteration: 9
+13/06/11 03:12:09 INFO SparkContext: Starting job: collect at BALS.scala:117
+13/06/11 03:12:09 INFO DAGScheduler: Registering RDD 97 (reduceByKey at BALS.scala:116)
+13/06/11 03:12:09 INFO DAGScheduler: Got job 22 (collect at BALS.scala:117) with 4 output partitions (allowLocal=false)
+13/06/11 03:12:09 INFO DAGScheduler: Final stage: Stage 40 (map at BALS.scala:117)
+13/06/11 03:12:09 INFO DAGScheduler: Parents of final stage: List(Stage 41)
+13/06/11 03:12:09 INFO DAGScheduler: Missing parents: List(Stage 41)
+13/06/11 03:12:09 INFO DAGScheduler: Submitting Stage 41 (MapPartitionsRDD[97] at reduceByKey at BALS.scala:116), which has no missing parents
+13/06/11 03:12:09 INFO DAGScheduler: Submitting 4 missing tasks from Stage 41 (MapPartitionsRDD[97] at reduceByKey at BALS.scala:116)
+13/06/11 03:12:09 INFO ClusterScheduler: Adding task set 41.0 with 4 tasks
+13/06/11 03:12:09 INFO TaskSetManager: Starting task 41.0:0 as TID 160 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:12:09 INFO TaskSetManager: Serialized task 41.0:0 as 2215 bytes in 2 ms
+13/06/11 03:12:09 INFO TaskSetManager: Starting task 41.0:2 as TID 161 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 03:12:09 INFO TaskSetManager: Serialized task 41.0:2 as 2215 bytes in 0 ms
+13/06/11 03:12:09 INFO TaskSetManager: Starting task 41.0:3 as TID 162 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:12:09 INFO TaskSetManager: Serialized task 41.0:3 as 2215 bytes in 0 ms
+13/06/11 03:12:09 INFO TaskSetManager: Starting task 41.0:1 as TID 163 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:12:09 INFO TaskSetManager: Serialized task 41.0:1 as 2215 bytes in 1 ms
+13/06/11 03:13:20 INFO TaskSetManager: Finished TID 163 in 70161 ms (progress: 1/4)
+13/06/11 03:13:20 INFO DAGScheduler: Completed ShuffleMapTask(41, 1)
+13/06/11 03:13:20 INFO TaskSetManager: Finished TID 162 in 70523 ms (progress: 2/4)
+13/06/11 03:13:20 INFO DAGScheduler: Completed ShuffleMapTask(41, 3)
+13/06/11 03:13:21 INFO TaskSetManager: Finished TID 161 in 71869 ms (progress: 3/4)
+13/06/11 03:13:21 INFO DAGScheduler: Completed ShuffleMapTask(41, 2)
+13/06/11 03:13:25 INFO TaskSetManager: Finished TID 160 in 75566 ms (progress: 4/4)
+13/06/11 03:13:25 INFO DAGScheduler: Completed ShuffleMapTask(41, 0)
+13/06/11 03:13:25 INFO DAGScheduler: Stage 41 (reduceByKey at BALS.scala:116) finished in 75.566 s
+13/06/11 03:13:25 INFO DAGScheduler: looking for newly runnable stages
+13/06/11 03:13:25 INFO DAGScheduler: running: Set()
+13/06/11 03:13:25 INFO DAGScheduler: waiting: Set(Stage 40)
+13/06/11 03:13:25 INFO DAGScheduler: failed: Set()
+13/06/11 03:13:25 INFO DAGScheduler: Missing parents for Stage 40: List()
+13/06/11 03:13:25 INFO DAGScheduler: Submitting Stage 40 (MappedRDD[100] at map at BALS.scala:117), which is now runnable
+13/06/11 03:13:25 INFO DAGScheduler: Submitting 4 missing tasks from Stage 40 (MappedRDD[100] at map at BALS.scala:117)
+13/06/11 03:13:25 INFO ClusterScheduler: Adding task set 40.0 with 4 tasks
+13/06/11 03:13:25 INFO TaskSetManager: Starting task 40.0:0 as TID 164 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:13:25 INFO TaskSetManager: Serialized task 40.0:0 as 2336 bytes in 2 ms
+13/06/11 03:13:25 INFO TaskSetManager: Starting task 40.0:1 as TID 165 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 03:13:25 INFO TaskSetManager: Serialized task 40.0:1 as 2336 bytes in 0 ms
+13/06/11 03:13:25 INFO TaskSetManager: Starting task 40.0:2 as TID 166 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:13:25 INFO TaskSetManager: Serialized task 40.0:2 as 2336 bytes in 0 ms
+13/06/11 03:13:25 INFO TaskSetManager: Starting task 40.0:3 as TID 167 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:13:25 INFO TaskSetManager: Serialized task 40.0:3 as 2336 bytes in 0 ms
+13/06/11 03:13:25 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 18 to ip-10-232-39-5.ec2.internal
+13/06/11 03:13:25 INFO MapOutputTracker: Size of output statuses for shuffle 18 is 195 bytes
+13/06/11 03:13:25 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 18 to ip-10-232-8-42.ec2.internal
+13/06/11 03:13:25 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 18 to ip-10-31-132-203.ec2.internal
+13/06/11 03:13:25 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 18 to ip-10-171-8-42.ec2.internal
+13/06/11 03:13:26 INFO TaskSetManager: Finished TID 165 in 1306 ms (progress: 1/4)
+13/06/11 03:13:26 INFO DAGScheduler: Completed ResultTask(40, 1)
+13/06/11 03:13:26 INFO TaskSetManager: Finished TID 166 in 1374 ms (progress: 2/4)
+13/06/11 03:13:26 INFO DAGScheduler: Completed ResultTask(40, 2)
+13/06/11 03:13:26 INFO TaskSetManager: Finished TID 167 in 1396 ms (progress: 3/4)
+13/06/11 03:13:26 INFO DAGScheduler: Completed ResultTask(40, 3)
+13/06/11 03:13:26 INFO TaskSetManager: Finished TID 164 in 1405 ms (progress: 4/4)
+13/06/11 03:13:26 INFO DAGScheduler: Completed ResultTask(40, 0)
+13/06/11 03:13:26 INFO DAGScheduler: Stage 40 (map at BALS.scala:117) finished in 1.411 s
+13/06/11 03:13:26 INFO SparkContext: Job finished: collect at BALS.scala:117, took 76.9843176 s
+13/06/11 03:13:26 INFO MemoryStore: ensureFreeSpace(6966048) called with curMem=1952049377, maxMem=20157722787
+13/06/11 03:13:26 INFO MemoryStore: Block broadcast_21 stored as values to memory (estimated size 6.6 MB, free 16.9 GB)
+13/06/11 03:13:27 INFO SparkContext: Starting job: collect at BALS.scala:128
+13/06/11 03:13:27 INFO DAGScheduler: Registering RDD 102 (reduceByKey at BALS.scala:127)
+13/06/11 03:13:27 INFO DAGScheduler: Got job 23 (collect at BALS.scala:128) with 4 output partitions (allowLocal=false)
+13/06/11 03:13:27 INFO DAGScheduler: Final stage: Stage 42 (map at BALS.scala:128)
+13/06/11 03:13:27 INFO DAGScheduler: Parents of final stage: List(Stage 43)
+13/06/11 03:13:27 INFO DAGScheduler: Missing parents: List(Stage 43)
+13/06/11 03:13:27 INFO DAGScheduler: Submitting Stage 43 (MapPartitionsRDD[102] at reduceByKey at BALS.scala:127), which has no missing parents
+13/06/11 03:13:27 INFO DAGScheduler: Submitting 4 missing tasks from Stage 43 (MapPartitionsRDD[102] at reduceByKey at BALS.scala:127)
+13/06/11 03:13:27 INFO ClusterScheduler: Adding task set 43.0 with 4 tasks
+13/06/11 03:13:27 INFO TaskSetManager: Starting task 43.0:0 as TID 168 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:13:27 INFO TaskSetManager: Serialized task 43.0:0 as 2216 bytes in 2 ms
+13/06/11 03:13:27 INFO TaskSetManager: Starting task 43.0:2 as TID 169 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 03:13:27 INFO TaskSetManager: Serialized task 43.0:2 as 2216 bytes in 1 ms
+13/06/11 03:13:27 INFO TaskSetManager: Starting task 43.0:3 as TID 170 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:13:27 INFO TaskSetManager: Serialized task 43.0:3 as 2216 bytes in 0 ms
+13/06/11 03:13:27 INFO TaskSetManager: Starting task 43.0:1 as TID 171 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:13:27 INFO TaskSetManager: Serialized task 43.0:1 as 2216 bytes in 0 ms
+13/06/11 03:14:30 INFO TaskSetManager: Finished TID 170 in 63166 ms (progress: 1/4)
+13/06/11 03:14:30 INFO DAGScheduler: Completed ShuffleMapTask(43, 3)
+13/06/11 03:14:30 INFO TaskSetManager: Finished TID 171 in 63215 ms (progress: 2/4)
+13/06/11 03:14:30 INFO DAGScheduler: Completed ShuffleMapTask(43, 1)
+13/06/11 03:14:30 INFO TaskSetManager: Finished TID 169 in 63766 ms (progress: 3/4)
+13/06/11 03:14:30 INFO DAGScheduler: Completed ShuffleMapTask(43, 2)
+13/06/11 03:14:33 INFO TaskSetManager: Finished TID 168 in 66875 ms (progress: 4/4)
+13/06/11 03:14:33 INFO DAGScheduler: Completed ShuffleMapTask(43, 0)
+13/06/11 03:14:33 INFO DAGScheduler: Stage 43 (reduceByKey at BALS.scala:127) finished in 66.876 s
+13/06/11 03:14:33 INFO DAGScheduler: looking for newly runnable stages
+13/06/11 03:14:33 INFO DAGScheduler: running: Set()
+13/06/11 03:14:33 INFO DAGScheduler: waiting: Set(Stage 42)
+13/06/11 03:14:33 INFO DAGScheduler: failed: Set()
+13/06/11 03:14:33 INFO DAGScheduler: Missing parents for Stage 42: List()
+13/06/11 03:14:33 INFO DAGScheduler: Submitting Stage 42 (MappedRDD[105] at map at BALS.scala:128), which is now runnable
+13/06/11 03:14:33 INFO DAGScheduler: Submitting 4 missing tasks from Stage 42 (MappedRDD[105] at map at BALS.scala:128)
+13/06/11 03:14:33 INFO ClusterScheduler: Adding task set 42.0 with 4 tasks
+13/06/11 03:14:33 INFO TaskSetManager: Starting task 42.0:0 as TID 172 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:14:33 INFO TaskSetManager: Serialized task 42.0:0 as 2335 bytes in 3 ms
+13/06/11 03:14:33 INFO TaskSetManager: Starting task 42.0:1 as TID 173 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 03:14:33 INFO TaskSetManager: Serialized task 42.0:1 as 2335 bytes in 0 ms
+13/06/11 03:14:33 INFO TaskSetManager: Starting task 42.0:2 as TID 174 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:14:33 INFO TaskSetManager: Serialized task 42.0:2 as 2335 bytes in 0 ms
+13/06/11 03:14:33 INFO TaskSetManager: Starting task 42.0:3 as TID 175 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:14:33 INFO TaskSetManager: Serialized task 42.0:3 as 2335 bytes in 0 ms
+13/06/11 03:14:33 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 19 to ip-10-232-39-5.ec2.internal
+13/06/11 03:14:33 INFO MapOutputTracker: Size of output statuses for shuffle 19 is 195 bytes
+13/06/11 03:14:33 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 19 to ip-10-171-8-42.ec2.internal
+13/06/11 03:14:33 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 19 to ip-10-232-8-42.ec2.internal
+13/06/11 03:14:33 INFO MapOutputTrackerActor: Asked to send map output locations for shuffle 19 to ip-10-31-132-203.ec2.internal
+13/06/11 03:14:36 INFO TaskSetManager: Finished TID 175 in 2249 ms (progress: 1/4)
+13/06/11 03:14:36 INFO DAGScheduler: Completed ResultTask(42, 3)
+13/06/11 03:14:36 INFO TaskSetManager: Finished TID 172 in 2303 ms (progress: 2/4)
+13/06/11 03:14:36 INFO DAGScheduler: Completed ResultTask(42, 0)
+13/06/11 03:14:36 INFO TaskSetManager: Finished TID 173 in 2345 ms (progress: 3/4)
+13/06/11 03:14:36 INFO DAGScheduler: Completed ResultTask(42, 1)
+13/06/11 03:14:36 INFO TaskSetManager: Finished TID 174 in 2400 ms (progress: 4/4)
+13/06/11 03:14:36 INFO DAGScheduler: Completed ResultTask(42, 2)
+13/06/11 03:14:36 INFO DAGScheduler: Stage 42 (map at BALS.scala:128) finished in 2.431 s
+13/06/11 03:14:36 INFO SparkContext: Job finished: collect at BALS.scala:128, took 69.313960261 s
+13/06/11 03:14:36 INFO MemoryStore: ensureFreeSpace(188234296) called with curMem=1959015425, maxMem=20157722787
+13/06/11 03:14:36 INFO MemoryStore: Block broadcast_22 stored as values to memory (estimated size 179.5 MB, free 16.8 GB)
+Runtime: 1501672
+Final Runtime: 1501672
+13/06/11 03:14:38 INFO SparkContext: Starting job: sum at BALS.scala:142
+13/06/11 03:14:38 INFO DAGScheduler: Got job 24 (sum at BALS.scala:142) with 4 output partitions (allowLocal=false)
+13/06/11 03:14:38 INFO DAGScheduler: Final stage: Stage 44 (map at BALS.scala:141)
+13/06/11 03:14:38 INFO DAGScheduler: Parents of final stage: List()
+13/06/11 03:14:38 INFO DAGScheduler: Missing parents: List()
+13/06/11 03:14:38 INFO DAGScheduler: Submitting Stage 44 (MappedRDD[106] at map at BALS.scala:141), which has no missing parents
+13/06/11 03:14:38 INFO DAGScheduler: Submitting 4 missing tasks from Stage 44 (MappedRDD[106] at map at BALS.scala:141)
+13/06/11 03:14:38 INFO ClusterScheduler: Adding task set 44.0 with 4 tasks
+13/06/11 03:14:38 INFO TaskSetManager: Starting task 44.0:0 as TID 176 on executor 0: ip-10-232-39-5.ec2.internal (preferred)
+13/06/11 03:14:38 INFO TaskSetManager: Serialized task 44.0:0 as 1828 bytes in 3 ms
+13/06/11 03:14:38 INFO TaskSetManager: Starting task 44.0:2 as TID 177 on executor 1: ip-10-171-8-42.ec2.internal (preferred)
+13/06/11 03:14:38 INFO TaskSetManager: Serialized task 44.0:2 as 1828 bytes in 0 ms
+13/06/11 03:14:38 INFO TaskSetManager: Starting task 44.0:3 as TID 178 on executor 3: ip-10-232-8-42.ec2.internal (preferred)
+13/06/11 03:14:38 INFO TaskSetManager: Serialized task 44.0:3 as 1828 bytes in 0 ms
+13/06/11 03:14:38 INFO TaskSetManager: Starting task 44.0:1 as TID 179 on executor 2: ip-10-31-132-203.ec2.internal (preferred)
+13/06/11 03:14:38 INFO TaskSetManager: Serialized task 44.0:1 as 1828 bytes in 0 ms
+13/06/11 03:14:43 INFO TaskSetManager: Finished TID 178 in 4857 ms (progress: 1/4)
+13/06/11 03:14:43 INFO DAGScheduler: Completed ResultTask(44, 3)
+13/06/11 03:14:43 INFO TaskSetManager: Finished TID 176 in 5017 ms (progress: 2/4)
+13/06/11 03:14:43 INFO DAGScheduler: Completed ResultTask(44, 0)
+13/06/11 03:14:44 INFO TaskSetManager: Finished TID 179 in 5945 ms (progress: 3/4)
+13/06/11 03:14:44 INFO DAGScheduler: Completed ResultTask(44, 1)
+13/06/11 03:14:45 INFO TaskSetManager: Finished TID 177 in 6332 ms (progress: 4/4)
+13/06/11 03:14:45 INFO DAGScheduler: Completed ResultTask(44, 2)
+13/06/11 03:14:45 INFO DAGScheduler: Stage 44 (map at BALS.scala:141) finished in 6.336 s
+13/06/11 03:14:45 INFO SparkContext: Job finished: sum at BALS.scala:142, took 6.337852832 s
+tr_rel_err: 0.6824648797618496
+13/06/11 03:14:45 INFO MapOutputTrackerActor: MapOutputTrackerActor stopped!
+13/06/11 03:14:45 INFO ConnectionManager: Selector thread was interrupted!
+13/06/11 03:14:45 INFO ConnectionManager: ConnectionManager stopped
+13/06/11 03:14:45 INFO MemoryStore: MemoryStore cleared
+13/06/11 03:14:45 INFO BlockManager: BlockManager stopped
+13/06/11 03:14:45 INFO BlockManagerMasterActor: Stopping BlockManagerMaster
+13/06/11 03:14:45 INFO BlockManagerMaster: BlockManagerMaster stopped
+13/06/11 03:14:45 INFO HttpService: Stopped
+13/06/11 03:14:45 INFO SprayCanRootService: spray RootService stopped
+[INFO] [06/11/2013 03:14:45.424] [spray-io-worker-0] [IoWorker] IoWorker thread 'spray-io-worker-0' stopped
+13/06/11 03:14:45 INFO SparkContext: Successfully stopped SparkContext
+[0m[[32msuccess[0m] [0mTotal time: 1542 s, completed Jun 11, 2013 3:14:45 AM[0m
