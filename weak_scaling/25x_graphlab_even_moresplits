@@ -1,0 +1,30 @@
+GRAPHLAB_SUBNET_ID/GRAPHLAB_SUBNET_MASK environment variables not defined.
+Using default values
+Subnet ID: 0.0.0.0
+Subnet Mask: 0.0.0.0
+Will find first IPv4 non-loopback address matching the subnet
+Loading graph.
+Loading graph. Finished in 12.1016
+Finalizing graph.
+Finalizing graph. Finished in 5.72883
+========== Graph statistics on proc 0 ===============
+ Num vertices: 388545
+ Num edges: 223219125
+ Num replica: 9625716
+ Replica to vertex ratio: 24.7737
+ --------------------------------------------
+ Num local own vertices: 15553
+ Num local vertices: 384965
+ Replica to own ratio: 24.7518
+ Num local edges: 8931534
+ Edge balance ratio: 0.0400124
+Creating engine
+Training edges: 223219125 validation edges: 0
+Running ALS
+Updates: 3885450
+----------------------------------------------------------
+Final Runtime (seconds):   35.5787
+Updates executed: 3885450
+Update Rate (updates/second): 109207
+Final error: 
+Time in seconds: 35.8	iTraining RMSE: 0.724123
