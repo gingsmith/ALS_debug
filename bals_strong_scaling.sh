@@ -1,5 +1,16 @@
 # run bals, graphlab, and spark join als
 
+set -e
+
+if [ $# -eq 0 ]
+	then
+		echo ERROR usage: ./rank_scaling.sh master trainfile
+		exit 1
+fi
+
+MASTER=$1
+TRAINFILE=$2
+
 # ----------------- rank 10
 
 sbt/sbt "run-main als_debug.Broadcast_ALS
