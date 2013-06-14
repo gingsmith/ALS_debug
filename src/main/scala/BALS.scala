@@ -72,18 +72,18 @@ object Broadcast_ALS {
 
     var trainData: spark.RDD[(Int,Int,Double)] = null
 
-    if(big && first){
-      val newfile = trainfile + "_replicated"
-      trainData = sc.textFile(trainfile,nsplits)
-        .map(_.split(' '))
-        .map{ elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}
-        .flatMap(x => replicate(x,repfact,m,n) )
+    // if(big && first){
+    //   val newfile = trainfile + "_replicated"
+    //   trainData = sc.textFile(trainfile,nsplits)
+    //     .map(_.split(' '))
+    //     .map{ elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}
+    //     .flatMap(x => replicate(x,repfact,m,n) )
 
-      trainData.map(x => (x._1 + " " + x._2 + " " + x._3)).saveAsTextFile(newfile)
-      sc.stop()
-      System.exit(0)
-    }
-    else { 
+    //   trainData.map(x => (x._1 + " " + x._2 + " " + x._3)).saveAsTextFile(newfile)
+    //   sc.stop()
+    //   System.exit(0)
+    // }
+    // else { 
       if(big){
         trainData = sc.textFile(trainfile)
         .map(_.split(' '))
@@ -96,7 +96,6 @@ object Broadcast_ALS {
         .map{elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}
         .cache//.persist(StorageLevel.MEMORY_ONLY_SER)
       }
-    }
 
 
     // initialize W,H
