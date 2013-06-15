@@ -341,8 +341,8 @@ object BlockedALS {
     if(big){
       trainData = sc.textFile(trainfile,nsplits)
         .map(_.split(' '))
-        .map{ elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}
-        .flatMap(x => replicate(x,repfact,m,n) )
+        .map{ elements => (elements(0).toInt,elements(1).toInt,elements(2).toDouble)}
+        //.flatMap(x => replicate(x,repfact,m,n) )
         .persist(StorageLevel.MEMORY_ONLY_SER)
     }
     else {
