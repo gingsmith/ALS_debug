@@ -1,0 +1,125 @@
+[0m[[0minfo[0m] [0mLoading project definition from /mnt/ALS_debug/project[0m
+[0m[[0minfo[0m] [0mSet current project to als_debug (in build file:/mnt/ALS_debug/)[0m
+[0m[[0minfo[0m] [0mRunning als_debug.Matrix_Replicate --master=spark://ec2-54-224-0-210.compute-1.amazonaws.com:7077 --jars=/mnt/ALS_debug/target/als_debug-assembly-1.0.jar --sparkhome=/root/spark --train=hdfs://ec2-54-224-0-210.compute-1.amazonaws.com:9000/data/data/netflix_randSplit1_data.txt --repfact=1 --nsplits=16 --m=17770 --n=480189[0m
+master:       spark://ec2-54-224-0-210.compute-1.amazonaws.com:7077
+train:        hdfs://ec2-54-224-0-210.compute-1.amazonaws.com:9000/data/data/netflix_randSplit1_data.txt
+jar:          /mnt/ALS_debug/target/als_debug-assembly-1.0.jar
+sparkhome:    /root/spark
+nsplits:      16
+m:            17770
+n:            480189
+repfact:          1
+13/06/15 05:18:15 INFO Slf4jEventHandler: Slf4jEventHandler started
+13/06/15 05:18:16 INFO BlockManagerMaster: Registered BlockManagerMaster Actor
+13/06/15 05:18:16 INFO MemoryStore: MemoryStore started with capacity 18.8 GB.
+13/06/15 05:18:16 INFO DiskStore: Created local directory at /tmp/spark-local-20130615051816-2a6b
+13/06/15 05:18:16 INFO ConnectionManager: Bound socket to port 57365 with id = ConnectionManagerId(ip-10-171-3-99.ec2.internal,57365)
+13/06/15 05:18:16 INFO BlockManagerMaster: Trying to register BlockManager
+13/06/15 05:18:16 INFO BlockManagerMaster: Registered BlockManager
+13/06/15 05:18:16 INFO HttpBroadcast: Broadcast server started at http://10.171.3.99:49143
+13/06/15 05:18:16 INFO MapOutputTracker: Registered MapOutputTrackerActor actor
+13/06/15 05:18:16 INFO HttpFileServer: HTTP File server directory is /tmp/spark-2e1558c5-7f88-4f71-a0ce-ebdf7934c35d
+13/06/15 05:18:16 INFO IoWorker: IoWorker thread 'spray-io-worker-0' started
+13/06/15 05:18:16 INFO HttpServer: akka://spark/user/BlockManagerHTTPServer started on /0.0.0.0:50135
+13/06/15 05:18:16 INFO BlockManagerUI: Started BlockManager web UI at http://ip-10-171-3-99.ec2.internal:50135
+13/06/15 05:18:16 INFO SparkContext: Added JAR /mnt/ALS_debug/target/als_debug-assembly-1.0.jar at http://10.171.3.99:37914/jars/als_debug-assembly-1.0.jar with timestamp 1371273496889
+13/06/15 05:18:16 INFO Client$ClientActor: Connecting to master spark://ec2-54-224-0-210.compute-1.amazonaws.com:7077
+13/06/15 05:18:17 INFO SparkDeploySchedulerBackend: Connected to Spark cluster with app ID app-20130615051817-0009
+13/06/15 05:18:17 INFO Client$ClientActor: Executor added: app-20130615051817-0009/0 on worker-20130614212630-ip-10-171-10-62.ec2.internal-49727 (ip-10-171-10-62.ec2.internal) with 8 cores
+13/06/15 05:18:17 INFO SparkDeploySchedulerBackend: Granted executor ID app-20130615051817-0009/0 on host ip-10-171-10-62.ec2.internal with 8 cores, 40.0 GB RAM
+13/06/15 05:18:17 INFO Client$ClientActor: Executor updated: app-20130615051817-0009/0 is now RUNNING
+13/06/15 05:18:17 INFO MemoryStore: ensureFreeSpace(45945) called with curMem=0, maxMem=20157722787
+13/06/15 05:18:17 INFO MemoryStore: Block broadcast_0 stored as values to memory (estimated size 44.9 KB, free 18.8 GB)
+13/06/15 05:18:17 INFO PairRDDFunctions: Saving as hadoop file of type (NullWritable, Text)
+13/06/15 05:18:17 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+13/06/15 05:18:17 WARN LoadSnappy: Snappy native library not loaded
+13/06/15 05:18:17 INFO FileInputFormat: Total input paths to process : 1
+13/06/15 05:18:17 INFO NetworkTopology: Adding a new node: /default-rack/10.171.10.62:50010
+13/06/15 05:18:17 INFO SparkContext: Starting job: saveAsTextFile at Matrix_Replicate.scala:57
+13/06/15 05:18:17 INFO DAGScheduler: Got job 0 (saveAsTextFile at Matrix_Replicate.scala:57) with 16 output partitions (allowLocal=false)
+13/06/15 05:18:17 INFO DAGScheduler: Final stage: Stage 0 (saveAsTextFile at Matrix_Replicate.scala:57)
+13/06/15 05:18:17 INFO DAGScheduler: Parents of final stage: List()
+13/06/15 05:18:17 INFO DAGScheduler: Missing parents: List()
+13/06/15 05:18:17 INFO DAGScheduler: Submitting Stage 0 (MappedRDD[6] at saveAsTextFile at Matrix_Replicate.scala:57), which has no missing parents
+13/06/15 05:18:17 INFO DAGScheduler: Submitting 16 missing tasks from Stage 0 (MappedRDD[6] at saveAsTextFile at Matrix_Replicate.scala:57)
+13/06/15 05:18:17 INFO ClusterScheduler: Adding task set 0.0 with 16 tasks
+13/06/15 05:18:18 INFO SparkDeploySchedulerBackend: Registered executor: Actor[akka://sparkExecutor@ip-10-171-10-62.ec2.internal:56996/user/Executor] with ID 0
+13/06/15 05:18:18 INFO TaskSetManager: Starting task 0.0:0 as TID 0 on executor 0: ip-10-171-10-62.ec2.internal (preferred)
+13/06/15 05:18:19 INFO TaskSetManager: Serialized task 0.0:0 as 5467 bytes in 48 ms
+13/06/15 05:18:19 INFO TaskSetManager: Starting task 0.0:1 as TID 1 on executor 0: ip-10-171-10-62.ec2.internal (non-preferred, not one of 10.171.10.62)
+13/06/15 05:18:19 INFO TaskSetManager: Serialized task 0.0:1 as 5467 bytes in 1 ms
+13/06/15 05:18:19 INFO TaskSetManager: Starting task 0.0:2 as TID 2 on executor 0: ip-10-171-10-62.ec2.internal (non-preferred, not one of 10.171.10.62)
+13/06/15 05:18:19 INFO TaskSetManager: Serialized task 0.0:2 as 5467 bytes in 0 ms
+13/06/15 05:18:19 INFO TaskSetManager: Starting task 0.0:3 as TID 3 on executor 0: ip-10-171-10-62.ec2.internal (non-preferred, not one of 10.171.10.62)
+13/06/15 05:18:19 INFO TaskSetManager: Serialized task 0.0:3 as 5467 bytes in 0 ms
+13/06/15 05:18:19 INFO TaskSetManager: Starting task 0.0:4 as TID 4 on executor 0: ip-10-171-10-62.ec2.internal (non-preferred, not one of 10.171.10.62)
+13/06/15 05:18:19 INFO TaskSetManager: Serialized task 0.0:4 as 5467 bytes in 0 ms
+13/06/15 05:18:19 INFO TaskSetManager: Starting task 0.0:5 as TID 5 on executor 0: ip-10-171-10-62.ec2.internal (non-preferred, not one of 10.171.10.62)
+13/06/15 05:18:19 INFO TaskSetManager: Serialized task 0.0:5 as 5467 bytes in 1 ms
+13/06/15 05:18:19 INFO TaskSetManager: Starting task 0.0:6 as TID 6 on executor 0: ip-10-171-10-62.ec2.internal (non-preferred, not one of 10.171.10.62)
+13/06/15 05:18:19 INFO TaskSetManager: Serialized task 0.0:6 as 5467 bytes in 0 ms
+13/06/15 05:18:19 INFO TaskSetManager: Starting task 0.0:7 as TID 7 on executor 0: ip-10-171-10-62.ec2.internal (non-preferred, not one of 10.171.10.62)
+13/06/15 05:18:19 INFO TaskSetManager: Serialized task 0.0:7 as 5467 bytes in 0 ms
+13/06/15 05:18:19 INFO BlockManagerMasterActor$BlockManagerInfo: Registering block manager ip-10-171-10-62.ec2.internal:35167 with 40.4 GB RAM
+13/06/15 05:18:50 INFO TaskSetManager: Finished TID 7 in 31247 ms (progress: 1/16)
+13/06/15 05:18:50 INFO TaskSetManager: Starting task 0.0:8 as TID 8 on executor 0: ip-10-171-10-62.ec2.internal (non-preferred, not one of 10.171.10.62)
+13/06/15 05:18:50 INFO TaskSetManager: Serialized task 0.0:8 as 5467 bytes in 1 ms
+13/06/15 05:18:50 INFO DAGScheduler: Completed ResultTask(0, 7)
+13/06/15 05:18:50 INFO TaskSetManager: Finished TID 6 in 31415 ms (progress: 2/16)
+13/06/15 05:18:50 INFO DAGScheduler: Completed ResultTask(0, 6)
+13/06/15 05:18:50 INFO TaskSetManager: Starting task 0.0:9 as TID 9 on executor 0: ip-10-171-10-62.ec2.internal (non-preferred, not one of 10.171.10.62)
+13/06/15 05:18:50 INFO TaskSetManager: Serialized task 0.0:9 as 5467 bytes in 0 ms
+13/06/15 05:18:50 INFO TaskSetManager: Finished TID 4 in 31637 ms (progress: 3/16)
+13/06/15 05:18:50 INFO DAGScheduler: Completed ResultTask(0, 4)
+13/06/15 05:18:50 INFO TaskSetManager: Starting task 0.0:10 as TID 10 on executor 0: ip-10-171-10-62.ec2.internal (non-preferred, not one of 10.171.10.62)
+13/06/15 05:18:50 INFO TaskSetManager: Serialized task 0.0:10 as 5467 bytes in 1 ms
+13/06/15 05:18:50 INFO TaskSetManager: Finished TID 3 in 31868 ms (progress: 4/16)
+13/06/15 05:18:50 INFO DAGScheduler: Completed ResultTask(0, 3)
+13/06/15 05:18:50 INFO TaskSetManager: Starting task 0.0:11 as TID 11 on executor 0: ip-10-171-10-62.ec2.internal (non-preferred, not one of 10.171.10.62)
+13/06/15 05:18:50 INFO TaskSetManager: Serialized task 0.0:11 as 5467 bytes in 0 ms
+13/06/15 05:18:51 INFO TaskSetManager: Finished TID 5 in 31973 ms (progress: 5/16)
+13/06/15 05:18:51 INFO DAGScheduler: Completed ResultTask(0, 5)
+13/06/15 05:18:51 INFO TaskSetManager: Starting task 0.0:12 as TID 12 on executor 0: ip-10-171-10-62.ec2.internal (non-preferred, not one of 10.171.10.62)
+13/06/15 05:18:51 INFO TaskSetManager: Serialized task 0.0:12 as 5467 bytes in 0 ms
+13/06/15 05:18:51 INFO TaskSetManager: Finished TID 2 in 32110 ms (progress: 6/16)
+13/06/15 05:18:51 INFO DAGScheduler: Completed ResultTask(0, 2)
+13/06/15 05:18:51 INFO TaskSetManager: Starting task 0.0:13 as TID 13 on executor 0: ip-10-171-10-62.ec2.internal (non-preferred, not one of 10.171.10.62)
+13/06/15 05:18:51 INFO TaskSetManager: Serialized task 0.0:13 as 5467 bytes in 0 ms
+13/06/15 05:18:51 INFO TaskSetManager: Finished TID 0 in 32670 ms (progress: 7/16)
+13/06/15 05:18:51 INFO DAGScheduler: Completed ResultTask(0, 0)
+13/06/15 05:18:51 INFO TaskSetManager: Starting task 0.0:14 as TID 14 on executor 0: ip-10-171-10-62.ec2.internal (non-preferred, not one of 10.171.10.62)
+13/06/15 05:18:51 INFO TaskSetManager: Serialized task 0.0:14 as 5467 bytes in 1 ms
+13/06/15 05:18:52 INFO TaskSetManager: Finished TID 1 in 33249 ms (progress: 8/16)
+13/06/15 05:18:52 INFO DAGScheduler: Completed ResultTask(0, 1)
+13/06/15 05:18:52 INFO TaskSetManager: Starting task 0.0:15 as TID 15 on executor 0: ip-10-171-10-62.ec2.internal (preferred)
+13/06/15 05:18:52 INFO TaskSetManager: Serialized task 0.0:15 as 5467 bytes in 1 ms
+13/06/15 05:19:15 INFO TaskSetManager: Finished TID 9 in 24810 ms (progress: 9/16)
+13/06/15 05:19:15 INFO DAGScheduler: Completed ResultTask(0, 9)
+13/06/15 05:19:15 INFO TaskSetManager: Finished TID 8 in 25033 ms (progress: 10/16)
+13/06/15 05:19:15 INFO DAGScheduler: Completed ResultTask(0, 8)
+13/06/15 05:19:15 INFO TaskSetManager: Finished TID 10 in 25111 ms (progress: 11/16)
+13/06/15 05:19:15 INFO DAGScheduler: Completed ResultTask(0, 10)
+13/06/15 05:19:15 INFO TaskSetManager: Finished TID 11 in 24880 ms (progress: 12/16)
+13/06/15 05:19:15 INFO DAGScheduler: Completed ResultTask(0, 11)
+13/06/15 05:19:16 INFO TaskSetManager: Finished TID 12 in 25314 ms (progress: 13/16)
+13/06/15 05:19:16 INFO DAGScheduler: Completed ResultTask(0, 12)
+13/06/15 05:19:16 INFO TaskSetManager: Finished TID 13 in 25535 ms (progress: 14/16)
+13/06/15 05:19:16 INFO DAGScheduler: Completed ResultTask(0, 13)
+13/06/15 05:19:16 INFO TaskSetManager: Finished TID 15 in 24550 ms (progress: 15/16)
+13/06/15 05:19:16 INFO DAGScheduler: Completed ResultTask(0, 15)
+13/06/15 05:19:17 INFO TaskSetManager: Finished TID 14 in 25395 ms (progress: 16/16)
+13/06/15 05:19:17 INFO DAGScheduler: Completed ResultTask(0, 14)
+13/06/15 05:19:17 INFO DAGScheduler: Stage 0 (saveAsTextFile at Matrix_Replicate.scala:57) finished in 59.317 s
+13/06/15 05:19:17 INFO SparkContext: Job finished: saveAsTextFile at Matrix_Replicate.scala:57, took 59.36826894 s
+13/06/15 05:19:17 INFO MapOutputTrackerActor: MapOutputTrackerActor stopped!
+13/06/15 05:19:17 INFO ConnectionManager: Selector thread was interrupted!
+13/06/15 05:19:17 INFO ConnectionManager: ConnectionManager stopped
+13/06/15 05:19:17 INFO MemoryStore: MemoryStore cleared
+13/06/15 05:19:17 INFO BlockManager: BlockManager stopped
+13/06/15 05:19:17 INFO BlockManagerMasterActor: Stopping BlockManagerMaster
+13/06/15 05:19:17 INFO BlockManagerMaster: BlockManagerMaster stopped
+13/06/15 05:19:17 INFO HttpService: Stopped
+13/06/15 05:19:17 INFO SprayCanRootService: spray RootService stopped
+[INFO] [06/15/2013 05:19:17.206] [spray-io-worker-0] [IoWorker] IoWorker thread 'spray-io-worker-0' stopped
+13/06/15 05:19:17 INFO SparkContext: Successfully stopped SparkContext
+[0m[[32msuccess[0m] [0mTotal time: 63 s, completed Jun 15, 2013 5:19:17 AM[0m
