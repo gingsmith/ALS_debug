@@ -85,7 +85,7 @@ object Broadcast_ALS {
     // }
     // else { 
       if(big){
-        trainData = sc.textFile(trainfile,nsplits)
+        trainData = sc.textFile(trainfile)
         .map(_.split(' '))
         .map{elements => (elements(0).toInt,elements(1).toInt,elements(2).toDouble)}
         //.cache
