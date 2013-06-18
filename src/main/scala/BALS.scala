@@ -98,7 +98,7 @@ object Broadcast_ALS {
         .cache//.persist(StorageLevel.MEMORY_ONLY_SER)
       }
 
-    println("num partitions is: " + trainData.splits.size)
+    println("num partitions is: " + trainData.partitions.size)
 
     // initialize W,H
     //val rand = new Random(seed)
