@@ -88,8 +88,8 @@ object Broadcast_ALS {
         trainData = sc.textFile(trainfile,nsplits)
         .map(_.split(' '))
         .map{elements => (elements(0).toInt,elements(1).toInt,elements(2).toDouble)}
-        .cache
-        //.persist(StorageLevel.MEMORY_ONLY_SER)
+        //.cache
+        .persist(StorageLevel.MEMORY_ONLY_SER)
       }
       else {
       trainData = sc.textFile(trainfile, nsplits)
@@ -98,6 +98,7 @@ object Broadcast_ALS {
         .cache//.persist(StorageLevel.MEMORY_ONLY_SER)
       }
 
+    println("num partitions is: " + trainData.partitions.size)
 
     // initialize W,H
     //val rand = new Random(seed)
