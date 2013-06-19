@@ -50,6 +50,7 @@ object Matrix_Replicate {
     	val sc = new SparkContext(master,"Matrix_Replicate",sparkhome,List(jar))
 		val newfile = trainfile + "_replicated"
 		val trainData = sc.textFile(trainfile,nsplits)
+			.coalesce(nsplits)
 		    .map(_.split(' '))
 		    .map{ elements => (elements(0).toInt-1,elements(1).toInt-1,elements(2).toDouble)}
 		    .flatMap(x => replicate(x,repfact,m,n) )
