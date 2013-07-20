@@ -5,11 +5,13 @@ import scala.io.Source
 import spark._
 import spark.storage.StorageLevel
 import scala.util._
+//import java.util.Random
+import java.util.Collections
 import org.jblas._
 import spark.SparkContext._
 
 
-object Create_MC_Data extends Serializable{
+object Create_MC_Data{
 
 	/* 
 	 * Code used to create synthetic matrix completion data.
@@ -100,13 +102,13 @@ object Create_MC_Data extends Serializable{
         val shuffled = rand.shuffle(1 to mn toIterable)
 
         // get first sampsize elements
-        val omega = shuffled.slice(0,sampsize)
+        //val omega = shuffled.slice(0,sampsize)
 
         // order elements -- will save in column-major format
-        val ordered = omega.sortWith(_ < _).toArray
+        //val ordered = omega.sortWith(_ < _).toArray
 
         // put in sparse data format
-        val trainData = sc.parallelize(ordered)
+        val trainData = sc.parallelize(shuffled)
         		.map(x=> (testData.indexRows(x),testData.indexColumns(x),testData.get(x)))
 
         // optionally add gaussian noise and save training data
