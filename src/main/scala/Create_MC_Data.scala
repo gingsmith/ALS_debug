@@ -9,7 +9,7 @@ import org.jblas._
 import spark.SparkContext._
 
 
-object Create_MC_Data {
+object Create_MC_Data extends Serializable{
 
 	/* 
 	 * Code used to create synthetic matrix completion data.
