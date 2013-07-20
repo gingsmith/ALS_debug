@@ -29,6 +29,9 @@ object Create_MC_Data {
 	 *	  (optionally) testing data
 	*/
 
+    // example:
+    // sbt/sbt "run-main als_debug.Create_MC_Data "
+
 	def main(args: Array[String]) {
 
 		val options =  args.map { arg =>
@@ -100,7 +103,7 @@ object Create_MC_Data {
         val omega = shuffled.slice(0,sampsize)
 
         // order elements -- will save in column-major format
-        val ordered = omega.sortWith(_ < _)
+        val ordered = omega.sortWith(_ < _).toArray
 
         // put in sparse data format
         val trainData = sc.parallelize(ordered)
@@ -130,7 +133,7 @@ object Create_MC_Data {
         	val test_omega = shuffled.slice(sampsize,sampsize+test_sampsize)
 
         	// order elements -- will save in column-major format
-        	val test_ordered = test_omega.sortWith(_ < _)
+        	val test_ordered = test_omega.sortWith(_ < _).toArray
 
         	// put in sparse data format
         	val out_testData = sc.parallelize(test_ordered)
@@ -144,6 +147,5 @@ object Create_MC_Data {
         
 		sc.stop()
 	}
-
 
 }
