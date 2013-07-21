@@ -6,6 +6,7 @@ import spark._
 import spark.storage.StorageLevel
 import scala.util._
 //import java.util.Random
+import collection.JavaConverters._
 import java.util.Collections
 import org.jblas._
 import spark.SparkContext._
@@ -117,14 +118,13 @@ object Create_MC_Data{
          if(noise){
          	trainData
          		.map(x => (x._1 + " " + x._2 + " " + (x._3+rand.nextGaussian*sigma)))
-                .cache
          		.saveAsTextFile(trainfile)
          }
-   //      else{
-			// trainData
-   //      		.map(x => (x._1 + " " + x._2 + " " + x._3))
-   //      		.saveAsTextFile(trainfile)
-   //      }
+         else{
+			 trainData
+         		.map(x => (x._1 + " " + x._2 + " " + x._3))
+         		.saveAsTextFile(trainfile)
+         }
 
    //      // optionally generate testing data as well
    //      if(test){
