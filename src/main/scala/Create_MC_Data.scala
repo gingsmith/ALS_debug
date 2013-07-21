@@ -116,7 +116,7 @@ object Create_MC_Data{
          	trainData
          		.map(x => (x._1 + " " + x._2 + " " + (x._3+rand.nextGaussian*sigma)))
                 .cache
-   //      		.saveAsTextFile(trainfile)
+         		.saveAsTextFile(trainfile)
          }
    //      else{
 			// trainData
