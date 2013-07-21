@@ -39,10 +39,11 @@ sbt/sbt "run-main als_debug.Matrix_Replicate
 --sparkhome=$SPARKHOME
 --train=$TRAINFILE
 --repfact=25
+--nsplits=25
 --m=500
 --n=500"
 
-REPTRAINFILE=TRAINFILE+="_replicated"
+TRAINFILE+="_replicated"
 
 # run BALS ( could also do same thing with other input data )
 sbt/sbt "run-main als_debug.Broadcast_ALS
@@ -50,7 +51,7 @@ sbt/sbt "run-main als_debug.Broadcast_ALS
 --master=$MASTER
 --jars=$JAR
 --sparkhome=$SPARKHOME
---train=$REPTRAINFILE
+--train=$TRAINFILE
 --rank=10 
 --niter=10
 --m=12500
