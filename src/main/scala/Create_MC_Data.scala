@@ -110,7 +110,7 @@ object Create_MC_Data{
 
         // put in sparse data format
         val trainData = sc.parallelize(shuffled)
-        		.map(x=> (testData.indexRows(x),testData.indexColumns(x),testData.get(x)))
+        		.map(x=> (testData.indexRows(x-1),testData.indexColumns(x-1),testData.get(x-1)))
 
 
         println("got here!")
