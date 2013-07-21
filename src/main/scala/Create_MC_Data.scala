@@ -103,14 +103,14 @@ object Create_MC_Data{
         val shuffled = rand.shuffle(1 to mn toIterable)
 
         // get first sampsize elements
-         val omega = shuffled.slice(0,sampsize)
+        val omega = shuffled.slice(0,sampsize)
 
         // order elements -- will save in column-major format
         val ordered = omega.sortWith(_ < _).toArray
 
         // put in sparse data format
         val trainData = sc.parallelize(shuffled)
-        		.map(x=> (testData.indexRows(x-1),testData.indexColumns(x-1),testData.get(x-1)))
+        		.map(x => (testData.indexRows(x-1),testData.indexColumns(x-1),testData.get(x-1)))
 
 
         println("got here!")
