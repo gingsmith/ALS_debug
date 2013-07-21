@@ -112,19 +112,22 @@ object Create_MC_Data{
         val trainData = sc.parallelize(ordered)
         		.map(x => (testData.indexRows(x-1),testData.indexColumns(x-1),testData.get(x-1)))
 
+        if(noise){
+            trainData.map(x => (x._1,x._2,x._3+rand.nextGaussian*sigma))
+        }
 
         println("got here!")
         // optionally add gaussian noise and save training data
-         if(noise){
-         	trainData
-         		.map(x => (x._1 + " " + x._2 + " " + (x._3+rand.nextGaussian*sigma)))
-         		.saveAsTextFile(trainfile)
-         }
-         else{
+         // if(noise){
+         // 	trainData
+         // 		.map(x => (x._1 + " " + x._2 + " " + (x._3+rand.nextGaussian*sigma)))
+         // 		.saveAsTextFile(trainfile)
+         // }
+         // else{
 			 trainData
          		.map(x => (x._1 + " " + x._2 + " " + x._3))
          		.saveAsTextFile(trainfile)
-         }
+       //  }
 
    //      // optionally generate testing data as well
    //      if(test){
