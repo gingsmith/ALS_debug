@@ -109,14 +109,15 @@ object Create_MC_Data{
 
         // put in sparse data format
         val trainData = sc.parallelize(shuffled)
-        		.map(x=> (testData.indexRows(x),testData.indexColumns(x),testData.get(x))).cache
+        		.map(x=> (testData.indexRows(x),testData.indexColumns(x),testData.get(x)))
 
         // optionally add gaussian noise and save training data
-   //      if(noise){
-   //      	trainData
-   //      		.map(x => (x._1 + " " + x._2 + " " + (x._3+rand.nextGaussian*sigma)))
+         if(noise){
+         	trainData
+         		.map(x => (x._1 + " " + x._2 + " " + (x._3+rand.nextGaussian*sigma)))
+                .cache
    //      		.saveAsTextFile(trainfile)
-   //      }
+         }
    //      else{
 			// trainData
    //      		.map(x => (x._1 + " " + x._2 + " " + x._3))
