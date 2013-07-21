@@ -111,6 +111,8 @@ object Create_MC_Data{
         val trainData = sc.parallelize(shuffled)
         		.map(x=> (testData.indexRows(x),testData.indexColumns(x),testData.get(x)))
 
+
+        println("got here!")
         // optionally add gaussian noise and save training data
          if(noise){
          	trainData
