@@ -117,7 +117,7 @@ object Create_MC_Data{
         }
 
 		trainData
-         	.map(x => (x._1 + " " + x._2 + " " + x._3))
+         	.map(x => (x._1+1 + " " + x._2+1 + " " + x._3))
          	.saveAsTextFile(trainfile)
 
         // optionally generate testing data as well
@@ -136,11 +136,11 @@ object Create_MC_Data{
 
         	// put in sparse data format
         	val out_testData = sc.parallelize(test_ordered)
-        		.map(x=> (testData.indexRows(x),testData.indexColumns(x),testData.get(x)))
+        		.map(x=> (testData.indexRows(x-1),testData.indexColumns(x-1),testData.get(x-1)))
 
         	// save testing data
         	out_testData
-        		.map(x => (x._1 + " " + x._2 + " " + x._3))
+        		.map(x => (x._1+1 + " " + x._2+1 + " " + x._3))
         		.saveAsTextFile(testfile)
         }
         
