@@ -54,5 +54,5 @@ sbt/sbt "run-main als_debug.Broadcast_ALS
 --train=$TRAINFILE
 --rank=10 
 --niter=10
---m=2500
---n=2500"
+--m=12500
+--n=12500"
