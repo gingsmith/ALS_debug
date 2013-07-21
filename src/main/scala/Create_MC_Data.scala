@@ -116,42 +116,33 @@ object Create_MC_Data{
             trainData.map(x => (x._1,x._2,x._3+rand.nextGaussian*sigma))
         }
 
-        println("got here!")
-        // optionally add gaussian noise and save training data
-         // if(noise){
-         // 	trainData
-         // 		.map(x => (x._1 + " " + x._2 + " " + (x._3+rand.nextGaussian*sigma)))
-         // 		.saveAsTextFile(trainfile)
-         // }
-         // else{
-			 trainData
-         		.map(x => (x._1 + " " + x._2 + " " + x._3))
-         		.saveAsTextFile(trainfile)
-       //  }
+		trainData
+         	.map(x => (x._1 + " " + x._2 + " " + x._3))
+         	.saveAsTextFile(trainfile)
 
-   //      // optionally generate testing data as well
-   //      if(test){
+        // optionally generate testing data as well
+        if(test){
 
-   //      	// calculate test sample size
-   //      	val test_sampsize = Math
-   //      		.min(Math.round(sampsize*test_sampfact),Math.round(mn-sampsize))
-   //      		.toInt
+        	// calculate test sample size
+        	val test_sampsize = Math
+        		.min(Math.round(sampsize*test_sampfact),Math.round(mn-sampsize))
+        		.toInt
 
-   //      	// get test sample
-   //      	val test_omega = shuffled.slice(sampsize,sampsize+test_sampsize)
+        	// get test sample
+        	val test_omega = shuffled.slice(sampsize,sampsize+test_sampsize)
 
-   //      	// order elements -- will save in column-major format
-   //      	val test_ordered = test_omega.sortWith(_ < _).toArray
+        	// order elements -- will save in column-major format
+        	val test_ordered = test_omega.sortWith(_ < _).toArray
 
-   //      	// put in sparse data format
-   //      	val out_testData = sc.parallelize(test_ordered)
-   //      		.map(x=> (testData.indexRows(x),testData.indexColumns(x),testData.get(x)))
+        	// put in sparse data format
+        	val out_testData = sc.parallelize(test_ordered)
+        		.map(x=> (testData.indexRows(x),testData.indexColumns(x),testData.get(x)))
 
-   //      	// save testing data
-   //      	out_testData
-   //      		.map(x => (x._1 + " " + x._2 + " " + x._3))
-   //      		.saveAsTextFile(testfile)
-   //      }
+        	// save testing data
+        	out_testData
+        		.map(x => (x._1 + " " + x._2 + " " + x._3))
+        		.saveAsTextFile(testfile)
+        }
         
 		sc.stop()
 	}
